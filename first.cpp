@@ -18,7 +18,7 @@ first::first(QWidget *parent) :
     nettimer = new QTimer();
     connect(nettimer,SIGNAL(timeout()),this, SLOT(net_timeout()));
 
-    sl.sql_select("net");
+    //sl.sql_select("net");
 
 }
 

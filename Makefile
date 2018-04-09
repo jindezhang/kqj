@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = arm-linux-gcc
 CXX           = arm-linux-g++
-DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_SERIALPORT_LIB -DQT_SQL_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I. -I. -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++
+INCPATH       = -I. -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSerialPort -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I. -I. -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++
 QMAKE         = /opt/armqt5.5-gec/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -33,10 +33,10 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = test_tcp1.0.0
-DISTDIR = /mnt/hgfs/1QTproject/test_tcp/.tmp/test_tcp1.0.0
+DISTDIR = /mnt/hgfs/QTproject-2/test_tcp/.tmp/test_tcp1.0.0
 LINK          = arm-linux-g++
 LFLAGS        = -Wl,-O1 -Wl,-rpath,/opt/armqt5.5-gec/lib
-LIBS          = $(SUBLIBS) -L/opt/armqt5.5-gec/lib -lQt5Widgets -L/home/tiydy/armlib/tslib/lib -L/home/tiydy/armlib/freetype/lib -L/home/tiydy/armlib/fontconfig/lib -lQt5Gui -lQt5Network -lQt5Sql -lQt5Core -lpthread 
+LIBS          = $(SUBLIBS) -L/opt/armqt5.5-gec/lib -lQt5Widgets -L/home/tiydy/armlib/tslib/lib -L/home/tiydy/armlib/freetype/lib -L/home/tiydy/armlib/fontconfig/lib -lQt5Gui -lQt5Network -lQt5SerialPort -lQt5Sql -lQt5Core -lpthread 
 AR            = arm-linux-ar cqs
 RANLIB        = 
 SED           = sed
@@ -54,12 +54,19 @@ SOURCES       = main.cpp \
 		netwindow.cpp \
 		first.cpp \
 		sqlmodel.cpp \
-		selectforid.cpp moc_mainwindow.cpp \
+		selectforid.cpp \
+		serialmodel.cpp \
+		test.cpp \
+		serialmodel_c.cpp \
+		mythread.cpp moc_mainwindow.cpp \
 		moc_netmodel.cpp \
 		moc_netwindow.cpp \
 		moc_first.cpp \
 		moc_sqlmodel.cpp \
-		moc_selectforid.cpp
+		moc_selectforid.cpp \
+		moc_serialmodel.cpp \
+		moc_test.cpp \
+		moc_mythread.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		netmodel.o \
@@ -67,12 +74,19 @@ OBJECTS       = main.o \
 		first.o \
 		sqlmodel.o \
 		selectforid.o \
+		serialmodel.o \
+		test.o \
+		serialmodel_c.o \
+		mythread.o \
 		moc_mainwindow.o \
 		moc_netmodel.o \
 		moc_netwindow.o \
 		moc_first.o \
 		moc_sqlmodel.o \
-		moc_selectforid.o
+		moc_selectforid.o \
+		moc_serialmodel.o \
+		moc_test.o \
+		moc_mythread.o
 DIST          = /opt/armqt5.5-gec/mkspecs/features/spec_pre.prf \
 		/opt/armqt5.5-gec/mkspecs/common/unix.conf \
 		/opt/armqt5.5-gec/mkspecs/common/linux.conf \
@@ -145,6 +159,7 @@ DIST          = /opt/armqt5.5-gec/mkspecs/features/spec_pre.prf \
 		/opt/armqt5.5-gec/mkspecs/features/qt_config.prf \
 		/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++/qmake.conf \
 		/opt/armqt5.5-gec/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/opt/armqt5.5-gec/mkspecs/features/exclusive_builds.prf \
 		/opt/armqt5.5-gec/mkspecs/features/default_pre.prf \
 		/opt/armqt5.5-gec/mkspecs/features/resolve_config.prf \
@@ -165,13 +180,21 @@ DIST          = /opt/armqt5.5-gec/mkspecs/features/spec_pre.prf \
 		first.h \
 		sqlmodel.h \
 		allstruct.h \
-		selectforid.h main.cpp \
+		selectforid.h \
+		serialmodel.h \
+		test.h \
+		serialmodel_c.h \
+		mythread.h main.cpp \
 		mainwindow.cpp \
 		netmodel.cpp \
 		netwindow.cpp \
 		first.cpp \
 		sqlmodel.cpp \
-		selectforid.cpp
+		selectforid.cpp \
+		serialmodel.cpp \
+		test.cpp \
+		serialmodel_c.cpp \
+		mythread.cpp
 QMAKE_TARGET  = test_tcp
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = test_tcp
@@ -199,7 +222,7 @@ first: all
 
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h ui_netwindow.h ui_first.h ui_selectforid.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_netwindow.h ui_first.h ui_selectforid.h ui_test.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: test_tcp.pro /opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++/qmake.conf /opt/armqt5.5-gec/mkspecs/features/spec_pre.prf \
@@ -274,6 +297,7 @@ Makefile: test_tcp.pro /opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++/qmake.con
 		/opt/armqt5.5-gec/mkspecs/features/qt_config.prf \
 		/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++/qmake.conf \
 		/opt/armqt5.5-gec/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/opt/armqt5.5-gec/mkspecs/features/exclusive_builds.prf \
 		/opt/armqt5.5-gec/mkspecs/features/default_pre.prf \
 		/opt/armqt5.5-gec/mkspecs/features/resolve_config.prf \
@@ -292,6 +316,7 @@ Makefile: test_tcp.pro /opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++/qmake.con
 		/opt/armqt5.5-gec/lib/libQt5Widgets.prl \
 		/opt/armqt5.5-gec/lib/libQt5Gui.prl \
 		/opt/armqt5.5-gec/lib/libQt5Network.prl \
+		/opt/armqt5.5-gec/lib/libQt5SerialPort.prl \
 		/opt/armqt5.5-gec/lib/libQt5Sql.prl \
 		/opt/armqt5.5-gec/lib/libQt5Core.prl
 	$(QMAKE) -o Makefile test_tcp.pro
@@ -367,6 +392,7 @@ Makefile: test_tcp.pro /opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++/qmake.con
 /opt/armqt5.5-gec/mkspecs/features/qt_config.prf:
 /opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++/qmake.conf:
 /opt/armqt5.5-gec/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /opt/armqt5.5-gec/mkspecs/features/exclusive_builds.prf:
 /opt/armqt5.5-gec/mkspecs/features/default_pre.prf:
 /opt/armqt5.5-gec/mkspecs/features/resolve_config.prf:
@@ -385,6 +411,7 @@ test_tcp.pro:
 /opt/armqt5.5-gec/lib/libQt5Widgets.prl:
 /opt/armqt5.5-gec/lib/libQt5Gui.prl:
 /opt/armqt5.5-gec/lib/libQt5Network.prl:
+/opt/armqt5.5-gec/lib/libQt5SerialPort.prl:
 /opt/armqt5.5-gec/lib/libQt5Sql.prl:
 /opt/armqt5.5-gec/lib/libQt5Core.prl:
 qmake: FORCE
@@ -401,9 +428,9 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h netmodel.h netwindow.h first.h sqlmodel.h allstruct.h selectforid.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp netmodel.cpp netwindow.cpp first.cpp sqlmodel.cpp selectforid.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.ui netwindow.ui first.ui selectforid.ui $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h netmodel.h netwindow.h first.h sqlmodel.h allstruct.h selectforid.h serialmodel.h test.h serialmodel_c.h mythread.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp netmodel.cpp netwindow.cpp first.cpp sqlmodel.cpp selectforid.cpp serialmodel.cpp test.cpp serialmodel_c.cpp mythread.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.ui netwindow.ui first.ui selectforid.ui test.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -413,6 +440,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) $(TARGET) 
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -426,9 +454,9 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_netmodel.cpp moc_netwindow.cpp moc_first.cpp moc_sqlmodel.cpp moc_selectforid.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_netmodel.cpp moc_netwindow.cpp moc_first.cpp moc_sqlmodel.cpp moc_selectforid.cpp moc_serialmodel.cpp moc_test.cpp moc_mythread.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_netmodel.cpp moc_netwindow.cpp moc_first.cpp moc_sqlmodel.cpp moc_selectforid.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_netmodel.cpp moc_netwindow.cpp moc_first.cpp moc_sqlmodel.cpp moc_selectforid.cpp moc_serialmodel.cpp moc_test.cpp moc_mythread.cpp
 moc_mainwindow.cpp: /opt/armqt5.5-gec/include/QtWidgets/QMainWindow \
 		/opt/armqt5.5-gec/include/QtWidgets/qmainwindow.h \
 		/opt/armqt5.5-gec/include/QtWidgets/qwidget.h \
@@ -554,7 +582,7 @@ moc_mainwindow.cpp: /opt/armqt5.5-gec/include/QtWidgets/QMainWindow \
 		netwindow.h \
 		/opt/armqt5.5-gec/include/QtWidgets/QWidget \
 		mainwindow.h
-	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/1QTproject/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/usr/local/arm/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/usr/local/arm/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include mainwindow.h -o moc_mainwindow.cpp
+	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/QTproject-2/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSerialPort -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/4.5.1/arm-none-linux-gnueabi/include -I/opt/4.5.1/arm-none-linux-gnueabi/libc/usr/include mainwindow.h -o moc_mainwindow.cpp
 
 moc_netmodel.cpp: /opt/armqt5.5-gec/include/QtCore/QObject \
 		/opt/armqt5.5-gec/include/QtCore/qobject.h \
@@ -673,7 +701,7 @@ moc_netmodel.cpp: /opt/armqt5.5-gec/include/QtCore/QObject \
 		/opt/armqt5.5-gec/include/QtGui/qtouchdevice.h \
 		/opt/armqt5.5-gec/include/QtCore/QDebug \
 		netmodel.h
-	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/1QTproject/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/usr/local/arm/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/usr/local/arm/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include netmodel.h -o moc_netmodel.cpp
+	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/QTproject-2/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSerialPort -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/4.5.1/arm-none-linux-gnueabi/include -I/opt/4.5.1/arm-none-linux-gnueabi/libc/usr/include netmodel.h -o moc_netmodel.cpp
 
 moc_netwindow.cpp: /opt/armqt5.5-gec/include/QtWidgets/QWidget \
 		/opt/armqt5.5-gec/include/QtWidgets/qwidget.h \
@@ -799,7 +827,7 @@ moc_netwindow.cpp: /opt/armqt5.5-gec/include/QtWidgets/QWidget \
 		netmodel.h \
 		/opt/armqt5.5-gec/include/QtCore/QString \
 		netwindow.h
-	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/1QTproject/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/usr/local/arm/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/usr/local/arm/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include netwindow.h -o moc_netwindow.cpp
+	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/QTproject-2/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSerialPort -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/4.5.1/arm-none-linux-gnueabi/include -I/opt/4.5.1/arm-none-linux-gnueabi/libc/usr/include netwindow.h -o moc_netwindow.cpp
 
 moc_first.cpp: /opt/armqt5.5-gec/include/QtWidgets/QMainWindow \
 		/opt/armqt5.5-gec/include/QtWidgets/qmainwindow.h \
@@ -938,7 +966,7 @@ moc_first.cpp: /opt/armqt5.5-gec/include/QtWidgets/QMainWindow \
 		/opt/armqt5.5-gec/include/QtSql/qsqlquery.h \
 		allstruct.h \
 		first.h
-	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/1QTproject/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/usr/local/arm/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/usr/local/arm/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include first.h -o moc_first.cpp
+	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/QTproject-2/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSerialPort -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/4.5.1/arm-none-linux-gnueabi/include -I/opt/4.5.1/arm-none-linux-gnueabi/libc/usr/include first.h -o moc_first.cpp
 
 moc_sqlmodel.cpp: /opt/armqt5.5-gec/include/QtCore/QObject \
 		/opt/armqt5.5-gec/include/QtCore/qobject.h \
@@ -1017,7 +1045,7 @@ moc_sqlmodel.cpp: /opt/armqt5.5-gec/include/QtCore/QObject \
 		/opt/armqt5.5-gec/include/QtCore/QString \
 		allstruct.h \
 		sqlmodel.h
-	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/1QTproject/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/usr/local/arm/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/usr/local/arm/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include sqlmodel.h -o moc_sqlmodel.cpp
+	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/QTproject-2/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSerialPort -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/4.5.1/arm-none-linux-gnueabi/include -I/opt/4.5.1/arm-none-linux-gnueabi/libc/usr/include sqlmodel.h -o moc_sqlmodel.cpp
 
 moc_selectforid.cpp: /opt/armqt5.5-gec/include/QtWidgets/QMainWindow \
 		/opt/armqt5.5-gec/include/QtWidgets/qmainwindow.h \
@@ -1124,14 +1152,269 @@ moc_selectforid.cpp: /opt/armqt5.5-gec/include/QtWidgets/QMainWindow \
 		/opt/armqt5.5-gec/include/QtGui/qtouchdevice.h \
 		/opt/armqt5.5-gec/include/QtWidgets/qtabwidget.h \
 		/opt/armqt5.5-gec/include/QtGui/qicon.h \
+		/opt/armqt5.5-gec/include/QtCore/QTimer \
+		/opt/armqt5.5-gec/include/QtCore/qtimer.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasictimer.h \
 		selectforid.h
-	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/1QTproject/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/usr/local/arm/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/usr/local/arm/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/usr/local/arm/4.5.1/arm-none-linux-gnueabi/include selectforid.h -o moc_selectforid.cpp
+	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/QTproject-2/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSerialPort -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/4.5.1/arm-none-linux-gnueabi/include -I/opt/4.5.1/arm-none-linux-gnueabi/libc/usr/include selectforid.h -o moc_selectforid.cpp
+
+moc_serialmodel.cpp: /opt/armqt5.5-gec/include/QtCore/QDebug \
+		/opt/armqt5.5-gec/include/QtCore/qdebug.h \
+		/opt/armqt5.5-gec/include/QtCore/qalgorithms.h \
+		/opt/armqt5.5-gec/include/QtCore/qglobal.h \
+		/opt/armqt5.5-gec/include/QtCore/qconfig.h \
+		/opt/armqt5.5-gec/include/QtCore/qfeatures.h \
+		/opt/armqt5.5-gec/include/QtCore/qsystemdetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qprocessordetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qcompilerdetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qtypeinfo.h \
+		/opt/armqt5.5-gec/include/QtCore/qtypetraits.h \
+		/opt/armqt5.5-gec/include/QtCore/qsysinfo.h \
+		/opt/armqt5.5-gec/include/QtCore/qlogging.h \
+		/opt/armqt5.5-gec/include/QtCore/qflags.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasicatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_bootstrap.h \
+		/opt/armqt5.5-gec/include/QtCore/qgenericatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_cxx11.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_gcc.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_msvc.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv7.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv6.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv5.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_ia64.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_mips.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_x86.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_unix.h \
+		/opt/armqt5.5-gec/include/QtCore/qglobalstatic.h \
+		/opt/armqt5.5-gec/include/QtCore/qmutex.h \
+		/opt/armqt5.5-gec/include/QtCore/qnumeric.h \
+		/opt/armqt5.5-gec/include/QtCore/qhash.h \
+		/opt/armqt5.5-gec/include/QtCore/qchar.h \
+		/opt/armqt5.5-gec/include/QtCore/qiterator.h \
+		/opt/armqt5.5-gec/include/QtCore/qlist.h \
+		/opt/armqt5.5-gec/include/QtCore/qrefcount.h \
+		/opt/armqt5.5-gec/include/QtCore/qarraydata.h \
+		/opt/armqt5.5-gec/include/QtCore/qbytearraylist.h \
+		/opt/armqt5.5-gec/include/QtCore/qbytearray.h \
+		/opt/armqt5.5-gec/include/QtCore/qnamespace.h \
+		/opt/armqt5.5-gec/include/QtCore/qstring.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringbuilder.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringlist.h \
+		/opt/armqt5.5-gec/include/QtCore/qregexp.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringmatcher.h \
+		/opt/armqt5.5-gec/include/QtCore/qpair.h \
+		/opt/armqt5.5-gec/include/QtCore/qmap.h \
+		/opt/armqt5.5-gec/include/QtCore/qtextstream.h \
+		/opt/armqt5.5-gec/include/QtCore/qiodevice.h \
+		/opt/armqt5.5-gec/include/QtCore/qobject.h \
+		/opt/armqt5.5-gec/include/QtCore/qobjectdefs.h \
+		/opt/armqt5.5-gec/include/QtCore/qobjectdefs_impl.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreevent.h \
+		/opt/armqt5.5-gec/include/QtCore/qscopedpointer.h \
+		/opt/armqt5.5-gec/include/QtCore/qmetatype.h \
+		/opt/armqt5.5-gec/include/QtCore/qvarlengtharray.h \
+		/opt/armqt5.5-gec/include/QtCore/qcontainerfwd.h \
+		/opt/armqt5.5-gec/include/QtCore/qisenum.h \
+		/opt/armqt5.5-gec/include/QtCore/qobject_impl.h \
+		/opt/armqt5.5-gec/include/QtCore/qlocale.h \
+		/opt/armqt5.5-gec/include/QtCore/qvariant.h \
+		/opt/armqt5.5-gec/include/QtCore/qshareddata.h \
+		/opt/armqt5.5-gec/include/QtCore/qvector.h \
+		/opt/armqt5.5-gec/include/QtCore/qpoint.h \
+		/opt/armqt5.5-gec/include/QtCore/qset.h \
+		/opt/armqt5.5-gec/include/QtCore/qcontiguouscache.h \
+		/opt/armqt5.5-gec/include/QtCore/QObject \
+		/opt/armqt5.5-gec/include/QtSerialPort/QSerialPort \
+		/opt/armqt5.5-gec/include/QtSerialPort/qserialport.h \
+		/opt/armqt5.5-gec/include/QtSerialPort/qserialportglobal.h \
+		serialmodel.h
+	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/QTproject-2/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSerialPort -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/4.5.1/arm-none-linux-gnueabi/include -I/opt/4.5.1/arm-none-linux-gnueabi/libc/usr/include serialmodel.h -o moc_serialmodel.cpp
+
+moc_test.cpp: /opt/armqt5.5-gec/include/QtWidgets/QMainWindow \
+		/opt/armqt5.5-gec/include/QtWidgets/qmainwindow.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qwindowdefs.h \
+		/opt/armqt5.5-gec/include/QtCore/qglobal.h \
+		/opt/armqt5.5-gec/include/QtCore/qconfig.h \
+		/opt/armqt5.5-gec/include/QtCore/qfeatures.h \
+		/opt/armqt5.5-gec/include/QtCore/qsystemdetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qprocessordetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qcompilerdetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qtypeinfo.h \
+		/opt/armqt5.5-gec/include/QtCore/qtypetraits.h \
+		/opt/armqt5.5-gec/include/QtCore/qsysinfo.h \
+		/opt/armqt5.5-gec/include/QtCore/qlogging.h \
+		/opt/armqt5.5-gec/include/QtCore/qflags.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasicatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_bootstrap.h \
+		/opt/armqt5.5-gec/include/QtCore/qgenericatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_cxx11.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_gcc.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_msvc.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv7.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv6.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv5.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_ia64.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_mips.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_x86.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_unix.h \
+		/opt/armqt5.5-gec/include/QtCore/qglobalstatic.h \
+		/opt/armqt5.5-gec/include/QtCore/qmutex.h \
+		/opt/armqt5.5-gec/include/QtCore/qnumeric.h \
+		/opt/armqt5.5-gec/include/QtCore/qobjectdefs.h \
+		/opt/armqt5.5-gec/include/QtCore/qnamespace.h \
+		/opt/armqt5.5-gec/include/QtCore/qobjectdefs_impl.h \
+		/opt/armqt5.5-gec/include/QtGui/qwindowdefs_win.h \
+		/opt/armqt5.5-gec/include/QtCore/qobject.h \
+		/opt/armqt5.5-gec/include/QtCore/qstring.h \
+		/opt/armqt5.5-gec/include/QtCore/qchar.h \
+		/opt/armqt5.5-gec/include/QtCore/qbytearray.h \
+		/opt/armqt5.5-gec/include/QtCore/qrefcount.h \
+		/opt/armqt5.5-gec/include/QtCore/qarraydata.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringbuilder.h \
+		/opt/armqt5.5-gec/include/QtCore/qlist.h \
+		/opt/armqt5.5-gec/include/QtCore/qalgorithms.h \
+		/opt/armqt5.5-gec/include/QtCore/qiterator.h \
+		/opt/armqt5.5-gec/include/QtCore/qbytearraylist.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringlist.h \
+		/opt/armqt5.5-gec/include/QtCore/qregexp.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringmatcher.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreevent.h \
+		/opt/armqt5.5-gec/include/QtCore/qscopedpointer.h \
+		/opt/armqt5.5-gec/include/QtCore/qmetatype.h \
+		/opt/armqt5.5-gec/include/QtCore/qvarlengtharray.h \
+		/opt/armqt5.5-gec/include/QtCore/qcontainerfwd.h \
+		/opt/armqt5.5-gec/include/QtCore/qisenum.h \
+		/opt/armqt5.5-gec/include/QtCore/qobject_impl.h \
+		/opt/armqt5.5-gec/include/QtCore/qmargins.h \
+		/opt/armqt5.5-gec/include/QtGui/qpaintdevice.h \
+		/opt/armqt5.5-gec/include/QtCore/qrect.h \
+		/opt/armqt5.5-gec/include/QtCore/qsize.h \
+		/opt/armqt5.5-gec/include/QtCore/qpoint.h \
+		/opt/armqt5.5-gec/include/QtGui/qpalette.h \
+		/opt/armqt5.5-gec/include/QtGui/qcolor.h \
+		/opt/armqt5.5-gec/include/QtGui/qrgb.h \
+		/opt/armqt5.5-gec/include/QtGui/qbrush.h \
+		/opt/armqt5.5-gec/include/QtCore/qpair.h \
+		/opt/armqt5.5-gec/include/QtCore/qvector.h \
+		/opt/armqt5.5-gec/include/QtGui/qmatrix.h \
+		/opt/armqt5.5-gec/include/QtGui/qpolygon.h \
+		/opt/armqt5.5-gec/include/QtGui/qregion.h \
+		/opt/armqt5.5-gec/include/QtCore/qdatastream.h \
+		/opt/armqt5.5-gec/include/QtCore/qiodevice.h \
+		/opt/armqt5.5-gec/include/QtCore/qline.h \
+		/opt/armqt5.5-gec/include/QtGui/qtransform.h \
+		/opt/armqt5.5-gec/include/QtGui/qpainterpath.h \
+		/opt/armqt5.5-gec/include/QtGui/qimage.h \
+		/opt/armqt5.5-gec/include/QtGui/qpixelformat.h \
+		/opt/armqt5.5-gec/include/QtGui/qpixmap.h \
+		/opt/armqt5.5-gec/include/QtCore/qsharedpointer.h \
+		/opt/armqt5.5-gec/include/QtCore/qshareddata.h \
+		/opt/armqt5.5-gec/include/QtCore/qhash.h \
+		/opt/armqt5.5-gec/include/QtCore/qsharedpointer_impl.h \
+		/opt/armqt5.5-gec/include/QtGui/qfont.h \
+		/opt/armqt5.5-gec/include/QtGui/qfontmetrics.h \
+		/opt/armqt5.5-gec/include/QtGui/qfontinfo.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qsizepolicy.h \
+		/opt/armqt5.5-gec/include/QtGui/qcursor.h \
+		/opt/armqt5.5-gec/include/QtGui/qkeysequence.h \
+		/opt/armqt5.5-gec/include/QtGui/qevent.h \
+		/opt/armqt5.5-gec/include/QtCore/qvariant.h \
+		/opt/armqt5.5-gec/include/QtCore/qmap.h \
+		/opt/armqt5.5-gec/include/QtCore/qdebug.h \
+		/opt/armqt5.5-gec/include/QtCore/qtextstream.h \
+		/opt/armqt5.5-gec/include/QtCore/qlocale.h \
+		/opt/armqt5.5-gec/include/QtCore/qset.h \
+		/opt/armqt5.5-gec/include/QtCore/qcontiguouscache.h \
+		/opt/armqt5.5-gec/include/QtCore/qurl.h \
+		/opt/armqt5.5-gec/include/QtCore/qurlquery.h \
+		/opt/armqt5.5-gec/include/QtCore/qfile.h \
+		/opt/armqt5.5-gec/include/QtCore/qfiledevice.h \
+		/opt/armqt5.5-gec/include/QtGui/qvector2d.h \
+		/opt/armqt5.5-gec/include/QtGui/qtouchdevice.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qicon.h \
+		serialmodel.h \
+		/opt/armqt5.5-gec/include/QtCore/QDebug \
+		/opt/armqt5.5-gec/include/QtCore/QObject \
+		/opt/armqt5.5-gec/include/QtSerialPort/QSerialPort \
+		/opt/armqt5.5-gec/include/QtSerialPort/qserialport.h \
+		/opt/armqt5.5-gec/include/QtSerialPort/qserialportglobal.h \
+		/opt/armqt5.5-gec/include/QtCore/QTimer \
+		/opt/armqt5.5-gec/include/QtCore/qtimer.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasictimer.h \
+		serialmodel_c.h \
+		mythread.h \
+		/opt/armqt5.5-gec/include/QtCore/QThread \
+		/opt/armqt5.5-gec/include/QtCore/qthread.h \
+		test.h
+	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/QTproject-2/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSerialPort -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/4.5.1/arm-none-linux-gnueabi/include -I/opt/4.5.1/arm-none-linux-gnueabi/libc/usr/include test.h -o moc_test.cpp
+
+moc_mythread.cpp: serialmodel_c.h \
+		/opt/armqt5.5-gec/include/QtCore/QThread \
+		/opt/armqt5.5-gec/include/QtCore/qthread.h \
+		/opt/armqt5.5-gec/include/QtCore/qobject.h \
+		/opt/armqt5.5-gec/include/QtCore/qobjectdefs.h \
+		/opt/armqt5.5-gec/include/QtCore/qnamespace.h \
+		/opt/armqt5.5-gec/include/QtCore/qglobal.h \
+		/opt/armqt5.5-gec/include/QtCore/qconfig.h \
+		/opt/armqt5.5-gec/include/QtCore/qfeatures.h \
+		/opt/armqt5.5-gec/include/QtCore/qsystemdetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qprocessordetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qcompilerdetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qtypeinfo.h \
+		/opt/armqt5.5-gec/include/QtCore/qtypetraits.h \
+		/opt/armqt5.5-gec/include/QtCore/qsysinfo.h \
+		/opt/armqt5.5-gec/include/QtCore/qlogging.h \
+		/opt/armqt5.5-gec/include/QtCore/qflags.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasicatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_bootstrap.h \
+		/opt/armqt5.5-gec/include/QtCore/qgenericatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_cxx11.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_gcc.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_msvc.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv7.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv6.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv5.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_ia64.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_mips.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_x86.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_unix.h \
+		/opt/armqt5.5-gec/include/QtCore/qglobalstatic.h \
+		/opt/armqt5.5-gec/include/QtCore/qmutex.h \
+		/opt/armqt5.5-gec/include/QtCore/qnumeric.h \
+		/opt/armqt5.5-gec/include/QtCore/qobjectdefs_impl.h \
+		/opt/armqt5.5-gec/include/QtCore/qstring.h \
+		/opt/armqt5.5-gec/include/QtCore/qchar.h \
+		/opt/armqt5.5-gec/include/QtCore/qbytearray.h \
+		/opt/armqt5.5-gec/include/QtCore/qrefcount.h \
+		/opt/armqt5.5-gec/include/QtCore/qarraydata.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringbuilder.h \
+		/opt/armqt5.5-gec/include/QtCore/qlist.h \
+		/opt/armqt5.5-gec/include/QtCore/qalgorithms.h \
+		/opt/armqt5.5-gec/include/QtCore/qiterator.h \
+		/opt/armqt5.5-gec/include/QtCore/qbytearraylist.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringlist.h \
+		/opt/armqt5.5-gec/include/QtCore/qregexp.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringmatcher.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreevent.h \
+		/opt/armqt5.5-gec/include/QtCore/qscopedpointer.h \
+		/opt/armqt5.5-gec/include/QtCore/qmetatype.h \
+		/opt/armqt5.5-gec/include/QtCore/qvarlengtharray.h \
+		/opt/armqt5.5-gec/include/QtCore/qcontainerfwd.h \
+		/opt/armqt5.5-gec/include/QtCore/qisenum.h \
+		/opt/armqt5.5-gec/include/QtCore/qobject_impl.h \
+		mythread.h
+	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/QTproject-2/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSerialPort -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/4.5.1/arm-none-linux-gnueabi/include -I/opt/4.5.1/arm-none-linux-gnueabi/libc/usr/include mythread.h -o moc_mythread.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_netwindow.h ui_first.h ui_selectforid.h
+compiler_uic_make_all: ui_mainwindow.h ui_netwindow.h ui_first.h ui_selectforid.h ui_test.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_netwindow.h ui_first.h ui_selectforid.h
+	-$(DEL_FILE) ui_mainwindow.h ui_netwindow.h ui_first.h ui_selectforid.h ui_test.h
 ui_mainwindow.h: mainwindow.ui
 	/opt/armqt5.5-gec/bin/uic mainwindow.ui -o ui_mainwindow.h
 
@@ -1143,6 +1426,9 @@ ui_first.h: first.ui
 
 ui_selectforid.h: selectforid.ui
 	/opt/armqt5.5-gec/bin/uic selectforid.ui -o ui_selectforid.h
+
+ui_test.h: test.ui
+	/opt/armqt5.5-gec/bin/uic test.ui -o ui_test.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -1298,7 +1584,16 @@ main.o: main.cpp first.h \
 		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
 		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
 		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
-		selectforid.h
+		selectforid.h \
+		serialmodel.h \
+		/opt/armqt5.5-gec/include/QtSerialPort/QSerialPort \
+		/opt/armqt5.5-gec/include/QtSerialPort/qserialport.h \
+		/opt/armqt5.5-gec/include/QtSerialPort/qserialportglobal.h \
+		test.h \
+		serialmodel_c.h \
+		mythread.h \
+		/opt/armqt5.5-gec/include/QtCore/QThread \
+		/opt/armqt5.5-gec/include/QtCore/qthread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -1426,7 +1721,55 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/opt/armqt5.5-gec/include/QtCore/QDebug \
 		netwindow.h \
 		/opt/armqt5.5-gec/include/QtWidgets/QWidget \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHBoxLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/qboxlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayoutitem.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qgridlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLabel \
+		/opt/armqt5.5-gec/include/QtWidgets/qlabel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QMenuBar \
+		/opt/armqt5.5-gec/include/QtWidgets/qmenubar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qmenu.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QPushButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qpushbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QSpacerItem \
+		/opt/armqt5.5-gec/include/QtWidgets/QStatusBar \
+		/opt/armqt5.5-gec/include/QtWidgets/qstatusbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QToolBar \
+		/opt/armqt5.5-gec/include/QtWidgets/qtoolbar.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 netmodel.o: netmodel.cpp netmodel.h \
@@ -1673,6 +2016,52 @@ netwindow.o: netwindow.cpp netwindow.h \
 		netmodel.h \
 		/opt/armqt5.5-gec/include/QtCore/QString \
 		ui_netwindow.h \
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLabel \
+		/opt/armqt5.5-gec/include/QtWidgets/qlabel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLineEdit \
+		/opt/armqt5.5-gec/include/QtWidgets/qlineedit.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextcursor.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextformat.h \
+		/opt/armqt5.5-gec/include/QtGui/qpen.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QPushButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qpushbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QVBoxLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/qboxlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayoutitem.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qgridlayout.h \
 		mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o netwindow.o netwindow.cpp
 
@@ -1813,7 +2202,58 @@ first.o: first.cpp first.h \
 		/opt/armqt5.5-gec/include/QtSql/QSqlQuery \
 		/opt/armqt5.5-gec/include/QtSql/qsqlquery.h \
 		allstruct.h \
-		ui_first.h
+		ui_first.h \
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLabel \
+		/opt/armqt5.5-gec/include/QtWidgets/qlabel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLineEdit \
+		/opt/armqt5.5-gec/include/QtWidgets/qlineedit.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextcursor.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextformat.h \
+		/opt/armqt5.5-gec/include/QtGui/qpen.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QMenuBar \
+		/opt/armqt5.5-gec/include/QtWidgets/qmenubar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qmenu.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QPushButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qpushbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QStatusBar \
+		/opt/armqt5.5-gec/include/QtWidgets/qstatusbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QVBoxLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/qboxlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayoutitem.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qgridlayout.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o first.o first.cpp
 
 sqlmodel.o: sqlmodel.cpp sqlmodel.h \
@@ -2001,9 +2441,377 @@ selectforid.o: selectforid.cpp selectforid.h \
 		/opt/armqt5.5-gec/include/QtGui/qtouchdevice.h \
 		/opt/armqt5.5-gec/include/QtWidgets/qtabwidget.h \
 		/opt/armqt5.5-gec/include/QtGui/qicon.h \
+		/opt/armqt5.5-gec/include/QtCore/QTimer \
+		/opt/armqt5.5-gec/include/QtCore/qtimer.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasictimer.h \
 		ui_selectforid.h \
-		/opt/armqt5.5-gec/include/QtCore/QDebug
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QCheckBox \
+		/opt/armqt5.5-gec/include/QtWidgets/qcheckbox.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QComboBox \
+		/opt/armqt5.5-gec/include/QtWidgets/qcombobox.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QGridLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/qgridlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayoutitem.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qboxlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHBoxLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLabel \
+		/opt/armqt5.5-gec/include/QtWidgets/qlabel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QPushButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qpushbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QSpacerItem \
+		/opt/armqt5.5-gec/include/QtWidgets/QTableWidget \
+		/opt/armqt5.5-gec/include/QtWidgets/qtablewidget.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtableview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QWidget \
+		/opt/armqt5.5-gec/include/QtCore/QDebug \
+		/opt/armqt5.5-gec/include/QtCore/QTime \
+		/opt/armqt5.5-gec/include/QtCore/qdatetime.h \
+		/opt/armqt5.5-gec/include/QtCore/QDate \
+		/opt/armqt5.5-gec/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o selectforid.o selectforid.cpp
+
+serialmodel.o: serialmodel.cpp serialmodel.h \
+		/opt/armqt5.5-gec/include/QtCore/QDebug \
+		/opt/armqt5.5-gec/include/QtCore/qdebug.h \
+		/opt/armqt5.5-gec/include/QtCore/qalgorithms.h \
+		/opt/armqt5.5-gec/include/QtCore/qglobal.h \
+		/opt/armqt5.5-gec/include/QtCore/qconfig.h \
+		/opt/armqt5.5-gec/include/QtCore/qfeatures.h \
+		/opt/armqt5.5-gec/include/QtCore/qsystemdetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qprocessordetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qcompilerdetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qtypeinfo.h \
+		/opt/armqt5.5-gec/include/QtCore/qtypetraits.h \
+		/opt/armqt5.5-gec/include/QtCore/qsysinfo.h \
+		/opt/armqt5.5-gec/include/QtCore/qlogging.h \
+		/opt/armqt5.5-gec/include/QtCore/qflags.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasicatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_bootstrap.h \
+		/opt/armqt5.5-gec/include/QtCore/qgenericatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_cxx11.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_gcc.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_msvc.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv7.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv6.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv5.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_ia64.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_mips.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_x86.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_unix.h \
+		/opt/armqt5.5-gec/include/QtCore/qglobalstatic.h \
+		/opt/armqt5.5-gec/include/QtCore/qmutex.h \
+		/opt/armqt5.5-gec/include/QtCore/qnumeric.h \
+		/opt/armqt5.5-gec/include/QtCore/qhash.h \
+		/opt/armqt5.5-gec/include/QtCore/qchar.h \
+		/opt/armqt5.5-gec/include/QtCore/qiterator.h \
+		/opt/armqt5.5-gec/include/QtCore/qlist.h \
+		/opt/armqt5.5-gec/include/QtCore/qrefcount.h \
+		/opt/armqt5.5-gec/include/QtCore/qarraydata.h \
+		/opt/armqt5.5-gec/include/QtCore/qbytearraylist.h \
+		/opt/armqt5.5-gec/include/QtCore/qbytearray.h \
+		/opt/armqt5.5-gec/include/QtCore/qnamespace.h \
+		/opt/armqt5.5-gec/include/QtCore/qstring.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringbuilder.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringlist.h \
+		/opt/armqt5.5-gec/include/QtCore/qregexp.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringmatcher.h \
+		/opt/armqt5.5-gec/include/QtCore/qpair.h \
+		/opt/armqt5.5-gec/include/QtCore/qmap.h \
+		/opt/armqt5.5-gec/include/QtCore/qtextstream.h \
+		/opt/armqt5.5-gec/include/QtCore/qiodevice.h \
+		/opt/armqt5.5-gec/include/QtCore/qobject.h \
+		/opt/armqt5.5-gec/include/QtCore/qobjectdefs.h \
+		/opt/armqt5.5-gec/include/QtCore/qobjectdefs_impl.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreevent.h \
+		/opt/armqt5.5-gec/include/QtCore/qscopedpointer.h \
+		/opt/armqt5.5-gec/include/QtCore/qmetatype.h \
+		/opt/armqt5.5-gec/include/QtCore/qvarlengtharray.h \
+		/opt/armqt5.5-gec/include/QtCore/qcontainerfwd.h \
+		/opt/armqt5.5-gec/include/QtCore/qisenum.h \
+		/opt/armqt5.5-gec/include/QtCore/qobject_impl.h \
+		/opt/armqt5.5-gec/include/QtCore/qlocale.h \
+		/opt/armqt5.5-gec/include/QtCore/qvariant.h \
+		/opt/armqt5.5-gec/include/QtCore/qshareddata.h \
+		/opt/armqt5.5-gec/include/QtCore/qvector.h \
+		/opt/armqt5.5-gec/include/QtCore/qpoint.h \
+		/opt/armqt5.5-gec/include/QtCore/qset.h \
+		/opt/armqt5.5-gec/include/QtCore/qcontiguouscache.h \
+		/opt/armqt5.5-gec/include/QtCore/QObject \
+		/opt/armqt5.5-gec/include/QtSerialPort/QSerialPort \
+		/opt/armqt5.5-gec/include/QtSerialPort/qserialport.h \
+		/opt/armqt5.5-gec/include/QtSerialPort/qserialportglobal.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o serialmodel.o serialmodel.cpp
+
+test.o: test.cpp test.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QMainWindow \
+		/opt/armqt5.5-gec/include/QtWidgets/qmainwindow.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qwindowdefs.h \
+		/opt/armqt5.5-gec/include/QtCore/qglobal.h \
+		/opt/armqt5.5-gec/include/QtCore/qconfig.h \
+		/opt/armqt5.5-gec/include/QtCore/qfeatures.h \
+		/opt/armqt5.5-gec/include/QtCore/qsystemdetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qprocessordetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qcompilerdetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qtypeinfo.h \
+		/opt/armqt5.5-gec/include/QtCore/qtypetraits.h \
+		/opt/armqt5.5-gec/include/QtCore/qsysinfo.h \
+		/opt/armqt5.5-gec/include/QtCore/qlogging.h \
+		/opt/armqt5.5-gec/include/QtCore/qflags.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasicatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_bootstrap.h \
+		/opt/armqt5.5-gec/include/QtCore/qgenericatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_cxx11.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_gcc.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_msvc.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv7.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv6.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv5.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_ia64.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_mips.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_x86.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_unix.h \
+		/opt/armqt5.5-gec/include/QtCore/qglobalstatic.h \
+		/opt/armqt5.5-gec/include/QtCore/qmutex.h \
+		/opt/armqt5.5-gec/include/QtCore/qnumeric.h \
+		/opt/armqt5.5-gec/include/QtCore/qobjectdefs.h \
+		/opt/armqt5.5-gec/include/QtCore/qnamespace.h \
+		/opt/armqt5.5-gec/include/QtCore/qobjectdefs_impl.h \
+		/opt/armqt5.5-gec/include/QtGui/qwindowdefs_win.h \
+		/opt/armqt5.5-gec/include/QtCore/qobject.h \
+		/opt/armqt5.5-gec/include/QtCore/qstring.h \
+		/opt/armqt5.5-gec/include/QtCore/qchar.h \
+		/opt/armqt5.5-gec/include/QtCore/qbytearray.h \
+		/opt/armqt5.5-gec/include/QtCore/qrefcount.h \
+		/opt/armqt5.5-gec/include/QtCore/qarraydata.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringbuilder.h \
+		/opt/armqt5.5-gec/include/QtCore/qlist.h \
+		/opt/armqt5.5-gec/include/QtCore/qalgorithms.h \
+		/opt/armqt5.5-gec/include/QtCore/qiterator.h \
+		/opt/armqt5.5-gec/include/QtCore/qbytearraylist.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringlist.h \
+		/opt/armqt5.5-gec/include/QtCore/qregexp.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringmatcher.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreevent.h \
+		/opt/armqt5.5-gec/include/QtCore/qscopedpointer.h \
+		/opt/armqt5.5-gec/include/QtCore/qmetatype.h \
+		/opt/armqt5.5-gec/include/QtCore/qvarlengtharray.h \
+		/opt/armqt5.5-gec/include/QtCore/qcontainerfwd.h \
+		/opt/armqt5.5-gec/include/QtCore/qisenum.h \
+		/opt/armqt5.5-gec/include/QtCore/qobject_impl.h \
+		/opt/armqt5.5-gec/include/QtCore/qmargins.h \
+		/opt/armqt5.5-gec/include/QtGui/qpaintdevice.h \
+		/opt/armqt5.5-gec/include/QtCore/qrect.h \
+		/opt/armqt5.5-gec/include/QtCore/qsize.h \
+		/opt/armqt5.5-gec/include/QtCore/qpoint.h \
+		/opt/armqt5.5-gec/include/QtGui/qpalette.h \
+		/opt/armqt5.5-gec/include/QtGui/qcolor.h \
+		/opt/armqt5.5-gec/include/QtGui/qrgb.h \
+		/opt/armqt5.5-gec/include/QtGui/qbrush.h \
+		/opt/armqt5.5-gec/include/QtCore/qpair.h \
+		/opt/armqt5.5-gec/include/QtCore/qvector.h \
+		/opt/armqt5.5-gec/include/QtGui/qmatrix.h \
+		/opt/armqt5.5-gec/include/QtGui/qpolygon.h \
+		/opt/armqt5.5-gec/include/QtGui/qregion.h \
+		/opt/armqt5.5-gec/include/QtCore/qdatastream.h \
+		/opt/armqt5.5-gec/include/QtCore/qiodevice.h \
+		/opt/armqt5.5-gec/include/QtCore/qline.h \
+		/opt/armqt5.5-gec/include/QtGui/qtransform.h \
+		/opt/armqt5.5-gec/include/QtGui/qpainterpath.h \
+		/opt/armqt5.5-gec/include/QtGui/qimage.h \
+		/opt/armqt5.5-gec/include/QtGui/qpixelformat.h \
+		/opt/armqt5.5-gec/include/QtGui/qpixmap.h \
+		/opt/armqt5.5-gec/include/QtCore/qsharedpointer.h \
+		/opt/armqt5.5-gec/include/QtCore/qshareddata.h \
+		/opt/armqt5.5-gec/include/QtCore/qhash.h \
+		/opt/armqt5.5-gec/include/QtCore/qsharedpointer_impl.h \
+		/opt/armqt5.5-gec/include/QtGui/qfont.h \
+		/opt/armqt5.5-gec/include/QtGui/qfontmetrics.h \
+		/opt/armqt5.5-gec/include/QtGui/qfontinfo.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qsizepolicy.h \
+		/opt/armqt5.5-gec/include/QtGui/qcursor.h \
+		/opt/armqt5.5-gec/include/QtGui/qkeysequence.h \
+		/opt/armqt5.5-gec/include/QtGui/qevent.h \
+		/opt/armqt5.5-gec/include/QtCore/qvariant.h \
+		/opt/armqt5.5-gec/include/QtCore/qmap.h \
+		/opt/armqt5.5-gec/include/QtCore/qdebug.h \
+		/opt/armqt5.5-gec/include/QtCore/qtextstream.h \
+		/opt/armqt5.5-gec/include/QtCore/qlocale.h \
+		/opt/armqt5.5-gec/include/QtCore/qset.h \
+		/opt/armqt5.5-gec/include/QtCore/qcontiguouscache.h \
+		/opt/armqt5.5-gec/include/QtCore/qurl.h \
+		/opt/armqt5.5-gec/include/QtCore/qurlquery.h \
+		/opt/armqt5.5-gec/include/QtCore/qfile.h \
+		/opt/armqt5.5-gec/include/QtCore/qfiledevice.h \
+		/opt/armqt5.5-gec/include/QtGui/qvector2d.h \
+		/opt/armqt5.5-gec/include/QtGui/qtouchdevice.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qicon.h \
+		serialmodel.h \
+		/opt/armqt5.5-gec/include/QtCore/QDebug \
+		/opt/armqt5.5-gec/include/QtCore/QObject \
+		/opt/armqt5.5-gec/include/QtSerialPort/QSerialPort \
+		/opt/armqt5.5-gec/include/QtSerialPort/qserialport.h \
+		/opt/armqt5.5-gec/include/QtSerialPort/qserialportglobal.h \
+		/opt/armqt5.5-gec/include/QtCore/QTimer \
+		/opt/armqt5.5-gec/include/QtCore/qtimer.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasictimer.h \
+		serialmodel_c.h \
+		mythread.h \
+		/opt/armqt5.5-gec/include/QtCore/QThread \
+		/opt/armqt5.5-gec/include/QtCore/qthread.h \
+		ui_test.h \
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLabel \
+		/opt/armqt5.5-gec/include/QtWidgets/qlabel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLineEdit \
+		/opt/armqt5.5-gec/include/QtWidgets/qlineedit.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextcursor.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextformat.h \
+		/opt/armqt5.5-gec/include/QtGui/qpen.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QMenuBar \
+		/opt/armqt5.5-gec/include/QtWidgets/qmenubar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qmenu.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QPushButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qpushbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QStatusBar \
+		/opt/armqt5.5-gec/include/QtWidgets/qstatusbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QVBoxLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/qboxlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayoutitem.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qgridlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QWidget \
+		/opt/armqt5.5-gec/include/QtWidgets/QMessageBox \
+		/opt/armqt5.5-gec/include/QtWidgets/qmessagebox.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdialog.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o test.o test.cpp
+
+serialmodel_c.o: serialmodel_c.cpp serialmodel_c.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o serialmodel_c.o serialmodel_c.cpp
+
+mythread.o: mythread.cpp mythread.h \
+		serialmodel_c.h \
+		/opt/armqt5.5-gec/include/QtCore/QThread \
+		/opt/armqt5.5-gec/include/QtCore/qthread.h \
+		/opt/armqt5.5-gec/include/QtCore/qobject.h \
+		/opt/armqt5.5-gec/include/QtCore/qobjectdefs.h \
+		/opt/armqt5.5-gec/include/QtCore/qnamespace.h \
+		/opt/armqt5.5-gec/include/QtCore/qglobal.h \
+		/opt/armqt5.5-gec/include/QtCore/qconfig.h \
+		/opt/armqt5.5-gec/include/QtCore/qfeatures.h \
+		/opt/armqt5.5-gec/include/QtCore/qsystemdetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qprocessordetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qcompilerdetection.h \
+		/opt/armqt5.5-gec/include/QtCore/qtypeinfo.h \
+		/opt/armqt5.5-gec/include/QtCore/qtypetraits.h \
+		/opt/armqt5.5-gec/include/QtCore/qsysinfo.h \
+		/opt/armqt5.5-gec/include/QtCore/qlogging.h \
+		/opt/armqt5.5-gec/include/QtCore/qflags.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasicatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_bootstrap.h \
+		/opt/armqt5.5-gec/include/QtCore/qgenericatomic.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_cxx11.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_gcc.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_msvc.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv7.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv6.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_armv5.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_ia64.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_mips.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_x86.h \
+		/opt/armqt5.5-gec/include/QtCore/qatomic_unix.h \
+		/opt/armqt5.5-gec/include/QtCore/qglobalstatic.h \
+		/opt/armqt5.5-gec/include/QtCore/qmutex.h \
+		/opt/armqt5.5-gec/include/QtCore/qnumeric.h \
+		/opt/armqt5.5-gec/include/QtCore/qobjectdefs_impl.h \
+		/opt/armqt5.5-gec/include/QtCore/qstring.h \
+		/opt/armqt5.5-gec/include/QtCore/qchar.h \
+		/opt/armqt5.5-gec/include/QtCore/qbytearray.h \
+		/opt/armqt5.5-gec/include/QtCore/qrefcount.h \
+		/opt/armqt5.5-gec/include/QtCore/qarraydata.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringbuilder.h \
+		/opt/armqt5.5-gec/include/QtCore/qlist.h \
+		/opt/armqt5.5-gec/include/QtCore/qalgorithms.h \
+		/opt/armqt5.5-gec/include/QtCore/qiterator.h \
+		/opt/armqt5.5-gec/include/QtCore/qbytearraylist.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringlist.h \
+		/opt/armqt5.5-gec/include/QtCore/qregexp.h \
+		/opt/armqt5.5-gec/include/QtCore/qstringmatcher.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreevent.h \
+		/opt/armqt5.5-gec/include/QtCore/qscopedpointer.h \
+		/opt/armqt5.5-gec/include/QtCore/qmetatype.h \
+		/opt/armqt5.5-gec/include/QtCore/qvarlengtharray.h \
+		/opt/armqt5.5-gec/include/QtCore/qcontainerfwd.h \
+		/opt/armqt5.5-gec/include/QtCore/qisenum.h \
+		/opt/armqt5.5-gec/include/QtCore/qobject_impl.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mythread.o mythread.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
@@ -2022,6 +2830,15 @@ moc_sqlmodel.o: moc_sqlmodel.cpp
 
 moc_selectforid.o: moc_selectforid.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_selectforid.o moc_selectforid.cpp
+
+moc_serialmodel.o: moc_serialmodel.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_serialmodel.o moc_serialmodel.cpp
+
+moc_test.o: moc_test.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_test.o moc_test.cpp
+
+moc_mythread.o: moc_mythread.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mythread.o moc_mythread.cpp
 
 ####### Install
 

@@ -11,18 +11,24 @@ selectforid::selectforid(QWidget *parent) :
 {
     ui->setupUi(this);
     setStyleSheet("selectforid{background-color:rgb(124 ,184 ,254)}");//设置背景颜色
-    ui->l_net->setStyleSheet("border-image:url(./wifion.png)");
+    ui->l_net->setStyleSheet("border-image:url(./wifion.png)");//显示自定义图片
 
     //右上角时间
     t = new QTimer();
     connect(t, SIGNAL(timeout()),this,SLOT(myupdate()));
     t->start(1000);
 
-
-
     //查询按钮的时间延时。
     t_select = new QTimer();
     connect(t_select,SIGNAL(timeout()),this,SLOT(bt_enable()));
+
+
+    ui->cb_depart->setChecked(true);
+    ui->cb_am->setChecked(true);
+    ui->cb_date->setChecked(true);
+    ui->cb_pm->setChecked(true);
+    ui->cb_nm->setChecked(true);
+
 
     QString PaperName,KeyWord,PaperBrief;
     PaperName="fjd";
