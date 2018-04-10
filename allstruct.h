@@ -3,15 +3,19 @@
 
 #include <QString>
 
+//保存服务器数据
 struct Net
 {
     QString ip;
     QString port;
 };
 
+//保存已经考勤完成的员工记录
 struct Em_infos
 {
     QString id;
+    QString name;
+    QString department;
     QString date;
     QString amg;
     QString amo;
@@ -36,6 +40,7 @@ struct Rule
 struct Em_info
 {
     QString id;
+    QString rfid;
     QString name;
     QString department;
     QString icon;

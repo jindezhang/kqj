@@ -34,7 +34,7 @@ private:
     Ui::first *ui;
     netmodel *net;
     QTimer *nettimer;
-    sqlmodel sl;
+    sqlmodel *sl;
 };
 
 #endif // FIRST_H

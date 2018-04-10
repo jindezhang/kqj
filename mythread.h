@@ -8,6 +8,8 @@
  *设计成单例模式；
  *
  * */
+
+/*
 class myThread:public QThread
 {
     Q_OBJECT
@@ -27,5 +29,5 @@ private:
     serialmodel_C *sc;
 
 };
-
+*/
 #endif // MYTHREAD_H

@@ -7,9 +7,9 @@ first::first(QWidget *parent) :
     ui(new Ui::first)
 {
     qDebug()<<"netwindow()";
-
-    sl.doConnect("kqj.db");
-    connect(&sl,SIGNAL(sendData(Net)), this, SLOT(showdata(Net)));
+    sl = sqlmodel::get_model();
+    //sl.doConnect("kqj.db");
+    //connect(&sl,SIGNAL(sendData(Net)), this, SLOT(showdata(Net)));
 
     ui->setupUi(this);
     net = netmodel::get_net();

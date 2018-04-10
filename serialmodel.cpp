@@ -29,7 +29,7 @@ void SerialModel::rfid_write(int i)
 
     unsigned char WBuf[8];
     if(1 == i){
-        bzero(WBuf, 8);
+        //bzero(WBuf, 8);
         WBuf[0] = 0x07;	//帧长= 7 Byte
         WBuf[1] = 0x02;	//包号= 0 , 命令类型= 0x01
         WBuf[2] = 'A';	//命令= 'A'，检测卡片
@@ -40,7 +40,7 @@ void SerialModel::rfid_write(int i)
         mSerial->write((char *)WBuf,7);
     }
     else {
-        bzero(WBuf, 8);
+        //bzero(WBuf, 8);
         WBuf[0] = 0x08;	//帧长= 8 Byte
         WBuf[1] = 0x02;	//包号= 0 , 命令类型= 0x01
         WBuf[2] = 'B';	//命令= 'B'

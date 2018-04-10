@@ -2,10 +2,10 @@
 #define TEST_H
 
 #include <QMainWindow>
-#include <serialmodel.h>
-#include <QTimer>
-#include <serialmodel_c.h>
-#include <mythread.h>
+
+
+#include <sqlmodel.h>
+#include <QSqlTableModel>
 
 namespace Ui {
 class test;
@@ -20,19 +20,14 @@ public:
     ~test();
 
 private slots:
-    void on_bt_jump_clicked();
-    void get_data(QByteArray data);
-    void com();
-    void on_bt_jump_2_clicked();
-    void get_thread(int data);
+
+
+    void on_pushButton_clicked();
 
 private:
     Ui::test *ui;
-    SerialModel *s;
-    int flag;
-    QTimer *qtimer_send_com;
-    serialmodel_C *sc;
-    myThread *mythread;
+    sqlmodel *sql;
+    QSqlTableModel *model;
 
 };
 

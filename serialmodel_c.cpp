@@ -1,5 +1,5 @@
 #include "serialmodel_c.h"
-
+/*
 serialmodel_C* serialmodel_C::model = NULL;
 serialmodel_C::serialmodel_C()
 {
@@ -118,10 +118,7 @@ int serialmodel_C::get_RFID(int fd)
         }
         else
         {
-            /* if(count%10 == 0)
-            {
-                fprintf(stderr, ".");
-            } */
+
             count++;
             usleep(100*1000);
         }
@@ -177,4 +174,4 @@ int serialmodel_C::init_R1()
 
     return fd;
 }
-
+*/

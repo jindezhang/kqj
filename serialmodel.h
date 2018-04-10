@@ -7,6 +7,7 @@
 
 #define DEV_PATH1 "/dev/ttySAC1"
 
+
 class SerialModel: public QObject
 {
     Q_OBJECT

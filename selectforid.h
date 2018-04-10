@@ -7,6 +7,7 @@ namespace Ui {
 class selectforid;
 }
 
+//使用tableview 和qsqltablemodel 来实现数据的显示
 class selectforid : public QMainWindow
 {
     Q_OBJECT
