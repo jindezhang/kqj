@@ -23,6 +23,7 @@ struct Em_infos
     QString pmo;
     QString nmg;
     QString nmo;
+    QString info;
 };
 
 struct Rule
@@ -44,6 +45,7 @@ struct Em_info
     QString name;
     QString department;
     QString icon;
+    QString info;
 
 };
 

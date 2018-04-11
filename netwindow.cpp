@@ -8,6 +8,10 @@ netwindow::netwindow(QWidget *parent) :
 {
     qDebug()<<"netwindow()";
     ui->setupUi(this);
+    setStyleSheet("netwindow{background-color:rgb(124 ,184 ,254)}");//设置背景颜色
+
+    connect(ui->widget,SIGNAL(bt_click()),this,SLOT(fanhui()));
+    ui->widget->setDir("hhhh");
     net = netmodel::get_net();
 
 //    string 转 int互转
@@ -50,8 +54,11 @@ void netwindow::netTimeout()
     return;
 }
 
-void netwindow::on_bt_fanhui_clicked()
+void netwindow::fanhui()
 {
-    this->parentWidget()->show();  //显示父窗口
-    this->close(); //灯光控制界面关闭
+    qDebug()<<"click()";
+    //this->parentWidget()->show();
+    //this->close();
 }
+
+

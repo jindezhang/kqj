@@ -8,6 +8,8 @@
 #include <QDebug>
 #include <QString>
 #include <allstruct.h>
+#include <QDate>
+
 
 /*数据库的操作，select到的数据通过信号发送出去
  * insert 之后，注意delete对应的结构体
@@ -45,15 +47,16 @@ public:
 
 //    员工考勤数据
     void em_infos_selectAll();
+    void em_infos_select_department(QStringList &list);
     void em_infos_selectforid(QString id);
 //    void em_infos_selectfordepartment(QString department);
-//    void em_infos_selectfordate(QString date);
+    void em_infos_selectfordate(QString date);//发送数据给服务器。
 //    同时查找日期和部门，不需要某一部分的时候，参数为NULL;
     void em_infos_select_for_date_department(QString department,QString date);
-    void em_infos_insert(Em_infos &info);
+    bool em_infos_insert(Em_info &info);//当收到当日的员工数据的时候，就可以立即插入所有员工数据（工号，姓名，部门），所以采用的Em_info 结构体
     void em_infos_delete(QString id);
     void em_infos_deleteAll();
-    void em_infos_update(QString rfid, QString col_name, QString value);
+    bool em_infos_update(QString id, QString col_name, QString value);
 
 //    考勤规则
     void rule_selectAll();//获取考勤规则的name；

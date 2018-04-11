@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 #include <QTimer>
+#include <sqlmodel.h>
+#include <QSqlTableModel>
+#include <QStringList>
+
 namespace Ui {
 class selectforid;
 }
@@ -23,10 +27,19 @@ private slots:
 
     void on_bt_selectdate_clicked();
 
+    void on_cb_am_clicked(bool checked);
+
+    void on_cb_pm_clicked(bool checked);
+
+    void on_cb_nm_clicked(bool checked);
+
 private:
     Ui::selectforid *ui;
     QTimer *t;
     QTimer *t_select;
+    sqlmodel *sql;
+    QSqlTableModel *model;
+    QStringList list_departmet;
 };
 
 #endif // SELECTFORID_H

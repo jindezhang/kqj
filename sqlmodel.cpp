@@ -173,12 +173,13 @@ void sqlmodel::em_info_selectforid(QString rfid)
 bool sqlmodel::em_info_insert(Em_info &info)
 {
     QSqlQuery query;
-    QString sql_s = QString("insert into em_info values('%1','%2','%3','%4','%5');").arg(info.id).arg(info.rfid).arg(info.name).arg(info.department).arg(info.icon);
+    QString sql_s = QString("insert into em_info values('%1','%2','%3','%4','%5','%6');").arg(info.id).arg(info.rfid).arg(info.name).arg(info.department).arg(info.icon).arg(info.info);
 
     if(!query.exec(sql_s)){
         qDebug() << "insert Failed!"<<query.lastError();
         return false;
     }
+    em_infos_insert(info);
     return true;
 }
 
@@ -206,18 +207,22 @@ void sqlmodel::em_info_deleteAll()
 
 void sqlmodel::em_infos_selectAll()
 {
+
+}
+
+void sqlmodel::em_infos_select_department(QStringList &list)
+{
     QSqlQuery query;
-    QString sql_s = QString("SELECT rfid FROM em_infos;");
-    Em_info data;
+    QString sql_s = QString("SELECT distinct department FROM em_infos  ;");
+    QString data;
     if(!query.exec(sql_s)){
-        qDebug() << "selectAll Failed!"<<query.lastError();
+        qDebug() << "select Failed!"<<query.lastError();
         return;
     }
-
     while(query.next()){
-        data.rfid = query.value(0).toString();
+        data = query.value(0).toString();
 
-        emit sendEm_info(data);
+        list<<data;
     }
 }
 
@@ -226,34 +231,81 @@ void sqlmodel::em_infos_selectforid(QString id)
 
 }
 
+void sqlmodel::em_infos_selectfordate(QString date)
+{
+    QSqlQuery query;
+    QString sql_s = QString("SELECT * FROM em_infos where date = '%1';").arg(date);
+    Em_infos data;
+    if(!query.exec(sql_s)){
+        qDebug() << "selectAll Failed!"<<query.lastError();
+        return;
+    }
+
+    while(query.next()){
+        data.id = query.value(0).toString();
+        data.name = query.value(1).toString();
+        data.department = query.value(2).toString();
+        data.date = query.value(3).toString();
+        data.amg = query.value(4).toString();
+        data.amo = query.value(5).toString();
+        data.pmg = query.value(6).toString();
+        data.pmo = query.value(7).toString();
+        data.nmg = query.value(8).toString();
+        data.nmo = query.value(9).toString();
+        data.info = query.value(10).toString();
+
+        emit sendEm_infos(data);
+    }
+
+}
+
 void sqlmodel::em_infos_select_for_date_department(QString department, QString date)
 {
 
 }
 
-void sqlmodel::em_infos_insert(Em_infos &info)
+bool sqlmodel::em_infos_insert(Em_info &info)
 {
+    QSqlQuery query;
+    QString sql_s = QString("insert into em_infos values('%1','%2','%3');").arg(info.id).arg(info.name).arg(info.department);
 
+    if(!query.exec(sql_s)){
+        qDebug() << "insert Failed!"<<query.lastError();
+        return false;
+    }
+    return true;
 }
 
 void sqlmodel::em_infos_delete(QString id)
 {
+    QSqlQuery query;
+    QString sql_s = QString("delete from em_info where id='%1' ;").arg(id);
+    if(!query.exec(sql_s)){
+        qDebug() << "deleteAll Failed!"<<query.lastError();
 
+    }
 }
 
 void sqlmodel::em_infos_deleteAll()
 {
-
-}
-
-void sqlmodel::em_infos_update(QString rfid, QString col_name, QString value)
-{
     QSqlQuery query;
-    QString sql_s = QString("update em_infos set %1 = '%2' where rfid = '%3';").arg(col_name).arg(value).arg(rfid);
+    QString sql_s = QString("delete from em_infos ;");
     if(!query.exec(sql_s)){
-        qDebug() << "update Failed!"<<query.lastError();
+        qDebug() << "deleteAll Failed!"<<query.lastError();
 
     }
+}
+
+bool sqlmodel::em_infos_update(QString id, QString col_name, QString value)
+{
+    QSqlQuery query;
+    QString date = QDate::currentDate().toString("yyyy-MM-dd");
+    QString sql_s = QString("update em_infos set %1 = '%2' where id = '%3' and date = '%4';").arg(col_name).arg(value).arg(id).arg(date);
+    if(!query.exec(sql_s)){
+        qDebug() << "update Failed!"<<query.lastError();
+        return false;
+    }
+    return true;
 }
 
 void sqlmodel::rule_selectAll()
@@ -298,17 +350,35 @@ void sqlmodel::rule_select(QString name)
 
 bool sqlmodel::rule_insert(Rule &info)
 {
+    QSqlQuery query;
+    QString sql_s = QString("insert into rule values('%1','%2','%3','%4','%5','%6','%7');").arg(info.name).arg(info.amg).arg(info.amo).arg(info.pmg).arg(info.pmo).arg(info.nmg).arg(info.nmo);
 
+
+    if(!query.exec(sql_s)){
+        qDebug() << "insert Failed!"<<query.lastError();
+        return false;
+    }
+    return true;
 }
 
 void sqlmodel::rule_delete(QString name)
 {
+    QSqlQuery query;
+    QString sql_s = QString("delete from rule where name='%1' ;").arg(name);
+    if(!query.exec(sql_s)){
+        qDebug() << "delete Failed!"<<query.lastError();
 
+    }
 }
 
 void sqlmodel::rule_deleteAll()
 {
+    QSqlQuery query;
+    QString sql_s = QString("delete from rule ;");
+    if(!query.exec(sql_s)){
+        qDebug() << "deleteAll Failed!"<<query.lastError();
 
+    }
 }
 
 void sqlmodel::table_select(QString name)

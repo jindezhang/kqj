@@ -30,38 +30,47 @@ selectforid::selectforid(QWidget *parent) :
     ui->cb_nm->setChecked(true);
 
 
-    QString PaperName,KeyWord,PaperBrief;
-    PaperName="fjd";
-    KeyWord="hh";
-    PaperBrief="gg";
+    sql = sqlmodel::get_model();
 
-    int RowCont;
-    RowCont=ui->tableWidget->rowCount();
-    ui->tableWidget->insertRow(RowCont);//增加一行
+    model = new QSqlTableModel();
+      model->setTable("em_infos");
+      model->setEditStrategy(QSqlTableModel::OnManualSubmit);
 
-    //插入元素
-    ui->tableWidget->setItem(RowCont,0,new QTableWidgetItem(PaperName));
-    ui->tableWidget->setItem(RowCont,1,new QTableWidgetItem(KeyWord));
-    ui->tableWidget->setItem(RowCont,2,new QTableWidgetItem(PaperBrief));
+      model->select();
+      model->setHeaderData(0, Qt::Horizontal, tr("员工号"));
+      model->setHeaderData(1, Qt::Horizontal, tr("姓名"));
+      model->setHeaderData(2, Qt::Horizontal, tr("部门"));
+      model->setHeaderData(3, Qt::Horizontal, tr("日期"));
+      model->setHeaderData(4, Qt::Horizontal, tr("上午-上班"));
+      model->setHeaderData(5, Qt::Horizontal, tr("上午-下班"));
+      model->setHeaderData(6, Qt::Horizontal, tr("下午-上班"));
+      model->setHeaderData(7, Qt::Horizontal, tr("下午-下班"));
+      model->setHeaderData(8, Qt::Horizontal, tr("晚上-上班"));
+      model->setHeaderData(9, Qt::Horizontal, tr("晚上-下班"));
+      model->setHeaderData(10, Qt::Horizontal, tr("备注"));
 
-    RowCont=ui->tableWidget->rowCount();
-    ui->tableWidget->insertRow(RowCont);//增加一行
+      ui->table_record->setModel(model);
 
-    //插入元素
-    ui->tableWidget->setItem(RowCont,0,new QTableWidgetItem(PaperName));
-    ui->tableWidget->setItem(RowCont,1,new QTableWidgetItem(KeyWord));
-    ui->tableWidget->setItem(RowCont,2,new QTableWidgetItem(PaperBrief));
+      for(int i = 0 ;i<3;i++){
+          ui->table_record->setColumnWidth(i,62);
+      }
+      ui->table_record->setColumnWidth(3,80);
+      for(int i = 4;i<11;i++){
+          ui->table_record->setColumnWidth(i,70);
+      }
 
-    //隐藏某一列
-    ui->tableWidget->hideColumn(0);
-    //设置table的列宽。
-    ui->tableWidget->setColumnWidth(0,40);
+      //view->setModel(model);
+      //view->hideColumn(0); // don't show the ID
+      //view->show();
 
     //获取选中的值
    // qDebug()<<ui->comboBox->currentText();
-    QStringList list;
-    list<<"人事部"<<"技术部";
-    ui->cbb_depart->addItems(list);
+
+      //list_departmet = new QStringList();
+      sql->em_infos_select_department(list_departmet);
+      ui->cbb_depart->addItems(list_departmet);
+//    list<<"人事部"<<"技术部";
+//    ui->cbb_depart->addItems(list);
 
 }
 
@@ -77,12 +86,13 @@ void selectforid::myupdate()
     ui->l_date->setText(QDate::currentDate().toString("yyyy-MM-dd"));
     ui->l_time->setText(QTime::currentTime().toString("hh:mm:ss"));
 
-    qDebug()<<QTime::currentTime().toString("hh:mm");
+    //qDebug()<<QTime::currentTime().toString("hh:mm");
 }
 
 void selectforid::on_bt_fanhui_clicked()
 {
-
+    this->parentWidget()->show();
+    this->close();
 }
 
 void selectforid::bt_enable()
@@ -94,7 +104,45 @@ void selectforid::bt_enable()
 
 void selectforid::on_bt_selectdate_clicked()
 {
-    t_select->start(1000*3);
+    QString date = QString("date='%1-%2-%3'").arg(ui->cbb_year->currentText()).arg(ui->cbb_month->currentText()).arg(ui->cbb_day->currentText());
+    QString department = QString("department='%1'").arg( ui->cbb_depart->currentText());
+    QString both = QString("%1 and %2").arg(date).arg(department);
+
+    t_select->start(1000);
     ui->bt_selectdate->setEnabled(false);
+    if(ui->cb_date->checkState() == Qt::Checked && ui->cb_depart->checkState() == Qt::Checked){
+        model->setFilter(both);
+    }
+    else if(ui->cb_date->checkState() == Qt::Checked){
+        model->setFilter(date);
+    }
+    else if(ui->cb_depart->checkState() == Qt::Checked){
+         model->setFilter(department);
+    }
+    else{
+        model->setFilter(NULL);
+    }
+    model->select();
+    qDebug()<<date<<"::"<<department;
     ui->l_tip->setText("正在查询，请稍后.....");
+}
+
+//选中checked为true；
+void selectforid::on_cb_am_clicked(bool checked)
+{
+    ui->table_record->setColumnHidden(4,!checked);
+    ui->table_record->setColumnHidden(5,!checked);
+
+}
+
+void selectforid::on_cb_pm_clicked(bool checked)
+{
+    ui->table_record->setColumnHidden(6,!checked);
+    ui->table_record->setColumnHidden(7,!checked);
+}
+
+void selectforid::on_cb_nm_clicked(bool checked)
+{
+    ui->table_record->setColumnHidden(8,!checked);
+    ui->table_record->setColumnHidden(9,!checked);
 }

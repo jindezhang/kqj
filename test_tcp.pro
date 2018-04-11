@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     serialmodel.cpp \
     test.cpp \
     serialmodel_c.cpp \
-    mythread.cpp
+    mythread.cpp \
+    top.cpp
 
 HEADERS  += mainwindow.h \
     netmodel.h \
@@ -34,10 +35,12 @@ HEADERS  += mainwindow.h \
     serialmodel.h \
     test.h \
     serialmodel_c.h \
-    mythread.h
+    mythread.h \
+    top.h
 
 FORMS    += mainwindow.ui \
     netwindow.ui \
     first.ui \
     selectforid.ui \
-    test.ui
+    test.ui \
+    top.ui

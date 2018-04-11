@@ -29,7 +29,7 @@ public:
 private slots:
     void on_bt_reset_clicked();
     void netTimeout();
-    void on_bt_fanhui_clicked();
+    void fanhui();
 
 private:
     Ui::netwindow *ui;

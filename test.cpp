@@ -18,7 +18,7 @@ test::test(QWidget *parent) :
       //model->setHeaderData(0, Qt::Horizontal, tr("Name"));
       //model->setHeaderData(1, Qt::Horizontal, tr("Salary"));
 
-      ui->table_record->setModel(model);
+      //ui->table_record->setModel(model);
       //ui->table_record->setColumnWidth(1,20);
       //view->setModel(model);
       //view->hideColumn(0); // don't show the ID
