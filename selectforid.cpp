@@ -110,6 +110,7 @@ void selectforid::on_bt_selectdate_clicked()
 
     t_select->start(1000);
     ui->bt_selectdate->setEnabled(false);
+
     if(ui->cb_date->checkState() == Qt::Checked && ui->cb_depart->checkState() == Qt::Checked){
         model->setFilter(both);
     }

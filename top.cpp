@@ -23,7 +23,8 @@ top::~top()
 
 void top::setDir(QString dir)
 {
-    ui->l_dir->setText(dir);
+    QString str = QString("主界面 >> %1").arg(dir);
+    ui->l_dir->setText(str);
 }
 
 void top::myupdate()

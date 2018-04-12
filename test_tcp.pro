@@ -23,7 +23,9 @@ SOURCES += main.cpp\
     test.cpp \
     serialmodel_c.cpp \
     mythread.cpp \
-    top.cpp
+    top.cpp \
+    mybutton.cpp \
+    winbutton.cpp
 
 HEADERS  += mainwindow.h \
     netmodel.h \
@@ -36,11 +38,14 @@ HEADERS  += mainwindow.h \
     test.h \
     serialmodel_c.h \
     mythread.h \
-    top.h
+    top.h \
+    mybutton.h \
+    winbutton.h
 
 FORMS    += mainwindow.ui \
     netwindow.ui \
     first.ui \
     selectforid.ui \
     test.ui \
-    top.ui
+    top.ui \
+    winbutton.ui

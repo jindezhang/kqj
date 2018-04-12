@@ -32,6 +32,7 @@ private slots:
     void netTimeout();//连接成功的返回
     void netFalse();//连接失败的提示
     void on_pushButton_10_clicked();//键盘删除按键
+    void fanhui();
 private:
     Ui::netwindow *ui;
     netmodel *net;

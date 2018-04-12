@@ -158,7 +158,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="top" name="widget" native="true">
+  <widget class="top" name="wg_top" native="true">
    <property name="geometry">
     <rect>
      <x>0</x>

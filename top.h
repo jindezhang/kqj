@@ -10,6 +10,8 @@ namespace Ui {
 class top;
 }
 
+//宽度 50
+
 class top : public QWidget
 {
     Q_OBJECT

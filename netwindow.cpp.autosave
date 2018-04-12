@@ -30,6 +30,9 @@ netwindow::netwindow(QWidget *parent) :
 
 //    键盘del
     connect(ui->wg_keys,SIGNAL(click_del()),this,SLOT(on_pushButton_10_clicked()));
+//    top事件
+    connect(ui->wg_top,SIGNAL(bt_click()),this,SLOT(fanhui()));
+    
 }
 
 netwindow::~netwindow()
@@ -96,4 +99,10 @@ void netwindow::on_pushButton_10_clicked()
         text.remove(text.size()-1,1);
         ui->PORT->setText(text);
     }
+}
+
+void netwindow::fanhui()
+{
+    this->parentWidget()->show();
+    this->close();
 }
