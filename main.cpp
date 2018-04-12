@@ -9,7 +9,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    netwindow w ;
+    first w ;
     w.show();
 
     return a.exec();

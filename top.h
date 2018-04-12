@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <QDate>
 #include <QTime>
+#include <netmodel.h>
 
 namespace Ui {
 class top;
@@ -30,6 +31,7 @@ signals:
 private:
     Ui::top *ui;
     QTimer *t;
+    netmodel *net;
 };
 
 #endif // TOP_H

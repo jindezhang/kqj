@@ -24,6 +24,7 @@ public:
     ~first();
 
 private slots:
+    void del();
     void on_bt_connect_clicked();
     void net_connect_ok();
     void net_timeout();

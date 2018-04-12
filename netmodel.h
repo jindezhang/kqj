@@ -8,6 +8,8 @@
 #include <QMap>
 #include <QMessageBox>
 #include <QDebug>
+#include <sqlmodel.h>
+#include <allstruct.h>
 
 class netmodel :public QObject
 {
@@ -41,6 +43,7 @@ private:
     int flag;
     static netmodel *pnet;
     QTimer *connectTimer;
+    sqlmodel *sql;
 };
 
 #endif // NETMODEL_H

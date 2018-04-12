@@ -6,19 +6,23 @@ first::first(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::first)
 {
-    qDebug()<<"netwindow()";
-    sl = sqlmodel::get_model();
-    //sl.doConnect("kqj.db");
-    //connect(&sl,SIGNAL(sendData(Net)), this, SLOT(showdata(Net)));
-
     ui->setupUi(this);
+    setStyleSheet("first{background-color:rgb(124 ,184 ,254)}");//设置背景颜色
+    ui->wg_top->hideButton();
+//    键盘del
+    connect(ui->wg_keys,SIGNAL(click_del()),this,SLOT(del()));
+
+    sl = sqlmodel::get_model();
+    connect(sl,SIGNAL(sendNet(Net)), this, SLOT(showdata(Net)));
+    sl->net_select();
+
     net = netmodel::get_net();
     connect(net, SIGNAL(connect_ok()), this, SLOT(net_connect_ok()));
 
     nettimer = new QTimer();
     connect(nettimer,SIGNAL(timeout()),this, SLOT(net_timeout()));
 
-    //sl.sql_select("net");
+
 
 }
 
@@ -26,6 +30,21 @@ first::~first()
 {
     delete nettimer;
     delete ui;
+}
+
+void first::del()
+{
+    QString text;
+    if(ui->IP->hasFocus()){
+        text = ui->IP->text();
+        text.remove(text.size()-1,1);
+        ui->IP->setText(text);
+    }
+    if(ui->PORT->hasFocus()){
+        text = ui->PORT->text();
+        text.remove(text.size()-1,1);
+        ui->PORT->setText(text);
+    }
 }
 
 

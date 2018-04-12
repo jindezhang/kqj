@@ -10,8 +10,7 @@ netwindow::netwindow(QWidget *parent) :
     ui->setupUi(this);
     //页面布局的设置
     setStyleSheet("netwindow{background-color:rgb(124 ,184 ,254)}");//设置背景颜色
-    connect(ui->widget,SIGNAL(bt_click()),this,SLOT(fanhui()));
-    ui->widget->setDir("网络设置");
+    ui->wg_top->setDir("网络设置");
     ui->l_wait->hide();
 //    连接网络
     net = netmodel::get_net();
@@ -30,6 +29,9 @@ netwindow::netwindow(QWidget *parent) :
 
 //    键盘del
     connect(ui->wg_keys,SIGNAL(click_del()),this,SLOT(on_pushButton_10_clicked()));
+//    top事件
+    connect(ui->wg_top,SIGNAL(bt_click()),this,SLOT(fanhui()));
+
 }
 
 netwindow::~netwindow()
@@ -96,4 +98,10 @@ void netwindow::on_pushButton_10_clicked()
         text.remove(text.size()-1,1);
         ui->PORT->setText(text);
     }
+}
+
+void netwindow::fanhui()
+{
+    this->parentWidget()->show();
+    this->close();
 }

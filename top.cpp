@@ -12,7 +12,11 @@ top::top(QWidget *parent) :
     t = new QTimer();
     connect(t, SIGNAL(timeout()),this,SLOT(myupdate()));
     t->start(1000);
-     ui->l_net->setStyleSheet("border-image:url(./wifion.png)");//显示自定义图片
+    net = netmodel::get_net();
+    if(net->get_flag())
+        ui->l_net->setStyleSheet("border-image:url(./wifion.png)");//显示自定义图片
+    else
+        ui->l_net->setStyleSheet("border-image:url(./wifioff.png)");//显示自定义图片
 }
 
 top::~top()

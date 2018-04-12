@@ -15,6 +15,7 @@ netmodel::netmodel(QObject *parent):QObject(parent)
     connectTimer = new QTimer();
     connect(connectTimer,SIGNAL(timeout()), this, SLOT(connect_again()));
 
+    sql = sqlmodel::get_model();
 }
 
 netmodel::~netmodel()
@@ -88,6 +89,10 @@ void netmodel::connect_to_server_suc()
 {
     flag = 1;
     connectTimer->stop();
+    Net data;
+    data.ip = Ip;
+    data.port = port;
+    sql->net_insert(data);
     emit connect_ok();
     qDebug()<<"connect_to_server_suc";
 }
