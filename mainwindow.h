@@ -6,7 +6,7 @@
 #include <netmodel.h>
 #include <QObject>
 #include <netwindow.h>
-
+#include <selectforid.h>
 
 namespace Ui {
 class MainWindow;
@@ -24,10 +24,11 @@ public:
 private slots:
 
 
+    void on_pushButton_4_clicked();
+
 private:
     Ui::MainWindow *ui;
-    netmodel *net;
-    QTimer *netTime;
+    selectforid *s = NULL;
 };
 
 #endif // MAINWINDOW_H

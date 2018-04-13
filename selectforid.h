@@ -21,8 +21,7 @@ public:
     ~selectforid();
 
 private slots:
-    void myupdate();
-    void on_bt_fanhui_clicked();
+    void fanhui();
     void bt_enable();
 
     void on_bt_selectdate_clicked();

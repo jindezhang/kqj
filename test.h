@@ -6,6 +6,7 @@
 
 #include <sqlmodel.h>
 #include <QSqlTableModel>
+#include <QDir>
 
 namespace Ui {
 class test;

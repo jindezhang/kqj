@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     mythread.cpp \
     top.cpp \
     mybutton.cpp \
-    winbutton.cpp
+    winbutton.cpp \
+    downloadwindow.cpp
 
 HEADERS  += mainwindow.h \
     netmodel.h \
@@ -40,7 +41,8 @@ HEADERS  += mainwindow.h \
     mythread.h \
     top.h \
     mybutton.h \
-    winbutton.h
+    winbutton.h \
+    downloadwindow.h
 
 FORMS    += mainwindow.ui \
     netwindow.ui \
@@ -48,4 +50,5 @@ FORMS    += mainwindow.ui \
     selectforid.ui \
     test.ui \
     top.ui \
-    winbutton.ui
+    winbutton.ui \
+    downloadwindow.ui

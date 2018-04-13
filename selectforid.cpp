@@ -9,14 +9,13 @@ selectforid::selectforid(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::selectforid)
 {
+    qDebug()<<"::selectforid";
     ui->setupUi(this);
     setStyleSheet("selectforid{background-color:rgb(124 ,184 ,254)}");//设置背景颜色
-    ui->l_net->setStyleSheet("border-image:url(./wifion.png)");//显示自定义图片
+    //页面布局的设置
+    ui->wg_top->setDir("考勤查询");
+    connect(ui->wg_top,SIGNAL(bt_click()),this,SLOT(fanhui()));
 
-    //右上角时间
-    t = new QTimer();
-    connect(t, SIGNAL(timeout()),this,SLOT(myupdate()));
-    t->start(1000);
 
     //查询按钮的时间延时。
     t_select = new QTimer();
@@ -76,24 +75,20 @@ selectforid::selectforid(QWidget *parent) :
 
 selectforid::~selectforid()
 {
+    qDebug()<<"::~selectforid";
     delete t;
     delete t_select;
+    delete model;
     delete ui;
 }
 
-void selectforid::myupdate()
-{
-    ui->l_date->setText(QDate::currentDate().toString("yyyy-MM-dd"));
-    ui->l_time->setText(QTime::currentTime().toString("hh:mm:ss"));
 
-    //qDebug()<<QTime::currentTime().toString("hh:mm");
-}
-
-void selectforid::on_bt_fanhui_clicked()
+void selectforid::fanhui()
 {
     this->parentWidget()->show();
     this->close();
 }
+
 
 void selectforid::bt_enable()
 {

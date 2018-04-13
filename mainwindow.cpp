@@ -6,11 +6,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    net = netmodel::get_net();
-    connect(net, SIGNAL(sendStatus(QString)), this, SLOT(get_data(QString)));
+    setStyleSheet("MainWindow{background-color:rgb(124 ,184 ,254)}");//设置背景颜色
+    ui->wg_top->hideButton();
 
-    //netTime = new QTimer();
-    connect(net, SIGNAL(connect_ok()), this, SLOT(netTimeout()));
+
 
 }
 
@@ -20,3 +19,11 @@ MainWindow::~MainWindow()
 }
 
 
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    if(NULL == s)
+        s= new selectforid(this);//把主界面指针传给灯光控制界面，（返回处理， 使用主界面数据）
+    s->show();
+    this->hide();
+}
