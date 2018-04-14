@@ -27,3 +27,11 @@ void MainWindow::on_pushButton_4_clicked()
     s->show();
     this->hide();
 }
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    if(NULL == d)
+        d= new downloadWindow(this);//把主界面指针传给灯光控制界面，（返回处理， 使用主界面数据）
+    d->show();
+    this->hide();
+}

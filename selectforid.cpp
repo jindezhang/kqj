@@ -66,8 +66,17 @@ selectforid::selectforid(QWidget *parent) :
    // qDebug()<<ui->comboBox->currentText();
 
       //list_departmet = new QStringList();
+
+      //日期和部门的设置
       sql->em_infos_select_department(list_departmet);
       ui->cbb_depart->addItems(list_departmet);
+
+      QStringList year,month,day;
+      sql->em_infos_select_date(year,month,day);
+      ui->cbb_year->addItems(year);
+      ui->cbb_day->addItems(day);
+      ui->cbb_month->addItems(month);
+
 //    list<<"人事部"<<"技术部";
 //    ui->cbb_depart->addItems(list);
 

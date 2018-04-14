@@ -46,9 +46,10 @@ public:
     void em_info_deleteAll();
 
 //    员工考勤数据
-    void em_infos_selectAll();
+    void em_infos_selectAll(QString &data);//具有特殊性，只为下载数据模块服务。
     void em_infos_select_department(QStringList &list);
-    void em_infos_selectforid(QString id);
+    void em_infos_select_date(QStringList &list_y,QStringList &list_m,QStringList &list_d);
+    bool check_exists(QStringList list, QString str);
 //    void em_infos_selectfordepartment(QString department);
     void em_infos_selectfordate(QString date);//发送数据给服务器。
 //    同时查找日期和部门，不需要某一部分的时候，参数为NULL;

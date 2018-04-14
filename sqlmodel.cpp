@@ -205,9 +205,28 @@ void sqlmodel::em_info_deleteAll()
 
 }
 
-void sqlmodel::em_infos_selectAll()
-{
 
+void sqlmodel::em_infos_selectAll(QString &data)
+{
+    QSqlQuery query;
+    QString sql_s = QString("SELECT * FROM em_infos  ;");
+    QString tmp;
+    if(!query.exec(sql_s)){
+        qDebug() << "select Failed!"<<query.lastError();
+        return;
+    }
+    while(query.next()){
+        //获取到数据封装
+        for(int i = 0;i < 11;i++){
+            tmp = query.value(i).toString();
+            for(int ni = tmp.size(); ni < 10;ni++){
+                tmp.append(" ");
+            }
+            data.append(tmp);
+            data.append("\n");
+        }
+
+    }
 }
 
 void sqlmodel::em_infos_select_department(QStringList &list)
@@ -226,9 +245,35 @@ void sqlmodel::em_infos_select_department(QStringList &list)
     }
 }
 
-void sqlmodel::em_infos_selectforid(QString id)
+void sqlmodel::em_infos_select_date(QStringList &list_y,QStringList &list_m,QStringList &list_d)
 {
+    QSqlQuery query;
+    QString sql_s = QString("SELECT distinct date FROM em_infos  ;");
+    QString data;
+    if(!query.exec(sql_s)){
+        qDebug() << "select Failed!"<<query.lastError();
+        return;
+    }
+    while(query.next()){
+        data = query.value(0).toString();
+        QStringList list;
+        list = data.split("-");
+        if(check_exists(list_y,list[0]))
+            list_y<<list[0];
+        if(check_exists(list_m,list[1]))
+            list_m<<list[1];
+        if(check_exists(list_d,list[2]))
+            list_d<<list[2];
+    }
+}
 
+bool sqlmodel::check_exists(QStringList list, QString str)
+{
+    for(int i = 0;i<list.size();i++){
+        if(list[i] == str)
+            return false;
+    }
+    return true;
 }
 
 void sqlmodel::em_infos_selectfordate(QString date)
