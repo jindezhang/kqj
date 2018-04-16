@@ -304,9 +304,84 @@ void sqlmodel::em_infos_selectfordate(QString date)
 
 }
 
-void sqlmodel::em_infos_select_for_date_department(QString department, QString date)
+void sqlmodel::em_infos_selectfor_department(QString department)
 {
+    QSqlQuery query;
+    QString sql_s = QString("SELECT * FROM em_infos where department = '%1';").arg(department);
+    Em_infos data;
+    if(!query.exec(sql_s)){
+        qDebug() << "selectAll Failed!"<<query.lastError();
+        return;
+    }
 
+    while(query.next()){
+        data.id = query.value(0).toString();
+        data.name = query.value(1).toString();
+        data.department = query.value(2).toString();
+        data.date = query.value(3).toString();
+        data.amg = query.value(4).toString();
+        data.amo = query.value(5).toString();
+        data.pmg = query.value(6).toString();
+        data.pmo = query.value(7).toString();
+        data.nmg = query.value(8).toString();
+        data.nmo = query.value(9).toString();
+        data.info = query.value(10).toString();
+
+        emit sendEm_infos(data);
+    }
+}
+
+void sqlmodel::em_infos_select_for_date_department(QString department, QString date, QString &sql_data)
+{
+    QSqlQuery query;
+    QString sql_s ;
+    QString tmp,tmp_l;
+
+    if(NULL == department && NULL == date){
+        sql_s = QString("SELECT * FROM em_infos  ;");
+    }else if(NULL == department){
+        sql_s = QString("SELECT * FROM em_infos where date = '%1';").arg(date);
+    }else if(NULL == date){
+        sql_s = QString("SELECT * FROM em_infos where department = '%1';").arg(department);
+    }else{
+        sql_s = QString("SELECT * FROM em_infos where department = '%1' and date = '%2';").arg(department).arg(date);
+    }
+    qDebug()<<sql_s;
+
+    Em_infos data;
+    if(!query.exec(sql_s)){
+        qDebug() << "selectAll Failed!"<<query.lastError();
+        return;
+    }
+
+    while(query.next()){
+        data.id = query.value(0).toString();
+        data.name = query.value(1).toString();
+        data.department = query.value(2).toString();
+        data.date = query.value(3).toString();
+        data.amg = query.value(4).toString();
+        data.amo = query.value(5).toString();
+        data.pmg = query.value(6).toString();
+        data.pmo = query.value(7).toString();
+        data.nmg = query.value(8).toString();
+        data.nmo = query.value(9).toString();
+        data.info = query.value(10).toString();
+
+        //获取到数据封装
+        tmp_l.clear();
+        for(int i = 0;i < 11;i++){
+            tmp = query.value(i).toString();
+            for(int ni = tmp.size(); ni < 10;ni++){
+                tmp.append(" ");
+            }
+            tmp_l.append(tmp);
+
+        }
+        sql_data.append(tmp_l);
+        sql_data.append("\n");
+        qDebug()<<sql_data;
+        //emit sendEm_infos(data);
+    }
 }
 
 bool sqlmodel::em_infos_insert(Em_info &info)

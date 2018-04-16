@@ -7,7 +7,7 @@
 #include <QDir>
 #include <QByteArray>
 #include <sqlmodel.h>
-
+#include <allstruct.h>
 
 namespace Ui {
 class downloadWindow;
@@ -25,7 +25,7 @@ public slots:
 
 private slots:
     void on_cb_all_clicked(bool checked);
-
+    void get_data(Em_infos data);
     void on_bt_down_clicked();
 
 private:

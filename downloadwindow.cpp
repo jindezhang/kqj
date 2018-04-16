@@ -1,8 +1,8 @@
 #include "downloadwindow.h"
 #include "ui_downloadwindow.h"
+#include <QMessageBox>
 
-
-#define PATH ""
+#define PATH "D:/aaaa"
 
 
 downloadWindow::downloadWindow(QWidget *parent) :
@@ -16,6 +16,8 @@ downloadWindow::downloadWindow(QWidget *parent) :
 //    top事件
     connect(ui->wg_top,SIGNAL(bt_click()),this,SLOT(fanhui()));
 
+    ui->cb_date->setChecked(true);
+    ui->l_tip->hide();
 //    //u盘的判断
 //    QDir pan(PATH);
 //    if(!pan.exists())
@@ -32,14 +34,10 @@ downloadWindow::downloadWindow(QWidget *parent) :
     ui->cbb_day->addItems(day);
     ui->cbb_month->addItems(month);
 
-    ui->l_tip->hide();
+    //连接关联数据库
+   // connect(sql,SIGNAL(sendEm_infos(Em_infos)),this,SLOT(get_data(Em_infos));
 
 
-    QString str;
-    get_col(str);
-
-    qDebug()<<str;
-    qDebug()<<str;
 }
 
 downloadWindow::~downloadWindow()
@@ -56,6 +54,11 @@ void downloadWindow::fanhui()
 void downloadWindow::on_cb_all_clicked(bool checked)
 {
     bt_enable(!checked);
+}
+
+void downloadWindow::get_data(Em_infos data)
+{
+
 }
 
 void downloadWindow::bt_enable(bool state)
@@ -94,8 +97,10 @@ bool downloadWindow::write_data(QString data)
         qDebug()<<"open failed";
         return false;
     }
-
-    QByteArray qbdata;
+    QString col;
+    get_col(col);
+    QByteArray qbdata = col.toLatin1();
+    qbdata.append(data);
 
 
     if(-1 == file.write(qbdata)){
@@ -120,17 +125,28 @@ void downloadWindow::get_col(QString &col)
 {
     QStringList list;
     QString tmp;
-    list<<"员工号";
-    list<<"姓名";
-    list<<"部门";
-    list<<"日期";
-    list<<"上午-上班";
-    list<<"上午-下班";
-    list<<"下午-上班";
-    list<<"下午-下班";
-    list<<"晚上-上班";
-    list<<"晚上-下班";
-    list<<"备注";
+//    list<<"'员工号'";
+//    list<<"姓名";
+//    list<<"部门";
+//    list<<"日期";
+//    list<<"上午-上班";
+//    list<<"上午-下班";
+//    list<<"下午-上班";
+//    list<<"下午-下班";
+//    list<<"晚上-上班";
+//    list<<"晚上-下班";
+//    list<<"备注";
+    list<<"ID";
+    list<<"Name";
+    list<<"Department";
+    list<<"Date";
+    list<<"AM-ON";
+    list<<"AM-OFF";
+    list<<"PM-ON";
+    list<<"PM-OFF";
+    list<<"NM-ON";
+    list<<"NM-OFF";
+    list<<"Info";
 
     for(int i = 0;i<list.size();i++){
         tmp = list[i];
@@ -142,5 +158,31 @@ void downloadWindow::get_col(QString &col)
 
 void downloadWindow::on_bt_down_clicked()
 {
+    QString date = QString("%1-%2-%3").arg(ui->cbb_year->currentText()).arg(ui->cbb_month->currentText()).arg(ui->cbb_day->currentText());
+    QString department = QString("%1").arg( ui->cbb_depart->currentText());
+
+    QString sql_data;
+
+    if(ui->cb_all->checkState() == Qt::Checked){
+        sql->em_infos_select_for_date_department(NULL,NULL,sql_data);
+    }else if(ui->cb_date->checkState() == Qt::Checked && ui->cb_depart->checkState() == Qt::Checked){
+        sql->em_infos_select_for_date_department(department,date,sql_data);
+    }else if(ui->cb_date->checkState() == Qt::Checked){
+        sql->em_infos_select_for_date_department(NULL,date,sql_data);
+    }else if(ui->cb_depart->checkState() == Qt::Checked){
+        sql->em_infos_select_for_date_department(department,NULL,sql_data);
+    }else{
+        QMessageBox::warning(this, "提示","请选择下载的条件");
+    }
+    ui->l_tip->show();
+    ui->bt_down->setEnabled(false);
+    if(write_data(sql_data)){
+        QMessageBox::warning(this, "提示","下载成功！");
+
+    }else{
+        QMessageBox::warning(this, "提示","下载失败");
+    }
+    ui->l_tip->hide();
+    ui->bt_down->setEnabled(true);
 
 }

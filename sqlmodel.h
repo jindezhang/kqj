@@ -46,14 +46,16 @@ public:
     void em_info_deleteAll();
 
 //    员工考勤数据
-    void em_infos_selectAll(QString &data);//具有特殊性，只为下载数据模块服务。
+    void em_infos_selectAll(QString &data);
     void em_infos_select_department(QStringList &list);
     void em_infos_select_date(QStringList &list_y,QStringList &list_m,QStringList &list_d);
     bool check_exists(QStringList list, QString str);
 //    void em_infos_selectfordepartment(QString department);
     void em_infos_selectfordate(QString date);//发送数据给服务器。
-//    同时查找日期和部门，不需要某一部分的时候，参数为NULL;
-    void em_infos_select_for_date_department(QString department,QString date);
+    void em_infos_selectfor_department(QString department);
+
+//    同时查找日期和部门，不需要某一部分的时候，参数为NULL;查找所有的时候，都给NULL；
+    void em_infos_select_for_date_department(QString department, QString date, QString &sql_data);//具有特殊性，只为下载数据模块服务。
     bool em_infos_insert(Em_info &info);//当收到当日的员工数据的时候，就可以立即插入所有员工数据（工号，姓名，部门），所以采用的Em_info 结构体
     void em_infos_delete(QString id);
     void em_infos_deleteAll();
