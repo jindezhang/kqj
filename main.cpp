@@ -4,10 +4,10 @@
 #include "first.h"
 #include <sqlmodel.h>
 #include <QDebug>
-#include <selectforid.h>
+#include <windowselectforid.h>
 #include <serialmodel.h>
 #include <test.h>
-#include <downloadwindow.h>
+#include <windowdownload.h>
 #include <QString>
 #include <QByteArray>
 

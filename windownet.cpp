@@ -1,6 +1,6 @@
-#include "netwindow.h"
+#include "windownet.h"
 #include "ui_netwindow.h"
-#include "mainwindow.h"
+#include "windowmain.h"
 
 netwindow::netwindow(QWidget *parent) :
     QMainWindow(parent),

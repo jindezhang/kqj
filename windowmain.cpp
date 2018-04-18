@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "windowmain.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -33,5 +33,13 @@ void MainWindow::on_pushButton_2_clicked()
     if(NULL == d)
         d= new downloadWindow(this);//把主界面指针传给灯光控制界面，（返回处理， 使用主界面数据）
     d->show();
+    this->hide();
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+    if(NULL == r)
+        r= new rulewindow(this);//把主界面指针传给灯光控制界面，（返回处理， 使用主界面数据）
+    r->show();
     this->hide();
 }

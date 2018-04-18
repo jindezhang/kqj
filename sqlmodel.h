@@ -29,9 +29,14 @@ public:
 
     int sql_count(QString table);
 
-    //服务器表的操作，插入前，删除。
+    //服务器表的操作，插入前，删除。***转化为对程序配置表的操作config
     void net_select();
     bool net_insert(Net &data);
+    void config_select(QString &rule);
+    bool config_insert(QString rule);
+    bool config_insert_time(QString before, QString after);
+    void config_select_time(QString &before, QString &after);
+    bool config_reset();//重置系统。
 
 //    权限表，用于进入主菜单的操作。
     void authority_select(QString rfid);//权限
@@ -63,6 +68,7 @@ public:
 
 //    考勤规则
     void rule_selectAll();//获取考勤规则的name；
+    void rule_selectAll(QStringList &list);
     void rule_select(QString name);
     bool rule_insert(Rule &info);
     void rule_delete(QString name);

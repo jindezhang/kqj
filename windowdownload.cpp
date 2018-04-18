@@ -1,4 +1,4 @@
-#include "downloadwindow.h"
+#include "windowdownload.h"
 #include "ui_downloadwindow.h"
 #include <QMessageBox>
 
@@ -173,6 +173,7 @@ void downloadWindow::on_bt_down_clicked()
         sql->em_infos_select_for_date_department(department,NULL,sql_data);
     }else{
         QMessageBox::warning(this, "提示","请选择下载的条件");
+        return;
     }
     ui->l_tip->show();
     ui->bt_down->setEnabled(false);

@@ -5,7 +5,7 @@
 #include <QDebug>
 #include <netmodel.h>
 #include <QTime>
-#include <mainwindow.h>
+#include <windowmain.h>
 #include <QMessageBox>
 #include <QObject>
 #include <sqlmodel.h>

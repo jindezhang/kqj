@@ -13,12 +13,9 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     netmodel.cpp \
-    netwindow.cpp \
     first.cpp \
     sqlmodel.cpp \
-    selectforid.cpp \
     serialmodel.cpp \
     test.cpp \
     serialmodel_c.cpp \
@@ -26,15 +23,17 @@ SOURCES += main.cpp\
     top.cpp \
     mybutton.cpp \
     winbutton.cpp \
-    downloadwindow.cpp
+    windowdownload.cpp \
+    windowmain.cpp \
+    windownet.cpp \
+    windowrule.cpp \
+    windowselectforid.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     netmodel.h \
-    netwindow.h \
     first.h \
     sqlmodel.h \
     allstruct.h \
-    selectforid.h \
     serialmodel.h \
     test.h \
     serialmodel_c.h \
@@ -42,7 +41,11 @@ HEADERS  += mainwindow.h \
     top.h \
     mybutton.h \
     winbutton.h \
-    downloadwindow.h
+    windowdownload.h \
+    windowmain.h \
+    windownet.h \
+    windowrule.h \
+    windowselectforid.h
 
 FORMS    += mainwindow.ui \
     netwindow.ui \
@@ -51,4 +54,5 @@ FORMS    += mainwindow.ui \
     test.ui \
     top.ui \
     winbutton.ui \
-    downloadwindow.ui
+    downloadwindow.ui \
+    rulewindow.ui

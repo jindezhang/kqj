@@ -63,7 +63,7 @@ int sqlmodel::sql_count(QString table)
 void sqlmodel::net_select()
 {
     QSqlQuery query;
-    QString sql_s = QString("SELECT * FROM net;");
+    QString sql_s = QString("SELECT * FROM config;");
     Net data;
     if(!query.exec(sql_s)){
         qDebug() << "select Failed!"<<query.lastError();
@@ -80,12 +80,83 @@ void sqlmodel::net_select()
 bool sqlmodel::net_insert(Net &data)
 {
     QSqlQuery query;
-    QString sql_d = "delete from net;";
-    query.exec(sql_d);
-    QString sql_s = QString("insert into net values('%1','%2');").arg(data.ip).arg(data.port);
+//    QString sql_d = "delete from config;";
+//    query.exec(sql_d);
+    QString sql_s = QString("update config set ip='%1' and port='%2';").arg(data.ip).arg(data.port);
 
     if(!query.exec(sql_s)){
-        qDebug() << "insert Failed!"<<query.lastError();
+        qDebug() << "update Failed!"<<query.lastError();
+        return false;
+    }
+    return true;
+}
+
+void sqlmodel::config_select(QString &rule)
+{
+    QSqlQuery query;
+    QString sql_s = QString("SELECT * FROM config;");
+
+    if(!query.exec(sql_s)){
+        qDebug() << "select Failed!"<<query.lastError();
+        return;
+    }
+
+    while(query.next()){
+        rule = query.value(2).toString();
+    }
+}
+
+bool sqlmodel::config_insert(QString rule)
+{
+    QSqlQuery query;
+//    QString sql_d = "delete from config;";
+//    query.exec(sql_d);
+    QString sql_s = QString("update config set rule='%1';").arg(rule);
+
+    if(!query.exec(sql_s)){
+        qDebug() << "update Failed!"<<query.lastError();
+        return false;
+    }
+    return true;
+}
+
+bool sqlmodel::config_insert_time(QString before, QString after)
+{
+    QSqlQuery query;
+//    QString sql_d = "delete from config;";
+//    query.exec(sql_d);
+    QString sql_s = QString("update config set before='%1' and after = '%2';").arg(before).arg(after);
+
+    if(!query.exec(sql_s)){
+        qDebug() << "update Failed!"<<query.lastError();
+        return false;
+    }
+    return true;
+}
+
+void sqlmodel::config_select_time(QString &before, QString &after)
+{
+    QSqlQuery query;
+    QString sql_s = QString("SELECT * FROM config;");
+
+    if(!query.exec(sql_s)){
+        qDebug() << "select Failed!"<<query.lastError();
+        return;
+    }
+
+    while(query.next()){
+        before = query.value(3).toString();
+        after = query.value(4).toString();
+    }
+}
+
+bool sqlmodel::config_reset()
+{
+    QSqlQuery query;
+    QString sql_s = QString("insert into config SELECT * FROM reset;");
+
+    if(!query.exec(sql_s)){
+        qDebug() << "reset Failed!"<<query.lastError();
         return false;
     }
     return true;
@@ -426,6 +497,21 @@ bool sqlmodel::em_infos_update(QString id, QString col_name, QString value)
         return false;
     }
     return true;
+}
+
+void sqlmodel::rule_selectAll(QStringList &list)
+{
+    QSqlQuery query;
+    QString sql_s = QString("SELECT name FROM rule;");
+    QString data;
+    if(!query.exec(sql_s)){
+        qDebug() << "select Failed!"<<query.lastError();
+        return;
+    }
+    while(query.next()){
+        data = query.value(0).toString();
+        list<<data;
+    }
 }
 
 void sqlmodel::rule_selectAll()
