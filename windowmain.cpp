@@ -9,7 +9,9 @@ MainWindow::MainWindow(QWidget *parent) :
     setStyleSheet("MainWindow{background-color:rgb(124 ,184 ,254)}");//设置背景颜色
     ui->wg_top->hideButton();
 
-
+    s = NULL;
+    d = NULL;
+    r = NULL;
 
 }
 

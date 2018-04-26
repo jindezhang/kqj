@@ -47,7 +47,8 @@ private:
     sqlmodel *sql;
     QSqlTableModel *model;
     QStringList list_rule;
-    QString curr_rule = NULL;
+    QString curr_rule;
+
 };
 
 #endif // RULEWINDOW_H

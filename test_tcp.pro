@@ -27,7 +27,10 @@ SOURCES += main.cpp\
     windowmain.cpp \
     windownet.cpp \
     windowrule.cpp \
-    windowselectforid.cpp
+    windowselectforid.cpp \
+    json.cpp \
+    windowadd.cpp \
+    beep.cpp
 
 HEADERS  += \
     netmodel.h \
@@ -45,7 +48,10 @@ HEADERS  += \
     windowmain.h \
     windownet.h \
     windowrule.h \
-    windowselectforid.h
+    windowselectforid.h \
+    json.h \
+    windowadd.h \
+    beep.h
 
 FORMS    += mainwindow.ui \
     netwindow.ui \
@@ -55,4 +61,5 @@ FORMS    += mainwindow.ui \
     top.ui \
     winbutton.ui \
     downloadwindow.ui \
-    rulewindow.ui
+    rulewindow.ui \
+    windowadd.ui

@@ -34,9 +34,10 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    selectforid *s = NULL;
-    downloadWindow *d = NULL;
-    rulewindow *r = NULL;
+    selectforid *s;
+    downloadWindow *d;
+    rulewindow *r;
+
 };
 
 #endif // MAINWINDOW_H

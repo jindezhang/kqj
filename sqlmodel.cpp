@@ -455,6 +455,45 @@ void sqlmodel::em_infos_select_for_date_department(QString department, QString d
     }
 }
 
+void sqlmodel::em_infos_select_for_date_department_json(QString department, QString date, QList<Em_infos> &json_data)
+{
+    QSqlQuery query;
+    QString sql_s ;
+
+    if(NULL == department && NULL == date){
+        sql_s = QString("SELECT * FROM em_infos  ;");
+    }else if(NULL == department){
+        sql_s = QString("SELECT * FROM em_infos where date = '%1';").arg(date);
+    }else if(NULL == date){
+        sql_s = QString("SELECT * FROM em_infos where department = '%1';").arg(department);
+    }else{
+        sql_s = QString("SELECT * FROM em_infos where department = '%1' and date = '%2';").arg(department).arg(date);
+    }
+    qDebug()<<sql_s;
+
+    Em_infos data;
+    if(!query.exec(sql_s)){
+        qDebug() << "selectAll Failed!"<<query.lastError();
+        return;
+    }
+
+    while(query.next()){
+        data.id = query.value(0).toString();
+        data.name = query.value(1).toString();
+        data.department = query.value(2).toString();
+        data.date = query.value(3).toString();
+        data.amg = query.value(4).toString();
+        data.amo = query.value(5).toString();
+        data.pmg = query.value(6).toString();
+        data.pmo = query.value(7).toString();
+        data.nmg = query.value(8).toString();
+        data.nmo = query.value(9).toString();
+        data.info = query.value(10).toString();
+
+       json_data<<data;
+    }
+}
+
 bool sqlmodel::em_infos_insert(Em_info &info)
 {
     QSqlQuery query;

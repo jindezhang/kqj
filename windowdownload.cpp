@@ -2,8 +2,9 @@
 #include "ui_downloadwindow.h"
 #include <QMessageBox>
 
-#define PATH "D:/aaaa"
-
+//U盘的文件系统，必须是FAT文件系统
+#define PATH "/mnt/udisk/aaaa"
+#define UPAN "/mnt/udisk"
 
 downloadWindow::downloadWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -114,6 +115,39 @@ bool downloadWindow::write_data(QString data)
 
 }
 
+bool downloadWindow::write_json(QString &data)
+{
+    QDir dir(PATH);
+    if(!dir.exists())
+        dir.mkdir(PATH);
+    QString filename;
+    filename = QString("%1/json.txt").arg(PATH);
+
+    int i = 1;
+    while(check_filename((filename))){
+        filename.clear();
+        filename = QString("%1/json_%2.txt").arg(PATH).arg(i);
+        i++;
+    }
+    QFile file(filename);
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Text)){
+        qDebug()<<"open failed";
+        return false;
+    }
+
+    QByteArray qbdata;
+    qbdata.append(data);
+
+
+    if(-1 == file.write(qbdata)){
+        file.close();
+        return false;
+    }
+
+    file.close();
+    return true;
+}
+
 void downloadWindow::format_data(QString &str)
 {
     for(int i = str.size(); i < 10;i++){
@@ -162,22 +196,31 @@ void downloadWindow::on_bt_down_clicked()
     QString department = QString("%1").arg( ui->cbb_depart->currentText());
 
     QString sql_data;
+    QList <Em_infos> list_data;
+    QString str_data;
 
     if(ui->cb_all->checkState() == Qt::Checked){
         sql->em_infos_select_for_date_department(NULL,NULL,sql_data);
+        sql->em_infos_select_for_date_department_json(NULL,NULL,list_data);
     }else if(ui->cb_date->checkState() == Qt::Checked && ui->cb_depart->checkState() == Qt::Checked){
         sql->em_infos_select_for_date_department(department,date,sql_data);
+        sql->em_infos_select_for_date_department_json(department,date,list_data);
     }else if(ui->cb_date->checkState() == Qt::Checked){
         sql->em_infos_select_for_date_department(NULL,date,sql_data);
+        sql->em_infos_select_for_date_department_json(NULL,date,list_data);
     }else if(ui->cb_depart->checkState() == Qt::Checked){
         sql->em_infos_select_for_date_department(department,NULL,sql_data);
+        sql->em_infos_select_for_date_department_json(department,NULL,list_data);
     }else{
         QMessageBox::warning(this, "提示","请选择下载的条件");
         return;
     }
     ui->l_tip->show();
     ui->bt_down->setEnabled(false);
-    if(write_data(sql_data)){
+
+    json js;
+    js.em_infos_tojson(list_data, str_data);
+    if(write_data(sql_data) &&  write_json(str_data)){
         QMessageBox::warning(this, "提示","下载成功！");
 
     }else{

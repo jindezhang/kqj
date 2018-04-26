@@ -26,7 +26,7 @@ bool check(QString filename)
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    first w ;
+    test w ;
     w.show();
 
 

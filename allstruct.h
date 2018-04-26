@@ -10,6 +10,16 @@ struct Net
     QString port;
 };
 
+struct config
+{
+    QString ip;
+    QString port;
+    QString rule;
+    QString before;
+    QString after;
+
+};
+
 //保存已经考勤完成的员工记录
 struct Em_infos
 {

@@ -8,6 +8,7 @@
 #include <QByteArray>
 #include <sqlmodel.h>
 #include <allstruct.h>
+#include <json.h>
 
 namespace Ui {
 class downloadWindow;
@@ -33,6 +34,7 @@ private:
     void bt_enable(bool state);
     bool check_filename(QString name);
     bool write_data(QString data);
+    bool write_json(QString &data);
     void format_data(QString &str);//数据的格式化;
     void get_col(QString &col);
     sqlmodel *sql;

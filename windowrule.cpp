@@ -91,6 +91,10 @@ void rulewindow::fanhui()
 void rulewindow::on_bt_del_clicked()
 {
     QString tmp = ui->cbb_name->currentText();
+    if(tmp == "DH1"){
+        QMessageBox::warning(this,"提示","这是默认的考勤规则，无法删除！");
+        return;
+    }
     if (QMessageBox::Yes == QMessageBox::question(this,
                                                   tr("Question"),
                                                   tr("删除后，无法恢复。确认[%1]删除吗?").arg(tmp),
@@ -200,8 +204,6 @@ void rulewindow::on_pushButton_7_clicked()
         QMessageBox::warning(this,"提示","添加失败！");
     }
 //   获取rule的名字
-    if(rule_data.amg == "")
-        qDebug()<<"fff";
     list_rule.clear();
     sql->rule_selectAll(list_rule);
     ui->cbb_name->clear();
