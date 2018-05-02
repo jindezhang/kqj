@@ -626,6 +626,19 @@ void sqlmodel::rule_deleteAll()
     }
 }
 
+bool sqlmodel::log_insert(Log &info)
+{
+    QSqlQuery query;
+    QString sql_s = QString("insert into log values('%1','%2','%3','%4');").arg(info.id).arg(info.name).arg(info.time).arg(info.info);
+
+
+    if(!query.exec(sql_s)){
+        qDebug() << "insert Failed!"<<query.lastError();
+        return false;
+    }
+    return true;
+}
+
 void sqlmodel::table_select(QString name)
 {
     QSqlQuery query;

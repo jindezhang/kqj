@@ -10,7 +10,7 @@ netwindow::netwindow(QWidget *parent) :
     ui->setupUi(this);
     //页面布局的设置
     setStyleSheet("netwindow{background-color:rgb(124 ,184 ,254)}");//设置背景颜色
-    ui->wg_top->setDir("网络设置");
+    ui->wg_top->setDir("系统设置 >> 网络设置");
 //    top事件
     connect(ui->wg_top,SIGNAL(bt_click()),this,SLOT(fanhui()));
     ui->l_wait->hide();

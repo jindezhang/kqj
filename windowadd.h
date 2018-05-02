@@ -2,6 +2,7 @@
 #define WINDOWADD_H
 
 #include <QMainWindow>
+#include <netmodel.h>
 
 namespace Ui {
 class windowadd;
@@ -17,8 +18,16 @@ public:
 public slots:
     void fanhui();
 
+private slots:
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_clicked();
+
 private:
     Ui::windowadd *ui;
+    netmodel* net;
+    QString rfid;
+
 };
 
 #endif // WINDOWADD_H

@@ -30,7 +30,10 @@ SOURCES += main.cpp\
     windowselectforid.cpp \
     json.cpp \
     windowadd.cpp \
-    beep.cpp
+    beep.cpp \
+    windowshezhi.cpp \
+    windowstart.cpp \
+    windowlog.cpp
 
 HEADERS  += \
     netmodel.h \
@@ -51,7 +54,10 @@ HEADERS  += \
     windowselectforid.h \
     json.h \
     windowadd.h \
-    beep.h
+    beep.h \
+    windowshezhi.h \
+    windowstart.h \
+    windowlog.h
 
 FORMS    += mainwindow.ui \
     netwindow.ui \
@@ -62,4 +68,7 @@ FORMS    += mainwindow.ui \
     winbutton.ui \
     downloadwindow.ui \
     rulewindow.ui \
-    windowadd.ui
+    windowadd.ui \
+    windowshezhi.ui \
+    windowstart.ui \
+    windowlog.ui

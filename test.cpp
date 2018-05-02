@@ -73,7 +73,7 @@ test::test(QWidget *parent) :
     QString strJso(byteArra);
    // qDebug()<<"st:"<<strJso;
 
-    bp = Beep::get_beep();
+    //bp = Beep::get_beep();
    qtt = new QTimer();
    connect(qtt, SIGNAL(timeout()), this, SLOT(beep_close()));
 
@@ -87,29 +87,41 @@ test::~test()
 void test::beep_close()
 {
     qtt->stop();
-    bp->close_Beep();
+   // bp->close_Beep();
 }
 
 void test::on_pushButton_clicked()
 {
 //     model->setFilter(QObject::tr("name='a'"));
 //     model->select();
-    bp->start_Beep();
+   // bp->start_Beep();
 }
 
 void test::on_pushButton_2_clicked()
 {
-    bp->close_Beep();
+    //bp->close_Beep();
 }
 
 void test::on_pushButton_3_clicked()
 {
-    bp->start_Beep();
+   // bp->start_Beep();
     qtt->start(100);
 }
 
 void test::on_pushButton_4_clicked()
 {
-    bp->start_Beep();
+    //bp->start_Beep();
     qtt->start(1000);
+}
+
+void test::on_pushButton_5_clicked()
+{
+    //date -s 2018-1-30
+//    date -s 14:26
+    QString d = "date -s 2018-12-12";
+    QString t = "date -s 14:14";
+
+    system(d.toLatin1().data());
+    system(t.toLatin1().data());
+
 }

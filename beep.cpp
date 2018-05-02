@@ -1,5 +1,5 @@
 #include "beep.h"
-
+/*
 extern "C"
 {
 #include <stdio.h>
@@ -47,3 +47,4 @@ void Beep::close_Beep()
     ioctl(fd, 1, 1);
 }
 
+*/

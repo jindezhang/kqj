@@ -17,7 +17,6 @@ struct config
     QString rule;
     QString before;
     QString after;
-
 };
 
 //保存已经考勤完成的员工记录
@@ -63,6 +62,15 @@ struct Table
 {
     QString name;
     QString time;
+};
+
+struct Log
+{
+    QString id;
+    QString name;
+    QString time;
+    QString info;
+
 };
 
 #endif // ALLSTRUCT

@@ -29,7 +29,7 @@ public:
 
     int sql_count(QString table);
 
-    //服务器表的操作，插入前，删除。***转化为对程序配置表的操作config
+    //系统配置表的操作，插入前，删除。***转化为对程序配置表的操作config，服务器数据、考勤规则、时间点分开插入。
     void net_select();
     bool net_insert(Net &data);
     void config_select(QString &rule);
@@ -75,6 +75,9 @@ public:
     void rule_delete(QString name);
     void rule_deleteAll();
 
+//    日志信息
+    bool log_insert(Log &info);
+    //void log_delete();
     void table_select(QString name);
     bool table_update(QString name,QString time);
 
