@@ -26,6 +26,8 @@ public:
 
 signals:
     void sendStatus(QString data);
+    void Status_add(QString data);
+
     void connect_ok();
 public slots:
     void disconnect_from_server();//断开服务器

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <netmodel.h>
+#include <json.h>
 
 namespace Ui {
 class windowadd;
@@ -17,7 +18,7 @@ public:
     ~windowadd();
 public slots:
     void fanhui();
-
+    void addstatus(QString status);
 private slots:
     void on_pushButton_2_clicked();
 
@@ -27,7 +28,7 @@ private:
     Ui::windowadd *ui;
     netmodel* net;
     QString rfid;
-
+    json jsonc;
 };
 
 #endif // WINDOWADD_H

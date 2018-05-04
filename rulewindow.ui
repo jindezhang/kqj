@@ -211,7 +211,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>60</x>
@@ -541,7 +541,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_7">
+        <widget class="QPushButton" name="add">
          <property name="text">
           <string>添加</string>
          </property>
@@ -551,13 +551,13 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>70</y>
       <width>251</width>
-      <height>61</height>
+      <height>73</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_13">
@@ -735,27 +735,10 @@ p, li { white-space: pre-wrap; }
      </item>
     </layout>
    </widget>
+   <zorder>layoutWidget</zorder>
+   <zorder>layoutWidget</zorder>
    <zorder>wg_top</zorder>
    <zorder>layoutWidget</zorder>
-   <zorder>cbb_h</zorder>
-   <zorder>l_name_2</zorder>
-   <zorder>l_name_3</zorder>
-   <zorder>cbb_m</zorder>
-   <zorder>l_name_4</zorder>
-   <zorder>horizontalSpacer_4</zorder>
-   <zorder>l_name_5</zorder>
-   <zorder>l_name_6</zorder>
-   <zorder>amg</zorder>
-   <zorder>pushButton</zorder>
-   <zorder>layoutWidget_2</zorder>
-   <zorder>line_4</zorder>
-   <zorder>layoutWidget_3</zorder>
-   <zorder>layoutWidget_4</zorder>
-   <zorder>l_name_5</zorder>
-   <zorder>pushButton_7</zorder>
-   <zorder>pushButton_8</zorder>
-   <zorder>horizontalSpacer_9</zorder>
-   <zorder>textBrowser</zorder>
   </widget>
  </widget>
  <customwidgets>

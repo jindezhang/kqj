@@ -82,7 +82,8 @@ bool sqlmodel::net_insert(Net &data)
     QSqlQuery query;
 //    QString sql_d = "delete from config;";
 //    query.exec(sql_d);
-    QString sql_s = QString("update config set ip='%1' and port='%2';").arg(data.ip).arg(data.port);
+    QString sql_s = QString("update config set ip='%1', port=%2;").arg(data.ip).arg(data.port);
+    qDebug()<<sql_s;
 
     if(!query.exec(sql_s)){
         qDebug() << "update Failed!"<<query.lastError();
@@ -125,7 +126,7 @@ bool sqlmodel::config_insert_time(QString before, QString after)
     QSqlQuery query;
 //    QString sql_d = "delete from config;";
 //    query.exec(sql_d);
-    QString sql_s = QString("update config set before='%1' and after = '%2';").arg(before).arg(after);
+    QString sql_s = QString("update config set before='%1' , after = '%2';").arg(before).arg(after);
 
     if(!query.exec(sql_s)){
         qDebug() << "update Failed!"<<query.lastError();

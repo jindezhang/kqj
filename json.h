@@ -16,7 +16,10 @@ public:
     json();
     ~json();
     void em_infos_tojson(QList<Em_infos> &em, QString &json);
-    void rule_tojson(QList<Rule> &rule, QString &json);
+    void rule_tojson(Rule &rule, QString &json);
+    void add_tojson(QString value, QString &json);
+    void json_toadd(QString &json, QList<QString> &list);
+
 };
 
 #endif // JSON_H

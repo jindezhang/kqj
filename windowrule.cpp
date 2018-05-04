@@ -62,6 +62,8 @@ rulewindow::rulewindow(QWidget *parent) :
     ui->cbb_m->addItems(tmplist);
 
 
+    net = netmodel::get_net();
+
 }
 
 rulewindow::~rulewindow()
@@ -180,10 +182,9 @@ void rulewindow::on_pushButton_8_clicked()
     ui->nmo->setText("");
 }
 
-void rulewindow::on_pushButton_7_clicked()
+void rulewindow::on_add_clicked()
 {
 
-    Rule rule_data;
     QString d = QDate::currentDate().toString("yyyy");
     d.append(QDate::currentDate().toString("MM"));
     d.append(QDate::currentDate().toString("dd"));
@@ -197,11 +198,13 @@ void rulewindow::on_pushButton_7_clicked()
     rule_data.pmo = ui->pmo->text();
     rule_data.nmg = ui->nmg->text();
     rule_data.nmo = ui->nmo->text();
+
     if(sql->rule_insert(rule_data)){
-        QString t = QString("[%1]添加成功！").arg(rule_data.name);
+        QString t = QString("[%1]添加到本地成功！").arg(rule_data.name);
         QMessageBox::warning(this,"提示",t);
+        on_pushButton_8_clicked();
     }else{
-        QMessageBox::warning(this,"提示","添加失败！");
+        QMessageBox::warning(this,"提示","添加到本地失败！");
     }
 //   获取rule的名字
     list_rule.clear();
@@ -209,5 +212,14 @@ void rulewindow::on_pushButton_7_clicked()
     ui->cbb_name->clear();
     ui->cbb_name->addItems(list_rule);
     model->select();
+
+}
+
+void rulewindow::add_status(QString json)
+{
+    if(json == "flase"){
+         QMessageBox::warning(this,"提示","添加失败！");
+         return;
+    }
 
 }

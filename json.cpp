@@ -58,7 +58,46 @@ void json::em_infos_tojson(QList <Em_infos> &em, QString &json)
 
 
 
-void json::rule_tojson(QList<Rule> &rule, QString &json)
+void json::rule_tojson(Rule &rule, QString &json)
+{
+    QJsonObject data;//记录对象
+    QJsonArray arr;
+    QJsonObject obj;//json对象
+    QJsonDocument doc;//json文档
+
+
+   data.insert("name",rule.name);
+   data.insert("amg",rule.amg);
+   data.insert("amo",rule.amo);
+   data.insert("pmg",rule.pmg);
+   data.insert("pmo",rule.pmo);
+   data.insert("nmg",rule.nmg);
+   data.insert("nmo",rule.nmo);
+
+   arr.append(QJsonValue(data));
+
+
+    obj.insert("command","rule_add");
+    obj.insert("data",QJsonValue(arr));
+
+    doc.setObject(obj);
+    QByteArray byteArra = doc.toJson(QJsonDocument::Compact);
+    json = QString(byteArra);
+}
+
+void json::add_tojson(QString value, QString &json)
+{
+    QJsonObject obj;//json对象
+    QJsonDocument doc;//json文档
+    obj.insert("command","rfid_add");
+    obj.insert("data",value);
+    doc.setObject(obj);
+    QByteArray byteArra = doc.toJson(QJsonDocument::Compact);
+    json = QString(byteArra);
+    qDebug()<<json;
+}
+
+void json::json_toadd(QString &json, QList<QString> &list)
 {
 
 }

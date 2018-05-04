@@ -73,7 +73,7 @@ void netmodel::read_data()
     QString str = QString(array);
     qDebug()<<"str:"<<str;
     if(str.contains("add", Qt::CaseInsensitive)){
-        qDebug()<<"str:"<<str;
+        qDebug()<<"add:"<<str;
         emit Status_add(str);
     }
     emit sendStatus(str);

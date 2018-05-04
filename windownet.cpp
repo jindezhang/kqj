@@ -18,7 +18,7 @@ netwindow::netwindow(QWidget *parent) :
     net = netmodel::get_net();
 //    string 转 int互转
     QString old_ip = net->get_Ip();
-    QString old_port = QString::number(net->get_Port(),10);
+    QString old_port = QString("%1").arg(net->get_Port());
     ui->old_ip->setText(old_ip);
     ui->old_port->setText(old_port);
     if(net->get_flag())

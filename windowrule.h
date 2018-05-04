@@ -5,6 +5,10 @@
 #include <sqlmodel.h>
 #include <QSqlTableModel>
 #include <allstruct.h>
+#include <netmodel.h>
+
+
+//本地添加的考勤规则，服务器需不需要？？？
 
 namespace Ui {
 class rulewindow;
@@ -40,15 +44,17 @@ private slots:
 
     void on_pushButton_8_clicked();
 
-    void on_pushButton_7_clicked();
+    void on_add_clicked();
 
+    void add_status(QString json);
 private:
     Ui::rulewindow *ui;
     sqlmodel *sql;
     QSqlTableModel *model;
     QStringList list_rule;
     QString curr_rule;
-
+    Rule rule_data;
+    netmodel* net;
 };
 
 #endif // RULEWINDOW_H

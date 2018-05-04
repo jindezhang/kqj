@@ -36,7 +36,7 @@ void windowadd::addstatus(QString status)
     if(status.contains("ok", Qt::CaseInsensitive)){
          QMessageBox::warning(this,"提示", "添加成功");
          on_pushButton_2_clicked();
-    }else if(status == "false"){
+    }else if(status.contains("false", Qt::CaseInsensitive)){
         QMessageBox::warning(this,"提示", "添加失败！");
         on_pushButton_2_clicked();
     }else{
