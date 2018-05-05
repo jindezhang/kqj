@@ -10,6 +10,7 @@
 #include <QObject>
 #include <sqlmodel.h>
 #include <allstruct.h>
+#include <json.h>
 
 namespace Ui {
 class first;
@@ -30,12 +31,13 @@ private slots:
     void net_timeout();
     void showdata(Net data);
     void on_bt_jump_clicked();
-
+    void init(QString json);
 private:
     Ui::first *ui;
     netmodel *net;
     QTimer *nettimer;
     sqlmodel *sl;
+    int flag;
 };
 
 #endif // FIRST_H

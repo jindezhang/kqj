@@ -163,6 +163,25 @@ bool sqlmodel::config_reset()
     return true;
 }
 
+void sqlmodel::config_select_all(config &con)
+{
+    QSqlQuery query;
+    QString sql_s = QString("SELECT rule,before,after,device,upload FROM config;");
+
+    if(!query.exec(sql_s)){
+        qDebug() << "select Failed!"<<query.lastError();
+        return;
+    }
+
+    while(query.next()){
+        con.rule = query.value(0).toString();
+        con.before = query.value(1).toString();
+        con.after = query.value(2).toString();
+        con.device = query.value(3).toString();
+        con.upload = query.value(4).toString();
+    }
+}
+
 void sqlmodel::authority_select(QString rfid)
 {
     QSqlQuery query;

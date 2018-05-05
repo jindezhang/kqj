@@ -27,6 +27,11 @@ public:
 signals:
     void sendStatus(QString data);
     void Status_add(QString data);
+    void rule_sig(QString data);
+    void em_sig(QString data);
+    void config_sig(QString data);
+    void auth_sig(QString data);
+    void ems_sig(QString data);
 
     void connect_ok();
 public slots:

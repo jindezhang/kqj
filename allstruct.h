@@ -12,11 +12,13 @@ struct Net
 
 struct config
 {
+    QString device;
     QString ip;
     QString port;
     QString rule;
     QString before;
     QString after;
+    QString upload;
 };
 
 //保存已经考勤完成的员工记录

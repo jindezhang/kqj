@@ -37,6 +37,7 @@ public:
     bool config_insert_time(QString before, QString after);
     void config_select_time(QString &before, QString &after);
     bool config_reset();//重置系统。
+    void config_select_all(config &con);
 
 //    权限表，用于进入主菜单的操作。
     void authority_select(QString rfid);//权限

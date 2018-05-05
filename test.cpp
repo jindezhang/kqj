@@ -9,6 +9,7 @@
 #include <QJsonValue>
 #include <QDebug>
 #include <allstruct.h>
+#include <json.h>
 
 test::test(QWidget *parent) :
     QMainWindow(parent),
@@ -100,6 +101,31 @@ void test::on_pushButton_clicked()
 void test::on_pushButton_2_clicked()
 {
     //bp->close_Beep();
+    Em_info e;
+    QList<Em_info> l1;
+    QList<Em_info> l2;
+    QString jsons;
+    for(int i = 0;i < 3;i++){
+        e.department = QString("%1").arg(i);
+        e.icon = QString("%1").arg(i);
+        e.id = QString("%1").arg(i);
+        e.name = QString("%1").arg(i);
+        e.rfid = QString("%1").arg(i);
+        e.info = QString("%1").arg(i);
+        l1<<e;
+    }
+
+    json js;
+    js.em_infotojson(jsons,l1);
+    qDebug()<<"json"<<jsons;
+
+    js.json_toem_info(jsons, l2);
+    QList <Em_info>::iterator iter;
+    for(iter = l2.begin(); iter != l2.end(); iter++){
+        e = *iter;
+        qDebug()<<"l2:"<<e.department<<"+"<<e.icon<<"+"<<e.id<<"+"<<e.name<<"+"<<e.rfid<<"+"<<e.info;
+    }
+
 }
 
 void test::on_pushButton_3_clicked()

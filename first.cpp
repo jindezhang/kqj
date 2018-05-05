@@ -17,12 +17,13 @@ first::first(QWidget *parent) :
     sl->net_select();
 
     net = netmodel::get_net();
+    connect(net, SIGNAL(sendStatus(QString)),this,SLOT(init(QString)));
     connect(net, SIGNAL(connect_ok()), this, SLOT(net_connect_ok()));
 
     nettimer = new QTimer();
     connect(nettimer,SIGNAL(timeout()),this, SLOT(net_timeout()));
 
-
+    flag = 0;
 
 }
 
@@ -61,13 +62,19 @@ void first::on_bt_connect_clicked()
     }
     net->connect_toserver(ip, port.toInt());
     ui->bt_connect->setEnabled(false);
+    ui->bt_jump->setEnabled(false);
     ui->tips->setText("请稍后，正在连接.....");
     nettimer->start(5000);
 }
 
 void first::net_connect_ok()
 {
-    nettimer->stop();
+    nettimer->start(5000);
+    ui->bt_connect->setEnabled(false);
+    ui->bt_jump->setEnabled(false);
+    ui->tips->setText("连接服务器成功....正在初始化，请稍候。");
+
+    //初始化数据的开始。
     MainWindow *main = new MainWindow();
     main->show();
     this->close();
@@ -76,9 +83,10 @@ void first::net_connect_ok()
 void first::net_timeout()
 {
     ui->bt_connect->setEnabled(true);
+    ui->bt_jump->setEnabled(true);
     ui->tips->setText(" ");
     nettimer->stop();
-    QMessageBox::warning(this, "提示","连接失败！！！");
+    QMessageBox::warning(this, "提示","网络出现故障！");
 }
 
 void first::showdata(Net data)
@@ -93,4 +101,18 @@ void first::on_bt_jump_clicked()
     main->show();
 
     this->close();
+}
+
+void first::init(QString json)
+{
+    if(flag != 0 )
+        return;
+
+    nettimer->stop();
+    ui->bt_connect->setEnabled(true);
+    ui->bt_jump->setEnabled(true);
+    ui->tips->setText(" ");
+
+
+    qDebug()<<"init:"<<json;
 }

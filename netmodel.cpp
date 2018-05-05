@@ -73,8 +73,18 @@ void netmodel::read_data()
     QString str = QString(array);
     qDebug()<<"str:"<<str;
     if(str.contains("add", Qt::CaseInsensitive)){
-        qDebug()<<"str:"<<str;
+        qDebug()<<"add:"<<str;
         emit Status_add(str);
+    }else if(str.contains("rule", Qt::CaseInsensitive)){
+        emit rule_sig(str);
+    }else if(str.contains("em_infos", Qt::CaseInsensitive)){
+        emit ems_sig(str);
+    }else if(str.contains("config", Qt::CaseInsensitive)){
+        emit config_sig(str);
+    }else if(str.contains("authority", Qt::CaseInsensitive)){
+        emit auth_sig(str);
+    }else if(str.contains("em_info", Qt::CaseInsensitive)){
+        emit em_sig(str);
     }
     emit sendStatus(str);
 }
