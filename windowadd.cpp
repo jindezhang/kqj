@@ -15,6 +15,16 @@ windowadd::windowadd(QWidget *parent) :
     net = netmodel::get_net();
     rfid = QString("0");
     connect(net, SIGNAL(Status_add(QString)),this,SLOT(addstatus(QString)));
+
+    set_add(false);
+    //连接读取rfid的线程；
+
+
+
+
+    if(net->get_flag() == 0){
+        QMessageBox::warning(this,"提示", "未连接服务，无法使用该功能。");
+    }
 }
 
 windowadd::~windowadd()
@@ -41,10 +51,28 @@ void windowadd::addstatus(QString status)
         on_pushButton_2_clicked();
     }else{
         //如果不是状态信息，那么就是员工数据。
-        QList<QString> list;
+        Em_info list;
         jsonc.json_toadd(status, list);
-
+        ui->id->setText(list.id);
+        ui->name->setText(list.name);
+        ui->depart->setText(list.department);
     }
+
+}
+
+void windowadd::get_rfid(QString rfid)
+{
+    this->rfid = rfid;
+    ui->l_tip->setText("刷卡成功。");
+}
+
+void windowadd::set_add(bool b)
+{
+    ui->pushButton->setEnabled(b);
+    if(!b)
+        ui->l_tip->hide();
+    else
+        ui->l_tip->show();
 }
 
 void windowadd::on_pushButton_2_clicked()
@@ -53,7 +81,7 @@ void windowadd::on_pushButton_2_clicked()
     ui->name->setText("");
     ui->depart->setText("");
     ui->l_tip->setText("请刷卡.....");
-
+    this->rfid = QString("0");
 }
 
 void windowadd::on_pushButton_clicked()
@@ -77,4 +105,21 @@ void windowadd::on_pushButton_clicked()
     ui->pushButton_2->setEnabled(false);
     ui->l_tip->setText("正在添加...请稍候。");
 
+}
+
+void windowadd::on_pushButton_3_clicked()
+{
+    if(net->get_flag() == 0){
+        QMessageBox::warning(this,"提示", "未连接服务，无法使用该功能。");
+        return;
+    }
+    set_add(true);
+    on_pushButton_2_clicked();
+    net->send_data("add");
+
+}
+
+void windowadd::on_bt_end_clicked()
+{
+    set_add(false);
 }

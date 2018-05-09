@@ -19,10 +19,17 @@ public:
 public slots:
     void fanhui();
     void addstatus(QString status);
+    void get_rfid(QString rfid);
+    void set_add(bool b);
+
 private slots:
     void on_pushButton_2_clicked();
 
     void on_pushButton_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_bt_end_clicked();
 
 private:
     Ui::windowadd *ui;

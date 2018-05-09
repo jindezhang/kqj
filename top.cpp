@@ -40,7 +40,22 @@ void top::myupdate()
 
 void top::hideButton()
 {
-        ui->bt_fanhui->hide();
+    ui->bt_fanhui->hide();
+}
+
+void top::showButton()
+{
+    ui->bt_fanhui->show();
+}
+
+void top::button_enable_()
+{
+    ui->bt_fanhui->setEnabled(true);
+}
+
+void top::button_disable_()
+{
+    ui->bt_fanhui->setEnabled(false);
 }
 
 void top::on_bt_fanhui_clicked()

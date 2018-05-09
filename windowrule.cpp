@@ -61,9 +61,14 @@ rulewindow::rulewindow(QWidget *parent) :
     }
     ui->cbb_m->addItems(tmplist);
 
-
+    //网络
     net = netmodel::get_net();
+    connect(net, SIGNAL(rule_sig(QString)), this, SLOT(change_ok(QString)));
+    com_change = 0;
 
+    //更换考勤规则定时器。
+     t = new QTimer();
+     connect(t, SIGNAL(timeout()), this, SLOT(change_no()));
 }
 
 rulewindow::~rulewindow()
@@ -88,6 +93,32 @@ void rulewindow::fanhui()
 {
     this->parentWidget()->show();
     this->close();
+}
+
+void rulewindow::change_ok(QString json)
+{
+    if(0 == com_change){
+        return;
+    }
+    if(json.contains("false")){
+        change_no();
+        return;
+    }
+
+    sql->config_insert(ui->cbb_name->currentText());
+    ui->l_name->setText(ui->cbb_name->currentText());
+    QMessageBox::warning(this, "tip", "更换成功!");
+    set_bt(true);
+    t->stop();
+    com_change = 0;
+}
+
+void rulewindow::change_no()
+{
+    QMessageBox::warning(this, "tip", "更换失败!");
+    set_bt(true);
+    t->stop();
+    com_change = 0;
 }
 
 void rulewindow::on_bt_del_clicked()
@@ -128,8 +159,15 @@ void rulewindow::on_bt_change_clicked()
                                                   QMessageBox::Yes | QMessageBox::No,
                                                   QMessageBox::Yes)) {
 
-        sql->config_insert(ui->cbb_name->currentText());
-        ui->l_name->setText(tmp);
+        Rule r;
+        QString json_rule;
+        sql->rule_selectAll(ui->cbb_name->currentText(), r);
+        ch.rule_change(r);
+        jsonc.rule_tojson(r, json_rule);
+        net->send_data(json_rule);
+        t->start(5000);
+        set_bt(false);
+        com_change = 1;
     } else {
         return;
     }
@@ -221,5 +259,12 @@ void rulewindow::add_status(QString json)
          QMessageBox::warning(this,"提示","添加失败！");
          return;
     }
+
+}
+
+void rulewindow::set_bt(bool b)
+{
+    ui->bt_change->setEnabled(b);
+    ui->bt_del->setEnabled(b);
 
 }

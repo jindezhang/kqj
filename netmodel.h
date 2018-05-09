@@ -23,7 +23,8 @@ public:
     int get_Port();
     void connect_toserver(QString IP, int port);//连接服务器成功
     void send_data(QString data);
-
+    void ok(QString com);
+    void false_no(QString com);
 signals:
     void sendStatus(QString data);
     void Status_add(QString data);
@@ -32,7 +33,8 @@ signals:
     void config_sig(QString data);
     void auth_sig(QString data);
     void ems_sig(QString data);
-
+    void time_sig(QString data);
+    void over_sig(QString data);
     void connect_ok();
 public slots:
     void disconnect_from_server();//断开服务器

@@ -56,6 +56,37 @@
      <string>设置服务器</string>
     </property>
    </widget>
+   <widget class="QLabel" name="l_tips">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>390</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_reset">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>370</y>
+      <width>101</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>重置系统</string>
+    </property>
+   </widget>
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>

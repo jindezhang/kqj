@@ -11,7 +11,15 @@
 #include <sqlmodel.h>
 #include <allstruct.h>
 #include <json.h>
+#include <change_asc.h>
 
+/*
+ *
+ *
+ * 表格的发送从权限表、config、rule顺序。
+ *
+ *
+ * */
 namespace Ui {
 class first;
 }
@@ -37,7 +45,9 @@ private:
     netmodel *net;
     QTimer *nettimer;
     sqlmodel *sl;
-    int flag;
+    json jsonc;
+    int flag;//用于标识是否初始化了。
+    Change_asc ch;
 };
 
 #endif // FIRST_H

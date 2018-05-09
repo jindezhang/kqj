@@ -85,6 +85,10 @@ void netmodel::read_data()
         emit auth_sig(str);
     }else if(str.contains("em_info", Qt::CaseInsensitive)){
         emit em_sig(str);
+    }else if(str.contains("##")){
+        emit time_sig(str);
+    }else if(str.contains("over_time")){
+        emit over_sig(str);
     }
     emit sendStatus(str);
 }
@@ -94,6 +98,18 @@ void netmodel::send_data(QString data)
     QByteArray cstr = data.toLatin1();
     qDebug()<<cstr;
     mSocket->write(cstr);
+}
+
+void netmodel::ok(QString com)
+{
+    QString s = QString("%1#ok").arg(com);
+    send_data(s);
+}
+
+void netmodel::false_no(QString com)
+{
+    QString s = QString("%1#false").arg(com);
+    send_data(s);
 }
 
 void netmodel::connect_again()

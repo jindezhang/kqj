@@ -121,13 +121,13 @@ bool sqlmodel::config_insert(QString rule)
     return true;
 }
 
-bool sqlmodel::config_insert_time(QString before, QString after)
+bool sqlmodel::config_insert_time(config &con)
 {
     QSqlQuery query;
 //    QString sql_d = "delete from config;";
 //    query.exec(sql_d);
-    QString sql_s = QString("update config set before='%1' , after = '%2';").arg(before).arg(after);
-
+    QString sql_s = QString("update config set before='%1' , after = '%2', rule = '%3', upload = '%4';").arg(con.before).arg(con.after).arg(con.rule).arg(con.upload);
+    qDebug()<<"SQL"<<sql_s;
     if(!query.exec(sql_s)){
         qDebug() << "update Failed!"<<query.lastError();
         return false;
@@ -135,11 +135,13 @@ bool sqlmodel::config_insert_time(QString before, QString after)
     return true;
 }
 
+
+
 void sqlmodel::config_select_time(QString &before, QString &after)
 {
     QSqlQuery query;
     QString sql_s = QString("SELECT * FROM config;");
-
+    qDebug()<<"SQL"<<sql_s;
     if(!query.exec(sql_s)){
         qDebug() << "select Failed!"<<query.lastError();
         return;
@@ -160,6 +162,25 @@ bool sqlmodel::config_reset()
         qDebug() << "reset Failed!"<<query.lastError();
         return false;
     }
+    sql_s = QString("delete from rule where name not in('DH1');");
+    if(!query.exec(sql_s)){
+        qDebug() << "reset Failed!"<<query.lastError();
+        return false;
+    }
+
+    sql_s = QString("delete from em_info ;");
+    if(!query.exec(sql_s)){
+        qDebug() << "reset Failed!"<<query.lastError();
+        return false;
+    }
+
+    sql_s = QString("delete from em_infos ;");
+    if(!query.exec(sql_s)){
+        qDebug() << "reset Failed!"<<query.lastError();
+        return false;
+    }
+
+
     return true;
 }
 
@@ -199,15 +220,15 @@ void sqlmodel::authority_select(QString rfid)
     }
 }
 
-void sqlmodel::authority_delete(QString rfid)
+bool sqlmodel::authority_delete(QString rfid)
 {
     QSqlQuery query;
     QString sql_s = QString("delete FROM authority where rfid = '%1';").arg(rfid);
     if(!query.exec(sql_s)){
         qDebug() << "delete Failed!"<<query.lastError();
-
+        return false;
     }
-
+    return true;
 }
 
 bool sqlmodel::authority_insert(QString rfid)
@@ -224,20 +245,20 @@ bool sqlmodel::authority_insert(QString rfid)
 
 }
 
-void sqlmodel::em_info_selectAll()
+void sqlmodel::em_info_selectAll(QStringList &rfid)
 {
     QSqlQuery query;
     QString sql_s = QString("SELECT rfid FROM em_info;");
-    Em_info data;
+    QString data;
     if(!query.exec(sql_s)){
         qDebug() << "select Failed!"<<query.lastError();
         return;
     }
 
     while(query.next()){
-        data.rfid = query.value(0).toString();
+        data = query.value(0).toString();
+        rfid<<data;
 
-        emit sendEm_info(data);
     }
 }
 
@@ -367,7 +388,7 @@ bool sqlmodel::check_exists(QStringList list, QString str)
     return true;
 }
 
-void sqlmodel::em_infos_selectfordate(QString date)
+void sqlmodel::em_infos_selectfordate(QString date, QList<Em_infos> &em)
 {
     QSqlQuery query;
     QString sql_s = QString("SELECT * FROM em_infos where date = '%1';").arg(date);
@@ -390,7 +411,7 @@ void sqlmodel::em_infos_selectfordate(QString date)
         data.nmo = query.value(9).toString();
         data.info = query.value(10).toString();
 
-        emit sendEm_infos(data);
+        em<<data;
     }
 
 }
@@ -573,11 +594,11 @@ void sqlmodel::rule_selectAll(QStringList &list)
     }
 }
 
-void sqlmodel::rule_selectAll()
+void sqlmodel::rule_selectAll(QString name, Rule &data)
 {
     QSqlQuery query;
-    QString sql_s = QString("SELECT name FROM rule;");
-    Rule data;
+    QString sql_s = QString("SELECT * FROM rule where name='%1';").arg(name);
+
     if(!query.exec(sql_s)){
         qDebug() << "select Failed!"<<query.lastError();
         return;
@@ -585,8 +606,13 @@ void sqlmodel::rule_selectAll()
 
     while(query.next()){
         data.name = query.value(0).toString();
+        data.amg = query.value(1).toString();
+        data.amo = query.value(2).toString();
+        data.pmg = query.value(3).toString();
+        data.pmo = query.value(4).toString();
+        data.nmg = query.value(5).toString();
+        data.nmo = query.value(6).toString();
 
-        emit sendRule(data);
     }
 }
 

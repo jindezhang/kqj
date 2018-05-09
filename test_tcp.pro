@@ -33,7 +33,9 @@ SOURCES += main.cpp\
     beep.cpp \
     windowshezhi.cpp \
     windowstart.cpp \
-    windowlog.cpp
+    windowlog.cpp \
+    change_asc.cpp \
+    sys_config.cpp
 
 HEADERS  += \
     netmodel.h \
@@ -57,7 +59,9 @@ HEADERS  += \
     beep.h \
     windowshezhi.h \
     windowstart.h \
-    windowlog.h
+    windowlog.h \
+    change_asc.h \
+    sys_config.h
 
 FORMS    += mainwindow.ui \
     netwindow.ui \

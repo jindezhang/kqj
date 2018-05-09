@@ -1582,6 +1582,20 @@ moc_windowdownload.cpp: /opt/armqt5.5-gec/include/QtWidgets/QMainWindow \
 		/opt/armqt5.5-gec/include/QtCore/qjsonarray.h \
 		/opt/armqt5.5-gec/include/QtCore/QJsonParseError \
 		/opt/armqt5.5-gec/include/QtCore/QJsonValue \
+		netmodel.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpServer \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpserver.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qabstractsocket.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qhostaddress.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpSocket \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpsocket.h \
+		/opt/armqt5.5-gec/include/QtCore/QTimer \
+		/opt/armqt5.5-gec/include/QtCore/qtimer.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasictimer.h \
+		/opt/armqt5.5-gec/include/QtCore/QMap \
+		/opt/armqt5.5-gec/include/QtWidgets/QMessageBox \
+		/opt/armqt5.5-gec/include/QtWidgets/qmessagebox.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdialog.h \
 		windowdownload.h
 	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/QTproject-2/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSerialPort -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/4.5.1/arm-none-linux-gnueabi/include -I/opt/4.5.1/arm-none-linux-gnueabi/libc/usr/include windowdownload.h -o moc_windowdownload.cpp
 
@@ -2009,6 +2023,20 @@ moc_windowrule.cpp: /opt/armqt5.5-gec/include/QtWidgets/QMainWindow \
 		/opt/armqt5.5-gec/include/QtSql/qsqltablemodel.h \
 		/opt/armqt5.5-gec/include/QtSql/qsqlquerymodel.h \
 		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
+		netmodel.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpServer \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpserver.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qabstractsocket.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qhostaddress.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpSocket \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpsocket.h \
+		/opt/armqt5.5-gec/include/QtCore/QTimer \
+		/opt/armqt5.5-gec/include/QtCore/qtimer.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasictimer.h \
+		/opt/armqt5.5-gec/include/QtCore/QMap \
+		/opt/armqt5.5-gec/include/QtWidgets/QMessageBox \
+		/opt/armqt5.5-gec/include/QtWidgets/qmessagebox.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdialog.h \
 		windowrule.h
 	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/QTproject-2/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSerialPort -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/4.5.1/arm-none-linux-gnueabi/include -I/opt/4.5.1/arm-none-linux-gnueabi/libc/usr/include windowrule.h -o moc_windowrule.cpp
 
@@ -2275,6 +2303,16 @@ moc_windowadd.cpp: /opt/armqt5.5-gec/include/QtWidgets/QMainWindow \
 		allstruct.h \
 		/opt/armqt5.5-gec/include/QtCore/QDate \
 		/opt/armqt5.5-gec/include/QtCore/qdatetime.h \
+		json.h \
+		/opt/armqt5.5-gec/include/QtCore/QJsonDocument \
+		/opt/armqt5.5-gec/include/QtCore/qjsondocument.h \
+		/opt/armqt5.5-gec/include/QtCore/qjsonvalue.h \
+		/opt/armqt5.5-gec/include/QtCore/QJsonObject \
+		/opt/armqt5.5-gec/include/QtCore/qjsonobject.h \
+		/opt/armqt5.5-gec/include/QtCore/QJsonArray \
+		/opt/armqt5.5-gec/include/QtCore/qjsonarray.h \
+		/opt/armqt5.5-gec/include/QtCore/QJsonParseError \
+		/opt/armqt5.5-gec/include/QtCore/QJsonValue \
 		windowadd.h
 	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/QTproject-2/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSerialPort -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/4.5.1/arm-none-linux-gnueabi/include -I/opt/4.5.1/arm-none-linux-gnueabi/libc/usr/include windowadd.h -o moc_windowadd.cpp
 
@@ -4938,7 +4976,59 @@ first.o: first.cpp first.h \
 		windowshezhi.h \
 		windowadd.h \
 		windowstart.h \
-		ui_first.h
+		ui_first.h \
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLabel \
+		/opt/armqt5.5-gec/include/QtWidgets/qlabel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLineEdit \
+		/opt/armqt5.5-gec/include/QtWidgets/qlineedit.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextcursor.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextformat.h \
+		/opt/armqt5.5-gec/include/QtGui/qpen.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QMenuBar \
+		/opt/armqt5.5-gec/include/QtWidgets/qmenubar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qmenu.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QPushButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qpushbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QStatusBar \
+		/opt/armqt5.5-gec/include/QtWidgets/qstatusbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QVBoxLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/qboxlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayoutitem.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qgridlayout.h \
+		top.h \
+		winbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o first.o first.cpp
 
 sqlmodel.o: sqlmodel.cpp sqlmodel.h \
@@ -5227,6 +5317,58 @@ test.o: test.cpp test.h \
 		/opt/armqt5.5-gec/include/QtCore/qtimer.h \
 		/opt/armqt5.5-gec/include/QtCore/qbasictimer.h \
 		ui_test.h \
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QGroupBox \
+		/opt/armqt5.5-gec/include/QtWidgets/qgroupbox.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QMenuBar \
+		/opt/armqt5.5-gec/include/QtWidgets/qmenubar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qmenu.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QPushButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qpushbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QRadioButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qradiobutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QStatusBar \
+		/opt/armqt5.5-gec/include/QtWidgets/qstatusbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QWidget \
+		top.h \
+		/opt/armqt5.5-gec/include/QtCore/QTime \
+		netmodel.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpServer \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpserver.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qabstractsocket.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qhostaddress.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpSocket \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpsocket.h \
+		/opt/armqt5.5-gec/include/QtCore/QMap \
 		/opt/armqt5.5-gec/include/QtWidgets/QMessageBox \
 		/opt/armqt5.5-gec/include/QtWidgets/qmessagebox.h \
 		/opt/armqt5.5-gec/include/QtWidgets/qdialog.h \
@@ -5238,7 +5380,8 @@ test.o: test.cpp test.h \
 		/opt/armqt5.5-gec/include/QtCore/QJsonArray \
 		/opt/armqt5.5-gec/include/QtCore/qjsonarray.h \
 		/opt/armqt5.5-gec/include/QtCore/QJsonParseError \
-		/opt/armqt5.5-gec/include/QtCore/QJsonValue
+		/opt/armqt5.5-gec/include/QtCore/QJsonValue \
+		json.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o test.o test.cpp
 
 serialmodel_c.o: serialmodel_c.cpp serialmodel_c.h
@@ -5434,7 +5577,51 @@ top.o: top.cpp top.h \
 		/opt/armqt5.5-gec/include/QtSql/qsqlquery.h \
 		/opt/armqt5.5-gec/include/QtCore/QString \
 		allstruct.h \
-		ui_top.h
+		ui_top.h \
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtGui/qicon.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QFrame \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QGridLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/qgridlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayoutitem.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qboxlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabwidget.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLabel \
+		/opt/armqt5.5-gec/include/QtWidgets/qlabel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QPushButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qpushbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QSpacerItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o top.o top.cpp
 
 mybutton.o: mybutton.cpp mybutton.h \
@@ -5656,7 +5843,48 @@ winbutton.o: winbutton.cpp winbutton.h \
 		/opt/armqt5.5-gec/include/QtCore/qfiledevice.h \
 		/opt/armqt5.5-gec/include/QtGui/qvector2d.h \
 		/opt/armqt5.5-gec/include/QtGui/qtouchdevice.h \
-		ui_winbutton.h
+		ui_winbutton.h \
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtGui/qicon.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QGridLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/qgridlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayoutitem.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qboxlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabwidget.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QPushButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qpushbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractbutton.h \
+		mybutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o winbutton.o winbutton.cpp
 
 windowdownload.o: windowdownload.cpp windowdownload.h \
@@ -5794,10 +6022,70 @@ windowdownload.o: windowdownload.cpp windowdownload.h \
 		/opt/armqt5.5-gec/include/QtCore/qjsonarray.h \
 		/opt/armqt5.5-gec/include/QtCore/QJsonParseError \
 		/opt/armqt5.5-gec/include/QtCore/QJsonValue \
-		ui_downloadwindow.h \
+		netmodel.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpServer \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpserver.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qabstractsocket.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qhostaddress.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpSocket \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpsocket.h \
+		/opt/armqt5.5-gec/include/QtCore/QTimer \
+		/opt/armqt5.5-gec/include/QtCore/qtimer.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasictimer.h \
+		/opt/armqt5.5-gec/include/QtCore/QMap \
 		/opt/armqt5.5-gec/include/QtWidgets/QMessageBox \
 		/opt/armqt5.5-gec/include/QtWidgets/qmessagebox.h \
-		/opt/armqt5.5-gec/include/QtWidgets/qdialog.h
+		/opt/armqt5.5-gec/include/QtWidgets/qdialog.h \
+		ui_downloadwindow.h \
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QCheckBox \
+		/opt/armqt5.5-gec/include/QtWidgets/qcheckbox.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QComboBox \
+		/opt/armqt5.5-gec/include/QtWidgets/qcombobox.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHBoxLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/qboxlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayoutitem.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qgridlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLabel \
+		/opt/armqt5.5-gec/include/QtWidgets/qlabel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QPushButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qpushbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QSpacerItem \
+		/opt/armqt5.5-gec/include/QtWidgets/QVBoxLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/QWidget \
+		top.h \
+		/opt/armqt5.5-gec/include/QtCore/QTime
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windowdownload.o windowdownload.cpp
 
 windowmain.o: windowmain.cpp windowmain.h \
@@ -5962,7 +6250,43 @@ windowmain.o: windowmain.cpp windowmain.h \
 		windowshezhi.h \
 		windowadd.h \
 		windowstart.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLabel \
+		/opt/armqt5.5-gec/include/QtWidgets/qlabel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QPushButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qpushbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractbutton.h \
+		top.h \
+		/opt/armqt5.5-gec/include/QtCore/QTime
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windowmain.o windowmain.cpp
 
 windownet.o: windownet.cpp windownet.h \
@@ -6101,12 +6425,60 @@ windownet.o: windownet.cpp windownet.h \
 		/opt/armqt5.5-gec/include/QtCore/QDate \
 		/opt/armqt5.5-gec/include/QtCore/qdatetime.h \
 		ui_netwindow.h \
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLabel \
+		/opt/armqt5.5-gec/include/QtWidgets/qlabel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLineEdit \
+		/opt/armqt5.5-gec/include/QtWidgets/qlineedit.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextcursor.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextformat.h \
+		/opt/armqt5.5-gec/include/QtGui/qpen.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QPushButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qpushbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QVBoxLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/qboxlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayoutitem.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qgridlayout.h \
+		top.h \
+		/opt/armqt5.5-gec/include/QtCore/QTime \
+		winbutton.h \
 		windowmain.h \
 		windowselectforid.h \
 		/opt/armqt5.5-gec/include/QtSql/QSqlTableModel \
 		/opt/armqt5.5-gec/include/QtSql/qsqltablemodel.h \
 		/opt/armqt5.5-gec/include/QtSql/qsqlquerymodel.h \
-		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
 		/opt/armqt5.5-gec/include/QtCore/QStringList \
 		windowdownload.h \
 		/opt/armqt5.5-gec/include/QtCore/QFile \
@@ -6254,7 +6626,80 @@ windowrule.o: windowrule.cpp windowrule.h \
 		/opt/armqt5.5-gec/include/QtSql/qsqltablemodel.h \
 		/opt/armqt5.5-gec/include/QtSql/qsqlquerymodel.h \
 		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
-		ui_rulewindow.h
+		netmodel.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpServer \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpserver.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qabstractsocket.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qhostaddress.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpSocket \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpsocket.h \
+		/opt/armqt5.5-gec/include/QtCore/QTimer \
+		/opt/armqt5.5-gec/include/QtCore/qtimer.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasictimer.h \
+		/opt/armqt5.5-gec/include/QtCore/QMap \
+		/opt/armqt5.5-gec/include/QtWidgets/QMessageBox \
+		/opt/armqt5.5-gec/include/QtWidgets/qmessagebox.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdialog.h \
+		ui_rulewindow.h \
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QComboBox \
+		/opt/armqt5.5-gec/include/QtWidgets/qcombobox.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QFrame \
+		/opt/armqt5.5-gec/include/QtWidgets/QHBoxLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/qboxlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayoutitem.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qgridlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLabel \
+		/opt/armqt5.5-gec/include/QtWidgets/qlabel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLineEdit \
+		/opt/armqt5.5-gec/include/QtWidgets/qlineedit.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextcursor.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextformat.h \
+		/opt/armqt5.5-gec/include/QtGui/qpen.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QPushButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qpushbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QSpacerItem \
+		/opt/armqt5.5-gec/include/QtWidgets/QTableView \
+		/opt/armqt5.5-gec/include/QtWidgets/qtableview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QTextBrowser \
+		/opt/armqt5.5-gec/include/QtWidgets/qtextbrowser.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtextedit.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextdocument.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QVBoxLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/QWidget \
+		top.h \
+		/opt/armqt5.5-gec/include/QtCore/QTime
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windowrule.o windowrule.cpp
 
 windowselectforid.o: windowselectforid.cpp windowselectforid.h \
@@ -6386,7 +6831,67 @@ windowselectforid.o: windowselectforid.cpp windowselectforid.h \
 		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
 		/opt/armqt5.5-gec/include/QtCore/QStringList \
 		ui_selectforid.h \
-		/opt/armqt5.5-gec/include/QtCore/QTime
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QCheckBox \
+		/opt/armqt5.5-gec/include/QtWidgets/qcheckbox.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QComboBox \
+		/opt/armqt5.5-gec/include/QtWidgets/qcombobox.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QGridLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/qgridlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayoutitem.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qboxlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHBoxLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLabel \
+		/opt/armqt5.5-gec/include/QtWidgets/qlabel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QPushButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qpushbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QSpacerItem \
+		/opt/armqt5.5-gec/include/QtWidgets/QTableView \
+		/opt/armqt5.5-gec/include/QtWidgets/qtableview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QWidget \
+		top.h \
+		/opt/armqt5.5-gec/include/QtCore/QTime \
+		netmodel.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpServer \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpserver.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qabstractsocket.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qhostaddress.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpSocket \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpsocket.h \
+		/opt/armqt5.5-gec/include/QtCore/QMap \
+		/opt/armqt5.5-gec/include/QtWidgets/QMessageBox \
+		/opt/armqt5.5-gec/include/QtWidgets/qmessagebox.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windowselectforid.o windowselectforid.cpp
 
 json.o: json.cpp json.h \
@@ -6466,7 +6971,68 @@ json.o: json.cpp json.h \
 		/opt/armqt5.5-gec/include/QtCore/qset.h \
 		/opt/armqt5.5-gec/include/QtCore/qcontiguouscache.h \
 		allstruct.h \
-		/opt/armqt5.5-gec/include/QtCore/QString
+		/opt/armqt5.5-gec/include/QtCore/QString \
+		sqlmodel.h \
+		/opt/armqt5.5-gec/include/QtCore/QObject \
+		/opt/armqt5.5-gec/include/QtSql/QSqlDatabase \
+		/opt/armqt5.5-gec/include/QtSql/qsqldatabase.h \
+		/opt/armqt5.5-gec/include/QtSql/qsql.h \
+		/opt/armqt5.5-gec/include/QtSql/QSqlError \
+		/opt/armqt5.5-gec/include/QtSql/qsqlerror.h \
+		/opt/armqt5.5-gec/include/QtSql/QSqlQuery \
+		/opt/armqt5.5-gec/include/QtSql/qsqlquery.h \
+		/opt/armqt5.5-gec/include/QtCore/QDate \
+		/opt/armqt5.5-gec/include/QtCore/qdatetime.h \
+		netmodel.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpServer \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpserver.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qabstractsocket.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qhostaddress.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpSocket \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpsocket.h \
+		/opt/armqt5.5-gec/include/QtCore/QTimer \
+		/opt/armqt5.5-gec/include/QtCore/qtimer.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasictimer.h \
+		/opt/armqt5.5-gec/include/QtCore/QMap \
+		/opt/armqt5.5-gec/include/QtWidgets/QMessageBox \
+		/opt/armqt5.5-gec/include/QtWidgets/qmessagebox.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdialog.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qwindowdefs.h \
+		/opt/armqt5.5-gec/include/QtGui/qwindowdefs_win.h \
+		/opt/armqt5.5-gec/include/QtCore/qmargins.h \
+		/opt/armqt5.5-gec/include/QtGui/qpaintdevice.h \
+		/opt/armqt5.5-gec/include/QtCore/qrect.h \
+		/opt/armqt5.5-gec/include/QtCore/qsize.h \
+		/opt/armqt5.5-gec/include/QtGui/qpalette.h \
+		/opt/armqt5.5-gec/include/QtGui/qcolor.h \
+		/opt/armqt5.5-gec/include/QtGui/qrgb.h \
+		/opt/armqt5.5-gec/include/QtGui/qbrush.h \
+		/opt/armqt5.5-gec/include/QtGui/qmatrix.h \
+		/opt/armqt5.5-gec/include/QtGui/qpolygon.h \
+		/opt/armqt5.5-gec/include/QtGui/qregion.h \
+		/opt/armqt5.5-gec/include/QtCore/qdatastream.h \
+		/opt/armqt5.5-gec/include/QtCore/qline.h \
+		/opt/armqt5.5-gec/include/QtGui/qtransform.h \
+		/opt/armqt5.5-gec/include/QtGui/qpainterpath.h \
+		/opt/armqt5.5-gec/include/QtGui/qimage.h \
+		/opt/armqt5.5-gec/include/QtGui/qpixelformat.h \
+		/opt/armqt5.5-gec/include/QtGui/qpixmap.h \
+		/opt/armqt5.5-gec/include/QtCore/qsharedpointer.h \
+		/opt/armqt5.5-gec/include/QtCore/qsharedpointer_impl.h \
+		/opt/armqt5.5-gec/include/QtGui/qfont.h \
+		/opt/armqt5.5-gec/include/QtGui/qfontmetrics.h \
+		/opt/armqt5.5-gec/include/QtGui/qfontinfo.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qsizepolicy.h \
+		/opt/armqt5.5-gec/include/QtGui/qcursor.h \
+		/opt/armqt5.5-gec/include/QtGui/qkeysequence.h \
+		/opt/armqt5.5-gec/include/QtGui/qevent.h \
+		/opt/armqt5.5-gec/include/QtCore/qurl.h \
+		/opt/armqt5.5-gec/include/QtCore/qurlquery.h \
+		/opt/armqt5.5-gec/include/QtCore/qfile.h \
+		/opt/armqt5.5-gec/include/QtCore/qfiledevice.h \
+		/opt/armqt5.5-gec/include/QtGui/qvector2d.h \
+		/opt/armqt5.5-gec/include/QtGui/qtouchdevice.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o json.o json.cpp
 
 windowadd.o: windowadd.cpp windowadd.h \
@@ -6603,7 +7169,69 @@ windowadd.o: windowadd.cpp windowadd.h \
 		allstruct.h \
 		/opt/armqt5.5-gec/include/QtCore/QDate \
 		/opt/armqt5.5-gec/include/QtCore/qdatetime.h \
-		ui_windowadd.h
+		json.h \
+		/opt/armqt5.5-gec/include/QtCore/QJsonDocument \
+		/opt/armqt5.5-gec/include/QtCore/qjsondocument.h \
+		/opt/armqt5.5-gec/include/QtCore/qjsonvalue.h \
+		/opt/armqt5.5-gec/include/QtCore/QJsonObject \
+		/opt/armqt5.5-gec/include/QtCore/qjsonobject.h \
+		/opt/armqt5.5-gec/include/QtCore/QJsonArray \
+		/opt/armqt5.5-gec/include/QtCore/qjsonarray.h \
+		/opt/armqt5.5-gec/include/QtCore/QJsonParseError \
+		/opt/armqt5.5-gec/include/QtCore/QJsonValue \
+		ui_windowadd.h \
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QFrame \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHBoxLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/qboxlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayoutitem.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qgridlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLabel \
+		/opt/armqt5.5-gec/include/QtWidgets/qlabel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLineEdit \
+		/opt/armqt5.5-gec/include/QtWidgets/qlineedit.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextcursor.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextformat.h \
+		/opt/armqt5.5-gec/include/QtGui/qpen.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QPushButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qpushbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QSpacerItem \
+		/opt/armqt5.5-gec/include/QtWidgets/QVBoxLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/QWidget \
+		top.h \
+		/opt/armqt5.5-gec/include/QtCore/QTime
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windowadd.o windowadd.cpp
 
 beep.o: beep.cpp beep.h
@@ -6745,7 +7373,42 @@ windowshezhi.o: windowshezhi.cpp windowshezhi.h \
 		allstruct.h \
 		/opt/armqt5.5-gec/include/QtCore/QDate \
 		/opt/armqt5.5-gec/include/QtCore/qdatetime.h \
-		ui_windowshezhi.h
+		ui_windowshezhi.h \
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QPushButton \
+		/opt/armqt5.5-gec/include/QtWidgets/qpushbutton.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractbutton.h \
+		top.h \
+		/opt/armqt5.5-gec/include/QtCore/QTime
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windowshezhi.o windowshezhi.cpp
 
 windowstart.o: windowstart.cpp windowstart.h \
@@ -6854,7 +7517,84 @@ windowstart.o: windowstart.cpp windowstart.h \
 		/opt/armqt5.5-gec/include/QtGui/qtouchdevice.h \
 		/opt/armqt5.5-gec/include/QtWidgets/qtabwidget.h \
 		/opt/armqt5.5-gec/include/QtGui/qicon.h \
-		ui_windowstart.h
+		ui_windowstart.h \
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QFrame \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHBoxLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/qboxlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qlayoutitem.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qgridlayout.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLabel \
+		/opt/armqt5.5-gec/include/QtWidgets/qlabel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QLineEdit \
+		/opt/armqt5.5-gec/include/QtWidgets/qlineedit.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextcursor.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextformat.h \
+		/opt/armqt5.5-gec/include/QtGui/qpen.h \
+		/opt/armqt5.5-gec/include/QtGui/qtextoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QSpacerItem \
+		/opt/armqt5.5-gec/include/QtWidgets/QVBoxLayout \
+		/opt/armqt5.5-gec/include/QtWidgets/QWidget \
+		top.h \
+		/opt/armqt5.5-gec/include/QtCore/QTimer \
+		/opt/armqt5.5-gec/include/QtCore/qtimer.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasictimer.h \
+		/opt/armqt5.5-gec/include/QtCore/QDate \
+		/opt/armqt5.5-gec/include/QtCore/qdatetime.h \
+		/opt/armqt5.5-gec/include/QtCore/QTime \
+		netmodel.h \
+		/opt/armqt5.5-gec/include/QtCore/QObject \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpServer \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpserver.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qabstractsocket.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qhostaddress.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpSocket \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpsocket.h \
+		/opt/armqt5.5-gec/include/QtCore/QMap \
+		/opt/armqt5.5-gec/include/QtWidgets/QMessageBox \
+		/opt/armqt5.5-gec/include/QtWidgets/qmessagebox.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdialog.h \
+		/opt/armqt5.5-gec/include/QtCore/QDebug \
+		sqlmodel.h \
+		/opt/armqt5.5-gec/include/QtSql/QSqlDatabase \
+		/opt/armqt5.5-gec/include/QtSql/qsqldatabase.h \
+		/opt/armqt5.5-gec/include/QtSql/qsql.h \
+		/opt/armqt5.5-gec/include/QtSql/QSqlError \
+		/opt/armqt5.5-gec/include/QtSql/qsqlerror.h \
+		/opt/armqt5.5-gec/include/QtSql/QSqlQuery \
+		/opt/armqt5.5-gec/include/QtSql/qsqlquery.h \
+		/opt/armqt5.5-gec/include/QtCore/QString \
+		allstruct.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windowstart.o windowstart.cpp
 
 windowlog.o: windowlog.cpp windowlog.h \
@@ -6977,7 +7717,54 @@ windowlog.o: windowlog.cpp windowlog.h \
 		allstruct.h \
 		/opt/armqt5.5-gec/include/QtCore/QDate \
 		/opt/armqt5.5-gec/include/QtCore/qdatetime.h \
-		ui_windowlog.h
+		ui_windowlog.h \
+		/opt/armqt5.5-gec/include/QtCore/QVariant \
+		/opt/armqt5.5-gec/include/QtWidgets/QAction \
+		/opt/armqt5.5-gec/include/QtWidgets/qaction.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qactiongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QApplication \
+		/opt/armqt5.5-gec/include/QtWidgets/qapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qcoreapplication.h \
+		/opt/armqt5.5-gec/include/QtCore/qeventloop.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdesktopwidget.h \
+		/opt/armqt5.5-gec/include/QtGui/qguiapplication.h \
+		/opt/armqt5.5-gec/include/QtGui/qinputmethod.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QButtonGroup \
+		/opt/armqt5.5-gec/include/QtWidgets/qbuttongroup.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QHeaderView \
+		/opt/armqt5.5-gec/include/QtWidgets/qheaderview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemview.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractscrollarea.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qframe.h \
+		/opt/armqt5.5-gec/include/QtCore/qabstractitemmodel.h \
+		/opt/armqt5.5-gec/include/QtCore/qitemselectionmodel.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyleoption.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractspinbox.h \
+		/opt/armqt5.5-gec/include/QtGui/qvalidator.h \
+		/opt/armqt5.5-gec/include/QtCore/qregularexpression.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qabstractslider.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qstyle.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qtabbar.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qrubberband.h \
+		/opt/armqt5.5-gec/include/QtWidgets/QWidget \
+		top.h \
+		/opt/armqt5.5-gec/include/QtCore/QTimer \
+		/opt/armqt5.5-gec/include/QtCore/qtimer.h \
+		/opt/armqt5.5-gec/include/QtCore/qbasictimer.h \
+		/opt/armqt5.5-gec/include/QtCore/QTime \
+		netmodel.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpServer \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpserver.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qabstractsocket.h \
+		/opt/armqt5.5-gec/include/QtNetwork/qhostaddress.h \
+		/opt/armqt5.5-gec/include/QtNetwork/QTcpSocket \
+		/opt/armqt5.5-gec/include/QtNetwork/qtcpsocket.h \
+		/opt/armqt5.5-gec/include/QtCore/QMap \
+		/opt/armqt5.5-gec/include/QtWidgets/QMessageBox \
+		/opt/armqt5.5-gec/include/QtWidgets/qmessagebox.h \
+		/opt/armqt5.5-gec/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windowlog.o windowlog.cpp
 
 moc_netmodel.o: moc_netmodel.cpp 

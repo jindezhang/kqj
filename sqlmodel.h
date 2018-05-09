@@ -34,18 +34,18 @@ public:
     bool net_insert(Net &data);
     void config_select(QString &rule);
     bool config_insert(QString rule);
-    bool config_insert_time(QString before, QString after);
+    bool config_insert_time(config &con);
     void config_select_time(QString &before, QString &after);
     bool config_reset();//重置系统。
     void config_select_all(config &con);
 
 //    权限表，用于进入主菜单的操作。
     void authority_select(QString rfid);//权限
-    void authority_delete(QString rfid);
+    bool authority_delete(QString rfid);
     bool authority_insert(QString rfid);
 
 //    员工数据，未考勤前的数据
-    void em_info_selectAll();//获取员工的rfid信息。
+    void em_info_selectAll(QStringList &rfid);//获取全部员工的rfid信息。
     void em_info_selectforid(QString rfid);
     bool em_info_insert(Em_info &info);
     void em_info_delete(QString rfid);
@@ -57,7 +57,7 @@ public:
     void em_infos_select_date(QStringList &list_y,QStringList &list_m,QStringList &list_d);
     bool check_exists(QStringList list, QString str);
 //    void em_infos_selectfordepartment(QString department);
-    void em_infos_selectfordate(QString date);//发送数据给服务器。
+    void em_infos_selectfordate(QString date, QList<Em_infos> &em);//发送数据给服务器。
     void em_infos_selectfor_department(QString department);
 
 //    同时查找日期和部门，不需要某一部分的时候，参数为NULL;查找所有的时候，都给NULL；
@@ -69,7 +69,7 @@ public:
     bool em_infos_update(QString id, QString col_name, QString value);
 
 //    考勤规则
-    void rule_selectAll();//获取考勤规则的name；
+    void rule_selectAll(QString name, Rule &data);//获取考勤规则的name；
     void rule_selectAll(QStringList &list);
     void rule_select(QString name);
     bool rule_insert(Rule &info);

@@ -231,19 +231,22 @@
      <rect>
       <x>130</x>
       <y>380</y>
-      <width>201</width>
-      <height>33</height>
+      <width>131</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>25</pointsize>
+      <pointsize>30</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 0);</string>
+    </property>
     <property name="text">
-     <string/>
+     <string>xx:xx</string>
     </property>
    </widget>
    <widget class="QLabel" name="icon">
@@ -272,6 +275,19 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_card">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>370</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>模拟刷卡</string>
     </property>
    </widget>
   </widget>

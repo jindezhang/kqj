@@ -22,6 +22,9 @@ public:
     ~top();
     void setDir(QString dir);
     void hideButton();
+    void showButton();
+    void button_enable_();
+    void button_disable_();
 private slots:
     void myupdate();
     void on_bt_fanhui_clicked();

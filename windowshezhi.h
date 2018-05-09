@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <windownet.h>
 #include <netmodel.h>
+#include <QTimer>
 
 namespace Ui {
 class windowshezhi;
@@ -18,15 +19,23 @@ public:
     ~windowshezhi();
 public slots:
     void fanhui();
+    void set_Enabled(bool b);
+    void update_time(QString json);
 private slots:
     void on_pushButton_2_clicked();
 
     void on_pushButton_clicked();
 
+    void on_bt_reset_clicked();
+    void update_out();
+
+
 private:
     Ui::windowshezhi *ui;
     netwindow* w;
     netmodel* net;
+    sqlmodel* sql;
+    QTimer* timer;
 };
 
 #endif // WINDOWSHEZHI_H
