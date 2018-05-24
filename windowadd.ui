@@ -14,27 +14,11 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="top" name="wg_top" native="true">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>800</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>800</width>
-      <height>50</height>
-     </size>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>410</y>
+      <y>430</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -46,8 +30,8 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>410</y>
+      <x>230</x>
+      <y>430</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -60,56 +44,9 @@
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>358</y>
-      <width>376</width>
-      <height>46</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="font">
-          <font>
-           <pointsize>25</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>提示信息：</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="l_tip">
-         <property name="font">
-          <font>
-           <pointsize>25</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>请刷卡......</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="Line" name="line">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
       <y>130</y>
-      <width>378</width>
-      <height>222</height>
+      <width>381</width>
+      <height>231</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -263,7 +200,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>580</x>
@@ -277,7 +214,7 @@
       <widget class="QPushButton" name="pushButton_3">
        <property name="font">
         <font>
-         <pointsize>15</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="text">
@@ -302,11 +239,99 @@
       <widget class="QPushButton" name="bt_end">
        <property name="font">
         <font>
-         <pointsize>15</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="text">
         <string>结束</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <spacer name="horizontalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="top" name="wg_top" native="true"/>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_6">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>171</x>
+      <y>360</y>
+      <width>381</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="font">
+          <font>
+           <pointsize>25</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>提示信息：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="l_tip">
+         <property name="font">
+          <font>
+           <pointsize>25</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>请刷卡......</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="Line" name="line">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>

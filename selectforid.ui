@@ -16,14 +16,37 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="top" name="wg_top" native="true">
-      <property name="minimumSize">
-       <size>
-        <width>800</width>
-        <height>50</height>
-       </size>
-      </property>
-     </widget>
+     <layout class="QHBoxLayout" name="horizontalLayout_6">
+      <item>
+       <spacer name="horizontalSpacer_6">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="top" name="wg_top" native="true"/>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_7">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
     </item>
     <item row="1" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
@@ -31,7 +54,7 @@
        <widget class="QLabel" name="label">
         <property name="font">
          <font>
-          <pointsize>15</pointsize>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="text">
@@ -79,6 +102,31 @@
         </property>
        </spacer>
       </item>
+      <item>
+       <widget class="QPushButton" name="bt_selectdate">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>查询</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
      </layout>
     </item>
     <item row="2" column="0">
@@ -89,7 +137,7 @@
          <widget class="QLabel" name="label_4">
           <property name="font">
            <font>
-            <pointsize>15</pointsize>
+            <pointsize>12</pointsize>
            </font>
           </property>
           <property name="text">
@@ -132,19 +180,14 @@
           </property>
          </spacer>
         </item>
-        <item>
-         <widget class="QPushButton" name="bt_selectdate">
-          <property name="font">
-           <font>
-            <pointsize>15</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>查询</string>
-          </property>
-         </widget>
-        </item>
        </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>备注信息提示的是该员工最近一次不准点的考勤情况。</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="l_tip">
@@ -187,7 +230,7 @@
          <widget class="QLabel" name="label_2">
           <property name="font">
            <font>
-            <pointsize>15</pointsize>
+            <pointsize>12</pointsize>
            </font>
           </property>
           <property name="text">
@@ -199,7 +242,7 @@
          <widget class="QCheckBox" name="cb_am">
           <property name="font">
            <font>
-            <pointsize>15</pointsize>
+            <pointsize>12</pointsize>
            </font>
           </property>
           <property name="text">
@@ -211,7 +254,7 @@
          <widget class="QCheckBox" name="cb_pm">
           <property name="font">
            <font>
-            <pointsize>15</pointsize>
+            <pointsize>12</pointsize>
            </font>
           </property>
           <property name="text">
@@ -223,7 +266,7 @@
          <widget class="QCheckBox" name="cb_nm">
           <property name="font">
            <font>
-            <pointsize>15</pointsize>
+            <pointsize>12</pointsize>
            </font>
           </property>
           <property name="text">
@@ -248,7 +291,7 @@
          <widget class="QLabel" name="label_3">
           <property name="font">
            <font>
-            <pointsize>15</pointsize>
+            <pointsize>12</pointsize>
            </font>
           </property>
           <property name="text">
@@ -260,7 +303,7 @@
          <widget class="QCheckBox" name="cb_depart">
           <property name="font">
            <font>
-            <pointsize>15</pointsize>
+            <pointsize>12</pointsize>
            </font>
           </property>
           <property name="text">
@@ -272,7 +315,7 @@
          <widget class="QCheckBox" name="cb_date">
           <property name="font">
            <font>
-            <pointsize>15</pointsize>
+            <pointsize>12</pointsize>
            </font>
           </property>
           <property name="text">

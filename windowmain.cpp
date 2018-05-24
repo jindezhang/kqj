@@ -23,6 +23,8 @@ MainWindow::MainWindow(QWidget *parent) :
     she = NULL;
     add = NULL;
 
+    net = netmodel::get_net();
+
 }
 
 MainWindow::~MainWindow()
@@ -66,6 +68,11 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_5_clicked()
 {
+    if(net->get_flag() == 0){
+        QMessageBox::warning(this,"提示", "未连接服务，无法使用该功能。");
+        return;
+    }
+
     if(NULL == add){
         add = new windowadd(this);
     }

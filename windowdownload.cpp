@@ -3,7 +3,7 @@
 #include <QMessageBox>
 
 //U盘的文件系统，必须是FAT文件系统
-#define PATH "/mnt/udisk/aaaa"
+#define PATH "/mnt/udisk/DH_data"
 #define UPAN "/mnt/udisk"
 
 downloadWindow::downloadWindow(QWidget *parent) :
@@ -19,9 +19,13 @@ downloadWindow::downloadWindow(QWidget *parent) :
 
     ui->cb_date->setChecked(true);
     ui->l_tip->hide();
-//    //u盘的判断
-//    QDir pan(PATH);
-//    if(!pan.exists())
+
+    //u盘插入的判断
+    QDir pan(UPAN);
+    if(!pan.exists()){
+       QMessageBox::warning(this, "提示","请插入U盘！");
+       //ui->bt_down->setEnabled(false);
+    }
 
     //日期和部门的设置
     sql = sqlmodel::get_model();

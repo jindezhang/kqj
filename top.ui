@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>50</height>
+    <height>52</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -57,6 +57,11 @@
      </item>
      <item row="0" column="3">
       <widget class="QPushButton" name="bt_fanhui">
+       <property name="font">
+        <font>
+         <pointsize>7</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>返回上一层</string>
        </property>
@@ -66,7 +71,7 @@
       <widget class="QLabel" name="label_9">
        <property name="font">
         <font>
-         <pointsize>15</pointsize>
+         <pointsize>12</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>

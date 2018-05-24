@@ -17,6 +17,7 @@ public:
     json();
     ~json();
     void em_infos_tojson(QList<Em_infos> &em, QString &json);
+    void em_infos_state_tojson(QList<Em_infos_state> &em, QString &json);
     void json_toem_infos(QString &json);//留空，直接判断OK就可以
 
     void json_toem_info(QString &json, QList<Em_info> &em);
@@ -32,7 +33,7 @@ public:
     void authority_tojson(QString &json);
     void json_toauthority(QString &json);//拿到数据直接插入、或者删除。authority_del,authority_add
 
-    void add_tojson(QString json, QString &value);
+    void add_tojson(QStringList json, QString &value);
     void json_toadd(QString &json, Em_info &tmp_em);
 
 private:

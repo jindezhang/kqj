@@ -18,13 +18,14 @@ windowadd::windowadd(QWidget *parent) :
 
     set_add(false);
     //连接读取rfid的线程；
+    //刷卡
+//    mythread = myThread::get_thread();
+//    connect(mythread, SIGNAL(send_rfid(int)),this,SLOT(get_rfid(int)));
+//    mythread->start();
 
 
 
 
-    if(net->get_flag() == 0){
-        QMessageBox::warning(this,"提示", "未连接服务，无法使用该功能。");
-    }
 }
 
 windowadd::~windowadd()
@@ -51,7 +52,7 @@ void windowadd::addstatus(QString status)
         on_pushButton_2_clicked();
     }else{
         //如果不是状态信息，那么就是员工数据。
-        Em_info list;
+
         jsonc.json_toadd(status, list);
         ui->id->setText(list.id);
         ui->name->setText(list.name);
@@ -97,7 +98,9 @@ void windowadd::on_pushButton_clicked()
 
     //发送卡号给服务器。
     QString json_data;
-    jsonc.add_tojson(rfid,json_data);
+    QStringList list_value;
+    list_value<<rfid<<list.id;
+    jsonc.add_tojson(list_value,json_data);
     net->send_data(json_data);
 
     //禁用按钮，发送成功后，可以启用。

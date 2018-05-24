@@ -14,29 +14,13 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="top" name="wg_top" native="true">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>800</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>800</width>
-      <height>0</height>
-     </size>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
       <x>330</x>
       <y>110</y>
-      <width>101</width>
-      <height>51</height>
+      <width>141</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
@@ -48,8 +32,8 @@
      <rect>
       <x>330</x>
       <y>190</y>
-      <width>101</width>
-      <height>51</height>
+      <width>141</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
@@ -79,8 +63,8 @@
      <rect>
       <x>330</x>
       <y>370</y>
-      <width>101</width>
-      <height>51</height>
+      <width>141</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
@@ -92,14 +76,62 @@
      <rect>
       <x>330</x>
       <y>280</y>
-      <width>101</width>
-      <height>51</height>
+      <width>141</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
      <string>查看系统日志</string>
     </property>
    </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="top" name="wg_top" native="true"/>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+   <zorder>pushButton</zorder>
+   <zorder>pushButton_2</zorder>
+   <zorder>l_tips</zorder>
+   <zorder>bt_reset</zorder>
+   <zorder>pushButton_3</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>horizontalSpacer</zorder>
   </widget>
  </widget>
  <customwidgets>

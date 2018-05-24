@@ -50,12 +50,12 @@ selectforid::selectforid(QWidget *parent) :
 
       ui->table_record->setModel(model);
 
-      for(int i = 0 ;i<3;i++){
-          ui->table_record->setColumnWidth(i,62);
-      }
-      ui->table_record->setColumnWidth(3,80);
+      ui->table_record->setColumnWidth(0,73);
+      ui->table_record->setColumnWidth(1,100);
+      ui->table_record->setColumnWidth(2,80);
+      ui->table_record->setColumnWidth(3,150);
       for(int i = 4;i<11;i++){
-          ui->table_record->setColumnWidth(i,70);
+          ui->table_record->setColumnWidth(i,103);
       }
 
       //view->setModel(model);

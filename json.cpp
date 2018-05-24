@@ -58,6 +58,37 @@ void json::em_infos_tojson(QList <Em_infos> &em, QString &json)
 
 }
 
+void json::em_infos_state_tojson(QList<Em_infos_state> &em, QString &json)
+{
+    Em_infos_state tmp_em;
+    QJsonObject data;//记录对象
+    QJsonArray arr;
+    QJsonObject obj;//json对象
+    QJsonDocument doc;//json文档
+
+   QList <Em_infos_state>::iterator iter;
+   for(iter = em.begin(); iter != em.end(); iter++){
+       tmp_em = *iter;
+       data.insert("id",tmp_em.id);
+       data.insert("date",tmp_em.date);
+       data.insert("amg",tmp_em.amg);
+       data.insert("amo",tmp_em.amo);
+       data.insert("pmg",tmp_em.pmg);
+       data.insert("pmo",tmp_em.pmo);
+       data.insert("nmg",tmp_em.nmg);
+       data.insert("nmo",tmp_em.nmo);
+
+       arr.append(QJsonValue(data));
+   }
+
+    obj.insert("command","em_infos_state");
+    obj.insert("data",QJsonValue(arr));
+
+    doc.setObject(obj);
+    QByteArray byteArra = doc.toJson(QJsonDocument::Compact);
+    json = QString(byteArra);
+}
+
 void json::json_toem_infos(QString &json)
 {
 
@@ -92,7 +123,7 @@ void json::json_toem_info(QString &json, QList<Em_info> &em)
         tmp_em.department = data.value("department").toString();
         tmp_em.icon = data.value("icon").toString();
         tmp_em.info = data.value("info").toString();
-       em << tmp_em;
+        em << tmp_em;
     }
 
 }
@@ -296,12 +327,19 @@ void json::json_toauthority(QString &json)
     }
 }
 
-void json::add_tojson(QString value, QString &json)
+void json::add_tojson(QStringList value, QString &json)
 {
+    QJsonObject date;
+    QJsonArray arr;
     QJsonObject obj;//json对象
     QJsonDocument doc;//json文档
+
+    date.insert("rfid",value[0]);
+    date.insert("id", value[1]);
+    arr.append(QJsonValue(date));
+
     obj.insert("command","rfid_add");
-    obj.insert("data",value);
+    obj.insert("data",QJsonValue(arr));
     doc.setObject(obj);
     QByteArray byteArra = doc.toJson(QJsonDocument::Compact);
     json = QString(byteArra);

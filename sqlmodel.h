@@ -46,7 +46,7 @@ public:
 
 //    员工数据，未考勤前的数据
     void em_info_selectAll(QStringList &rfid);//获取全部员工的rfid信息。
-    void em_info_selectforid(QString rfid);
+    void em_info_selectforid(QString rfid, Em_info &data);
     bool em_info_insert(Em_info &info);
     void em_info_delete(QString rfid);
     void em_info_deleteAll();
@@ -60,6 +60,7 @@ public:
     void em_infos_selectfordate(QString date, QList<Em_infos> &em);//发送数据给服务器。
     void em_infos_selectfor_department(QString department);
 
+
 //    同时查找日期和部门，不需要某一部分的时候，参数为NULL;查找所有的时候，都给NULL；
     void em_infos_select_for_date_department(QString department, QString date, QString &sql_data);//具有特殊性，只为下载数据模块服务。
     void em_infos_select_for_date_department_json(QString department, QString date, QList<Em_infos> &json_data);
@@ -67,6 +68,11 @@ public:
     void em_infos_delete(QString id);
     void em_infos_deleteAll();
     bool em_infos_update(QString id, QString col_name, QString value);
+
+    //员工考勤情况数据对应em_infos_state表
+    bool em_infos_update_state(QString id, QString col_name, QString value);
+    bool em_infos_insert_state(Em_info &info);
+    void em_infos_selectfordate_state(QString date, QList<Em_infos_state> &em);//发送数据给服务器。
 
 //    考勤规则
     void rule_selectAll(QString name, Rule &data);//获取考勤规则的name；
@@ -79,7 +85,9 @@ public:
 //    日志信息
     bool log_insert(Log &info);
     //void log_delete();
-    void table_select(QString name);
+    void log_select_name(QStringList &name);
+    void log_select_date(QStringList &list_y,QStringList &list_m,QStringList &list_d);
+    void log_select_time(QStringList &h, QStringList &m);
     bool table_update(QString name,QString time);
 
     //接收者：结构体引用

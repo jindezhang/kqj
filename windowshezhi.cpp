@@ -13,6 +13,8 @@ windowshezhi::windowshezhi(QWidget *parent) :
     connect(ui->wg_top,SIGNAL(bt_click()),this,SLOT(fanhui()));
 
     w = NULL;
+    log = NULL;
+
     net = netmodel::get_net();
     connect(net, SIGNAL(time_sig(QString)), this, SLOT(update_time(QString)));
 
@@ -31,6 +33,10 @@ void windowshezhi::fanhui()
 {
     delete w;
     w = NULL;
+
+    delete log;
+    log = NULL;
+
     this->parentWidget()->show();
     this->close();
 }
@@ -107,3 +113,11 @@ void windowshezhi::update_time(QString json)
 }
 
 
+
+void windowshezhi::on_pushButton_3_clicked()
+{
+    if(NULL == log)
+        log = new windowlog(this);
+    log->show();
+    this->hide();
+}

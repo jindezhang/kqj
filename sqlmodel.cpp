@@ -262,11 +262,11 @@ void sqlmodel::em_info_selectAll(QStringList &rfid)
     }
 }
 
-void sqlmodel::em_info_selectforid(QString rfid)
+void sqlmodel::em_info_selectforid(QString rfid, Em_info &data)
 {
     QSqlQuery query;
     QString sql_s = QString("SELECT * FROM em_info where rfid ='%1';").arg(rfid);
-    Em_info data;
+
     if(!query.exec(sql_s)){
         qDebug() << "select Failed!"<<query.lastError();
         return;
@@ -278,7 +278,7 @@ void sqlmodel::em_info_selectforid(QString rfid)
         data.name = query.value(2).toString();
         data.department = query.value(3).toString();
         data.icon = query.value(4).toString();
-        emit sendEm_info(data);
+        //emit sendEm_info(data);
     }
 }
 
@@ -286,7 +286,7 @@ bool sqlmodel::em_info_insert(Em_info &info)
 {
     QSqlQuery query;
     QString sql_s = QString("insert into em_info values('%1','%2','%3','%4','%5','%6');").arg(info.id).arg(info.rfid).arg(info.name).arg(info.department).arg(info.icon).arg(info.info);
-
+    qDebug()<<"sql:"<<sql_s;
     if(!query.exec(sql_s)){
         qDebug() << "insert Failed!"<<query.lastError();
         return false;
@@ -538,12 +538,15 @@ void sqlmodel::em_infos_select_for_date_department_json(QString department, QStr
 bool sqlmodel::em_infos_insert(Em_info &info)
 {
     QSqlQuery query;
-    QString sql_s = QString("insert into em_infos values('%1','%2','%3');").arg(info.id).arg(info.name).arg(info.department);
+    QString date = QDate::currentDate().toString("yyyy-MM-dd");
+    QString sql_s = QString("insert into em_infos values('%1','%2','%3','%4');").arg(info.id).arg(info.name).arg(info.department).arg(date);
 
     if(!query.exec(sql_s)){
         qDebug() << "insert Failed!"<<query.lastError();
         return false;
     }
+    if( !em_infos_insert_state(info) )
+        return false;
     return true;
 }
 
@@ -572,11 +575,61 @@ bool sqlmodel::em_infos_update(QString id, QString col_name, QString value)
     QSqlQuery query;
     QString date = QDate::currentDate().toString("yyyy-MM-dd");
     QString sql_s = QString("update em_infos set %1 = '%2' where id = '%3' and date = '%4';").arg(col_name).arg(value).arg(id).arg(date);
+    qDebug()<<"sql_s:"<<sql_s;
+
     if(!query.exec(sql_s)){
         qDebug() << "update Failed!"<<query.lastError();
         return false;
     }
     return true;
+}
+
+bool sqlmodel::em_infos_update_state(QString id, QString col_name, QString value)
+{
+    QSqlQuery query;
+    QString date = QDate::currentDate().toString("yyyy-MM-dd");
+    QString sql_s = QString("update em_infos_state set %1 = '%2' where id = '%3' and date = '%4';").arg(col_name).arg(value).arg(id).arg(date);
+    if(!query.exec(sql_s)){
+        qDebug() << "update Failed!"<<query.lastError();
+        return false;
+    }
+    return true;
+}
+
+bool sqlmodel::em_infos_insert_state(Em_info &info)
+{
+    QSqlQuery query;
+    QString date = QDate::currentDate().toString("yyyy-MM-dd");
+    QString sql_s = QString("insert into em_infos_state values('%1','%2');").arg(info.id).arg(date);
+
+    if(!query.exec(sql_s)){
+        qDebug() << "insert Failed!"<<query.lastError();
+        return false;
+    }
+    return true;
+}
+
+void sqlmodel::em_infos_selectfordate_state(QString date, QList<Em_infos_state> &em)
+{
+    QSqlQuery query;
+    QString sql_s = QString("SELECT * FROM em_infos_state where date = '%1';").arg(date);
+    Em_infos_state data;
+    if(!query.exec(sql_s)){
+        qDebug() << "selectAll Failed!"<<query.lastError();
+        return;
+    }
+    int i = 2;
+    while(query.next()){
+        data.id = query.value(0).toString();
+        data.date = query.value(1).toString();
+        data.amg = query.value(i).toString();i++;
+        data.amo = query.value(i).toString();i++;
+        data.pmg = query.value(i).toString();i++;
+        data.pmo = query.value(i).toString();i++;
+        data.nmg = query.value(i).toString();i++;
+        data.nmo = query.value(i).toString();
+        em<<data;
+    }
 }
 
 void sqlmodel::rule_selectAll(QStringList &list)
@@ -685,25 +738,69 @@ bool sqlmodel::log_insert(Log &info)
     return true;
 }
 
-void sqlmodel::table_select(QString name)
+void sqlmodel::log_select_name(QStringList &name)
 {
     QSqlQuery query;
-    QString sql_s = QString("select time from table where name = '%1';").arg(name);
-
+    QString sql_s = QString("select name from log ;");
+    QString data;
     if(!query.exec(sql_s)){
         qDebug() << "select Failed!"<<query.lastError();
 
     }
     while(query.next()){
-        QString data = query.value(0).toString();
-        emit sendTable(data);
+        data = query.value(0).toString();
+        name<<data;
     }
 }
 
-bool sqlmodel::table_update(QString name, QString time)
+void sqlmodel::log_select_date(QStringList &list_y, QStringList &list_m, QStringList &list_d)
 {
     QSqlQuery query;
-    QString sql_s = QString("update table set time = '%1' where name = '%2';").arg(time).arg(name);
+    QString sql_s = QString("SELECT distinct date FROM log  ;");
+    QString data;
+    QStringList list;
+    if(!query.exec(sql_s)){
+        qDebug() << "select Failed!"<<query.lastError();
+        return;
+    }
+    while(query.next()){
+        data = query.value(0).toString();
+        list = data.split("-");
+        if(check_exists(list_y,list[0]))
+            list_y<<list[0];
+        if(check_exists(list_m,list[1]))
+            list_m<<list[1];
+        if(check_exists(list_d,list[2]))
+            list_d<<list[2];
+    }
+}
+
+void sqlmodel::log_select_time(QStringList &h, QStringList &m)
+{
+    QSqlQuery query;
+    QString sql_s = QString("SELECT distinct time FROM log  ;");
+    QString data;
+    QStringList list;
+    if(!query.exec(sql_s)){
+        qDebug() << "select Failed!"<<query.lastError();
+        return;
+    }
+    while(query.next()){
+        data = query.value(0).toString();
+        list = data.split(":");
+        if(check_exists(h,list[0]))
+            h<<list[0];
+        if(check_exists(m,list[1]))
+            m<<list[1];
+
+    }
+}
+
+
+bool sqlmodel::table_update(QString list_y, QString time)
+{
+    QSqlQuery query;
+    QString sql_s = QString("update table set time = '%1' where name = '%2';").arg(time).arg(list_y);
 
     if(!query.exec(sql_s)){
         qDebug() << "update Failed!"<<query.lastError();

@@ -19,7 +19,7 @@
      <rect>
       <x>50</x>
       <y>310</y>
-      <width>376</width>
+      <width>427</width>
       <height>46</height>
      </rect>
     </property>
@@ -46,7 +46,7 @@
           </font>
          </property>
          <property name="text">
-          <string>请刷卡......</string>
+          <string>请刷卡.........</string>
          </property>
         </widget>
        </item>
@@ -229,10 +229,10 @@
    <widget class="QLabel" name="l_tip2">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>70</x>
       <y>380</y>
-      <width>131</width>
-      <height>41</height>
+      <width>361</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -246,42 +246,14 @@
      <string notr="true">color: rgb(255, 0, 0);</string>
     </property>
     <property name="text">
-     <string>xx:xx</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="icon">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>90</y>
-      <width>200</width>
-      <height>230</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>200</width>
-      <height>230</height>
-     </size>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 0, 127);</string>
-    </property>
-    <property name="text">
-     <string/>
+     <string>当前非考勤时间段</string>
     </property>
    </widget>
    <widget class="QPushButton" name="bt_card">
     <property name="geometry">
      <rect>
       <x>490</x>
-      <y>370</y>
+      <y>340</y>
       <width>111</width>
       <height>41</height>
      </rect>
@@ -289,6 +261,127 @@
     <property name="text">
      <string>模拟刷卡</string>
     </property>
+   </widget>
+   <widget class="QPushButton" name="bt_card_up">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>390</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>模拟上传员工信息</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_start">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>390</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>模拟开始考勤</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_card_down">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>340</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>模拟申请员工数据</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_end">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>430</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>模拟结束考勤</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>80</y>
+      <width>222</width>
+      <height>252</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="Line" name="line_4">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(192, 192, 192);</string>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="Line" name="line_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="icon">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>230</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 0, 127);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="Line" name="line_5">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>

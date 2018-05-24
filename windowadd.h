@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <netmodel.h>
 #include <json.h>
+#include <mythread.h>
 
 namespace Ui {
 class windowadd;
@@ -34,8 +35,10 @@ private slots:
 private:
     Ui::windowadd *ui;
     netmodel* net;
+    Em_info list;
     QString rfid;
     json jsonc;
+    //myThread* mythread;
 };
 
 #endif // WINDOWADD_H

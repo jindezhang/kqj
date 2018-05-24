@@ -12,6 +12,7 @@
 #include <windowshezhi.h>
 #include <windowadd.h>
 #include <windowstart.h>
+#include <netmodel.h>
 
 namespace Ui {
 class MainWindow;
@@ -49,6 +50,7 @@ private:
     windowshezhi* she;
     windowadd* add;
     windowstart* start;
+    netmodel* net;
 };
 
 #endif // MAINWINDOW_H

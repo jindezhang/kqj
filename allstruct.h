@@ -37,6 +37,20 @@ struct Em_infos
     QString info;
 };
 
+//保存已经考勤完成的员工记录
+struct Em_infos_state
+{
+    QString id;
+    QString date;
+    QString amg;
+    QString amo;
+    QString pmg;
+    QString pmo;
+    QString nmg;
+    QString nmo;
+
+};
+
 struct Rule
 {
 

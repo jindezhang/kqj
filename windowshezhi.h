@@ -5,6 +5,7 @@
 #include <windownet.h>
 #include <netmodel.h>
 #include <QTimer>
+#include <windowlog.h>
 
 namespace Ui {
 class windowshezhi;
@@ -30,12 +31,15 @@ private slots:
     void update_out();
 
 
+    void on_pushButton_3_clicked();
+
 private:
     Ui::windowshezhi *ui;
     netwindow* w;
     netmodel* net;
     sqlmodel* sql;
     QTimer* timer;
+    windowlog* log;
 };
 
 #endif // WINDOWSHEZHI_H

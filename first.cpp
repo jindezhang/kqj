@@ -77,7 +77,7 @@ void first::net_connect_ok()
 
     config c;
     sl->config_select_all(c);
-    QString com = QString("%1#init").arg(c.device);
+    QString com = QString("init#%1").arg(c.device);
     net->send_data(com);
 
 

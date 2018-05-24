@@ -130,7 +130,7 @@ void test::on_pushButton_2_clicked()
 
 void test::on_pushButton_3_clicked()
 {
-   // bp->start_Beep();
+    //bp->start_Beep();
     qtt->start(100);
 }
 

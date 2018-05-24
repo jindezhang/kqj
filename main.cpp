@@ -8,6 +8,7 @@
 #include <serialmodel.h>
 #include <test.h>
 #include <windowdownload.h>
+#include <windowlog.h>
 #include <QString>
 #include <QByteArray>
 
@@ -38,6 +39,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     first w ;
+    //windowlog w;
     w.show();
 
 
