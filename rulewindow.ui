@@ -14,22 +14,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="top" name="wg_top" native="true">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>800</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>800</width>
-      <height>50</height>
-     </size>
-    </property>
-   </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
@@ -214,9 +198,9 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>140</y>
-      <width>201</width>
+      <x>40</x>
+      <y>150</y>
+      <width>219</width>
       <height>324</height>
      </rect>
     </property>
@@ -227,7 +211,7 @@
         <widget class="QLabel" name="l_name_5">
          <property name="font">
           <font>
-           <pointsize>15</pointsize>
+           <pointsize>9</pointsize>
           </font>
          </property>
          <property name="text">
@@ -241,7 +225,7 @@
           <widget class="QLabel" name="l_name_6">
            <property name="font">
             <font>
-             <pointsize>15</pointsize>
+             <pointsize>9</pointsize>
             </font>
            </property>
            <property name="text">
@@ -259,13 +243,18 @@
            </property>
            <property name="font">
             <font>
-             <pointsize>15</pointsize>
+             <pointsize>7</pointsize>
             </font>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton">
+           <property name="font">
+            <font>
+             <pointsize>7</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>添加</string>
            </property>
@@ -279,7 +268,7 @@
           <widget class="QLabel" name="l_name_7">
            <property name="font">
             <font>
-             <pointsize>15</pointsize>
+             <pointsize>9</pointsize>
             </font>
            </property>
            <property name="text">
@@ -297,13 +286,18 @@
            </property>
            <property name="font">
             <font>
-             <pointsize>15</pointsize>
+             <pointsize>7</pointsize>
             </font>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_2">
+           <property name="font">
+            <font>
+             <pointsize>7</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>添加</string>
            </property>
@@ -326,7 +320,7 @@
         <widget class="QLabel" name="l_name_8">
          <property name="font">
           <font>
-           <pointsize>15</pointsize>
+           <pointsize>9</pointsize>
           </font>
          </property>
          <property name="text">
@@ -340,7 +334,7 @@
           <widget class="QLabel" name="l_name_9">
            <property name="font">
             <font>
-             <pointsize>15</pointsize>
+             <pointsize>9</pointsize>
             </font>
            </property>
            <property name="text">
@@ -358,13 +352,18 @@
            </property>
            <property name="font">
             <font>
-             <pointsize>15</pointsize>
+             <pointsize>7</pointsize>
             </font>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_3">
+           <property name="font">
+            <font>
+             <pointsize>7</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>添加</string>
            </property>
@@ -378,7 +377,7 @@
           <widget class="QLabel" name="l_name_10">
            <property name="font">
             <font>
-             <pointsize>15</pointsize>
+             <pointsize>9</pointsize>
             </font>
            </property>
            <property name="text">
@@ -396,13 +395,18 @@
            </property>
            <property name="font">
             <font>
-             <pointsize>15</pointsize>
+             <pointsize>7</pointsize>
             </font>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_4">
+           <property name="font">
+            <font>
+             <pointsize>7</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>添加</string>
            </property>
@@ -425,7 +429,7 @@
         <widget class="QLabel" name="l_name_11">
          <property name="font">
           <font>
-           <pointsize>15</pointsize>
+           <pointsize>9</pointsize>
           </font>
          </property>
          <property name="text">
@@ -439,7 +443,7 @@
           <widget class="QLabel" name="l_name_12">
            <property name="font">
             <font>
-             <pointsize>15</pointsize>
+             <pointsize>9</pointsize>
             </font>
            </property>
            <property name="text">
@@ -457,13 +461,18 @@
            </property>
            <property name="font">
             <font>
-             <pointsize>15</pointsize>
+             <pointsize>7</pointsize>
             </font>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_5">
+           <property name="font">
+            <font>
+             <pointsize>7</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>添加</string>
            </property>
@@ -477,7 +486,7 @@
           <widget class="QLabel" name="l_name_13">
            <property name="font">
             <font>
-             <pointsize>15</pointsize>
+             <pointsize>9</pointsize>
             </font>
            </property>
            <property name="text">
@@ -495,13 +504,18 @@
            </property>
            <property name="font">
             <font>
-             <pointsize>15</pointsize>
+             <pointsize>7</pointsize>
             </font>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_6">
+           <property name="font">
+            <font>
+             <pointsize>7</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>添加</string>
            </property>
@@ -551,31 +565,18 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>60</y>
-      <width>226</width>
-      <height>78</height>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>61</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="1" colspan="4">
-      <widget class="QLabel" name="label_2">
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>规则名是日期+时间组合</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <spacer name="horizontalSpacer_7">
+    <layout class="QHBoxLayout" name="horizontalLayout_13">
+     <item>
+      <spacer name="horizontalSpacer_10">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -587,19 +588,49 @@
        </property>
       </spacer>
      </item>
-     <item row="1" column="1">
-      <widget class="QLabel" name="l_name_2">
+     <item>
+      <widget class="top" name="wg_top" native="true"/>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_13">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>29</x>
+      <y>56</y>
+      <width>231</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_2">
        <property name="font">
         <font>
-         <pointsize>15</pointsize>
+         <pointsize>8</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
-        <string>小时</string>
+        <string>规则名是日期+时间组合</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="2">
+     <item row="0" column="1">
       <spacer name="horizontalSpacer_4">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -612,32 +643,79 @@
        </property>
       </spacer>
      </item>
-     <item row="1" column="3">
-      <widget class="QLabel" name="l_name_3">
-       <property name="font">
-        <font>
-         <pointsize>15</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>分钟</string>
-       </property>
-      </widget>
+     <item row="1" column="0" colspan="2">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <spacer name="horizontalSpacer_7">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="l_name_2">
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>小时</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="l_name_14">
+         <property name="maximumSize">
+          <size>
+           <width>10</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="l_name_3">
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>分钟</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_8">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>18</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </item>
-     <item row="1" column="4">
-      <spacer name="horizontalSpacer_8">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="2" column="0" colspan="5">
+     <item row="2" column="0" colspan="2">
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
         <spacer name="horizontalSpacer_11">
@@ -668,7 +746,7 @@
          </property>
          <property name="font">
           <font>
-           <pointsize>15</pointsize>
+           <pointsize>7</pointsize>
           </font>
          </property>
         </widget>
@@ -707,7 +785,7 @@
          </property>
          <property name="font">
           <font>
-           <pointsize>15</pointsize>
+           <pointsize>7</pointsize>
           </font>
          </property>
         </widget>
@@ -729,11 +807,6 @@
      </item>
     </layout>
    </widget>
-   <zorder>layoutWidget</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>wg_top</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>label_2</zorder>
   </widget>
  </widget>
  <customwidgets>

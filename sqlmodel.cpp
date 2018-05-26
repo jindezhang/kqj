@@ -539,7 +539,7 @@ bool sqlmodel::em_infos_insert(Em_info &info)
 {
     QSqlQuery query;
     QString date = QDate::currentDate().toString("yyyy-MM-dd");
-    QString sql_s = QString("insert into em_infos values('%1','%2','%3','%4');").arg(info.id).arg(info.name).arg(info.department).arg(date);
+    QString sql_s = QString("insert into em_infos (id, name, department, date) values('%1','%2','%3','%4');").arg(info.id).arg(info.name).arg(info.department).arg(date);
 
     if(!query.exec(sql_s)){
         qDebug() << "insert Failed!"<<query.lastError();

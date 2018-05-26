@@ -28,9 +28,9 @@ rulewindow::rulewindow(QWidget *parent) :
     model->setHeaderData(i++, Qt::Horizontal, tr("晚上-上班"));
     model->setHeaderData(i++, Qt::Horizontal, tr("晚上-下班"));
     ui->tableView->setModel(model);
-    ui->tableView->setColumnWidth(0,110);
+    ui->tableView->setColumnWidth(0,180);
     for(int n = 1;n<i;n++)
-        ui->tableView->setColumnWidth(n,62);
+        ui->tableView->setColumnWidth(n,110);
 
 //   获取rule的名字
     sql->rule_selectAll(list_rule);

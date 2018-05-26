@@ -14,53 +14,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>310</y>
-      <width>427</width>
-      <height>46</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="font">
-          <font>
-           <pointsize>25</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>提示信息：</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="l_tip">
-         <property name="font">
-          <font>
-           <pointsize>25</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>请刷卡.........</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="Line" name="line">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QWidget" name="layoutWidget_2">
     <property name="geometry">
      <rect>
@@ -77,7 +30,7 @@
         <widget class="QLabel" name="label_3">
          <property name="font">
           <font>
-           <pointsize>25</pointsize>
+           <pointsize>20</pointsize>
           </font>
          </property>
          <property name="text">
@@ -127,7 +80,7 @@
         <widget class="QLabel" name="label">
          <property name="font">
           <font>
-           <pointsize>25</pointsize>
+           <pointsize>20</pointsize>
           </font>
          </property>
          <property name="text">
@@ -177,7 +130,7 @@
         <widget class="QLabel" name="label_2">
          <property name="font">
           <font>
-           <pointsize>25</pointsize>
+           <pointsize>20</pointsize>
           </font>
          </property>
          <property name="text">
@@ -210,40 +163,24 @@
      </item>
     </layout>
    </widget>
-   <widget class="top" name="wg_top" native="true">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>800</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>800</width>
-      <height>50</height>
-     </size>
-    </property>
-   </widget>
    <widget class="QLabel" name="l_tip2">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>380</y>
-      <width>361</width>
-      <height>51</height>
+      <x>50</x>
+      <y>370</y>
+      <width>441</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>30</pointsize>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 0, 0);</string>
+     <string notr="true">color: rgb(0, 0, 255);</string>
     </property>
     <property name="text">
      <string>当前非考勤时间段</string>
@@ -258,6 +195,11 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>7</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>模拟刷卡</string>
     </property>
@@ -270,6 +212,11 @@
       <width>111</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>7</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>模拟上传员工信息</string>
@@ -284,6 +231,11 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>7</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>模拟开始考勤</string>
     </property>
@@ -296,6 +248,11 @@
       <width>111</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>7</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>模拟申请员工数据</string>
@@ -310,11 +267,16 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>7</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>模拟结束考勤</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -378,6 +340,94 @@
       <widget class="Line" name="line_5">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <spacer name="horizontalSpacer_6">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="top" name="wg_top" native="true"/>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_7">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>51</x>
+      <y>312</y>
+      <width>411</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="font">
+          <font>
+           <pointsize>20</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>提示：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="l_tip">
+         <property name="font">
+          <font>
+           <pointsize>20</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>请刷卡.........</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="Line" name="line">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>

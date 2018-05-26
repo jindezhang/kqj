@@ -34,7 +34,6 @@ class Ui_rulewindow
 {
 public:
     QWidget *centralwidget;
-    top *wg_top;
     QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_3;
     QFrame *line_3;
@@ -95,12 +94,19 @@ public:
     QPushButton *pushButton_8;
     QSpacerItem *horizontalSpacer_9;
     QPushButton *add;
+    QWidget *layoutWidget_2;
+    QHBoxLayout *horizontalLayout_13;
+    QSpacerItem *horizontalSpacer_10;
+    top *wg_top;
+    QSpacerItem *horizontalSpacer_13;
     QWidget *widget;
     QGridLayout *gridLayout;
     QLabel *label_2;
+    QSpacerItem *horizontalSpacer_4;
+    QHBoxLayout *horizontalLayout_4;
     QSpacerItem *horizontalSpacer_7;
     QLabel *l_name_2;
-    QSpacerItem *horizontalSpacer_4;
+    QLabel *l_name_14;
     QLabel *l_name_3;
     QSpacerItem *horizontalSpacer_8;
     QHBoxLayout *horizontalLayout_5;
@@ -117,10 +123,6 @@ public:
         rulewindow->resize(800, 480);
         centralwidget = new QWidget(rulewindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
-        wg_top = new top(centralwidget);
-        wg_top->setObjectName(QStringLiteral("wg_top"));
-        wg_top->setGeometry(QRect(0, 0, 800, 50));
-        wg_top->setMinimumSize(QSize(800, 50));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
         layoutWidget->setGeometry(QRect(270, 70, 521, 391));
@@ -232,7 +234,7 @@ public:
 
         layoutWidget1 = new QWidget(centralwidget);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(60, 140, 201, 324));
+        layoutWidget1->setGeometry(QRect(40, 150, 219, 324));
         verticalLayout_8 = new QVBoxLayout(layoutWidget1);
         verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
         verticalLayout_8->setContentsMargins(0, 0, 0, 0);
@@ -240,7 +242,9 @@ public:
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
         l_name_5 = new QLabel(layoutWidget1);
         l_name_5->setObjectName(QStringLiteral("l_name_5"));
-        l_name_5->setFont(font);
+        QFont font1;
+        font1.setPointSize(9);
+        l_name_5->setFont(font1);
 
         verticalLayout_5->addWidget(l_name_5);
 
@@ -248,19 +252,22 @@ public:
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
         l_name_6 = new QLabel(layoutWidget1);
         l_name_6->setObjectName(QStringLiteral("l_name_6"));
-        l_name_6->setFont(font);
+        l_name_6->setFont(font1);
 
         horizontalLayout_6->addWidget(l_name_6);
 
         amg = new QLineEdit(layoutWidget1);
         amg->setObjectName(QStringLiteral("amg"));
         amg->setMinimumSize(QSize(60, 20));
-        amg->setFont(font);
+        QFont font2;
+        font2.setPointSize(7);
+        amg->setFont(font2);
 
         horizontalLayout_6->addWidget(amg);
 
         pushButton = new QPushButton(layoutWidget1);
         pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setFont(font2);
 
         horizontalLayout_6->addWidget(pushButton);
 
@@ -271,19 +278,20 @@ public:
         horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
         l_name_7 = new QLabel(layoutWidget1);
         l_name_7->setObjectName(QStringLiteral("l_name_7"));
-        l_name_7->setFont(font);
+        l_name_7->setFont(font1);
 
         horizontalLayout_7->addWidget(l_name_7);
 
         amo = new QLineEdit(layoutWidget1);
         amo->setObjectName(QStringLiteral("amo"));
         amo->setMinimumSize(QSize(60, 20));
-        amo->setFont(font);
+        amo->setFont(font2);
 
         horizontalLayout_7->addWidget(amo);
 
         pushButton_2 = new QPushButton(layoutWidget1);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setFont(font2);
 
         horizontalLayout_7->addWidget(pushButton_2);
 
@@ -304,7 +312,7 @@ public:
         verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
         l_name_8 = new QLabel(layoutWidget1);
         l_name_8->setObjectName(QStringLiteral("l_name_8"));
-        l_name_8->setFont(font);
+        l_name_8->setFont(font1);
 
         verticalLayout_6->addWidget(l_name_8);
 
@@ -312,19 +320,20 @@ public:
         horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
         l_name_9 = new QLabel(layoutWidget1);
         l_name_9->setObjectName(QStringLiteral("l_name_9"));
-        l_name_9->setFont(font);
+        l_name_9->setFont(font1);
 
         horizontalLayout_8->addWidget(l_name_9);
 
         pmg = new QLineEdit(layoutWidget1);
         pmg->setObjectName(QStringLiteral("pmg"));
         pmg->setMinimumSize(QSize(60, 20));
-        pmg->setFont(font);
+        pmg->setFont(font2);
 
         horizontalLayout_8->addWidget(pmg);
 
         pushButton_3 = new QPushButton(layoutWidget1);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        pushButton_3->setFont(font2);
 
         horizontalLayout_8->addWidget(pushButton_3);
 
@@ -335,19 +344,20 @@ public:
         horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
         l_name_10 = new QLabel(layoutWidget1);
         l_name_10->setObjectName(QStringLiteral("l_name_10"));
-        l_name_10->setFont(font);
+        l_name_10->setFont(font1);
 
         horizontalLayout_9->addWidget(l_name_10);
 
         pmo = new QLineEdit(layoutWidget1);
         pmo->setObjectName(QStringLiteral("pmo"));
         pmo->setMinimumSize(QSize(60, 20));
-        pmo->setFont(font);
+        pmo->setFont(font2);
 
         horizontalLayout_9->addWidget(pmo);
 
         pushButton_4 = new QPushButton(layoutWidget1);
         pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        pushButton_4->setFont(font2);
 
         horizontalLayout_9->addWidget(pushButton_4);
 
@@ -368,7 +378,7 @@ public:
         verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
         l_name_11 = new QLabel(layoutWidget1);
         l_name_11->setObjectName(QStringLiteral("l_name_11"));
-        l_name_11->setFont(font);
+        l_name_11->setFont(font1);
 
         verticalLayout_7->addWidget(l_name_11);
 
@@ -376,19 +386,20 @@ public:
         horizontalLayout_10->setObjectName(QStringLiteral("horizontalLayout_10"));
         l_name_12 = new QLabel(layoutWidget1);
         l_name_12->setObjectName(QStringLiteral("l_name_12"));
-        l_name_12->setFont(font);
+        l_name_12->setFont(font1);
 
         horizontalLayout_10->addWidget(l_name_12);
 
         nmg = new QLineEdit(layoutWidget1);
         nmg->setObjectName(QStringLiteral("nmg"));
         nmg->setMinimumSize(QSize(60, 20));
-        nmg->setFont(font);
+        nmg->setFont(font2);
 
         horizontalLayout_10->addWidget(nmg);
 
         pushButton_5 = new QPushButton(layoutWidget1);
         pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
+        pushButton_5->setFont(font2);
 
         horizontalLayout_10->addWidget(pushButton_5);
 
@@ -399,19 +410,20 @@ public:
         horizontalLayout_11->setObjectName(QStringLiteral("horizontalLayout_11"));
         l_name_13 = new QLabel(layoutWidget1);
         l_name_13->setObjectName(QStringLiteral("l_name_13"));
-        l_name_13->setFont(font);
+        l_name_13->setFont(font1);
 
         horizontalLayout_11->addWidget(l_name_13);
 
         nmo = new QLineEdit(layoutWidget1);
         nmo->setObjectName(QStringLiteral("nmo"));
         nmo->setMinimumSize(QSize(60, 20));
-        nmo->setFont(font);
+        nmo->setFont(font2);
 
         horizontalLayout_11->addWidget(nmo);
 
         pushButton_6 = new QPushButton(layoutWidget1);
         pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
+        pushButton_6->setFont(font2);
 
         horizontalLayout_11->addWidget(pushButton_6);
 
@@ -447,44 +459,76 @@ public:
 
         verticalLayout_8->addLayout(horizontalLayout_12);
 
+        layoutWidget_2 = new QWidget(centralwidget);
+        layoutWidget_2->setObjectName(QStringLiteral("layoutWidget_2"));
+        layoutWidget_2->setGeometry(QRect(0, 0, 801, 61));
+        horizontalLayout_13 = new QHBoxLayout(layoutWidget_2);
+        horizontalLayout_13->setObjectName(QStringLiteral("horizontalLayout_13"));
+        horizontalLayout_13->setContentsMargins(0, 0, 0, 0);
+        horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_13->addItem(horizontalSpacer_10);
+
+        wg_top = new top(layoutWidget_2);
+        wg_top->setObjectName(QStringLiteral("wg_top"));
+
+        horizontalLayout_13->addWidget(wg_top);
+
+        horizontalSpacer_13 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_13->addItem(horizontalSpacer_13);
+
         widget = new QWidget(centralwidget);
         widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(40, 60, 226, 78));
+        widget->setGeometry(QRect(29, 56, 231, 91));
         gridLayout = new QGridLayout(widget);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
         label_2 = new QLabel(widget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        QFont font1;
-        font1.setBold(true);
-        font1.setWeight(75);
-        label_2->setFont(font1);
+        QFont font3;
+        font3.setPointSize(8);
+        font3.setBold(true);
+        font3.setWeight(75);
+        label_2->setFont(font3);
 
-        gridLayout->addWidget(label_2, 0, 1, 1, 4);
-
-        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_7, 1, 0, 1, 1);
-
-        l_name_2 = new QLabel(widget);
-        l_name_2->setObjectName(QStringLiteral("l_name_2"));
-        l_name_2->setFont(font);
-
-        gridLayout->addWidget(l_name_2, 1, 1, 1, 1);
+        gridLayout->addWidget(label_2, 0, 0, 1, 1);
 
         horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addItem(horizontalSpacer_4, 1, 2, 1, 1);
+        gridLayout->addItem(horizontalSpacer_4, 0, 1, 1, 1);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_7);
+
+        l_name_2 = new QLabel(widget);
+        l_name_2->setObjectName(QStringLiteral("l_name_2"));
+        l_name_2->setFont(font1);
+
+        horizontalLayout_4->addWidget(l_name_2);
+
+        l_name_14 = new QLabel(widget);
+        l_name_14->setObjectName(QStringLiteral("l_name_14"));
+        l_name_14->setMaximumSize(QSize(10, 16777215));
+        l_name_14->setFont(font);
+
+        horizontalLayout_4->addWidget(l_name_14);
 
         l_name_3 = new QLabel(widget);
         l_name_3->setObjectName(QStringLiteral("l_name_3"));
-        l_name_3->setFont(font);
+        l_name_3->setFont(font1);
 
-        gridLayout->addWidget(l_name_3, 1, 3, 1, 1);
+        horizontalLayout_4->addWidget(l_name_3);
 
-        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_8 = new QSpacerItem(18, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addItem(horizontalSpacer_8, 1, 4, 1, 1);
+        horizontalLayout_4->addItem(horizontalSpacer_8);
+
+
+        gridLayout->addLayout(horizontalLayout_4, 1, 0, 1, 2);
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
@@ -496,7 +540,7 @@ public:
         cbb_h->setObjectName(QStringLiteral("cbb_h"));
         cbb_h->setMinimumSize(QSize(50, 30));
         cbb_h->setMaximumSize(QSize(50, 16777215));
-        cbb_h->setFont(font);
+        cbb_h->setFont(font2);
 
         horizontalLayout_5->addWidget(cbb_h);
 
@@ -511,7 +555,7 @@ public:
         cbb_m->setObjectName(QStringLiteral("cbb_m"));
         cbb_m->setMinimumSize(QSize(50, 30));
         cbb_m->setMaximumSize(QSize(50, 16777215));
-        cbb_m->setFont(font);
+        cbb_m->setFont(font2);
 
         horizontalLayout_5->addWidget(cbb_m);
 
@@ -520,14 +564,9 @@ public:
         horizontalLayout_5->addItem(horizontalSpacer_12);
 
 
-        gridLayout->addLayout(horizontalLayout_5, 2, 0, 1, 5);
+        gridLayout->addLayout(horizontalLayout_5, 2, 0, 1, 2);
 
         rulewindow->setCentralWidget(centralwidget);
-        layoutWidget->raise();
-        layoutWidget->raise();
-        wg_top->raise();
-        layoutWidget->raise();
-        label_2->raise();
 
         retranslateUi(rulewindow);
 
@@ -560,6 +599,7 @@ public:
         add->setText(QApplication::translate("rulewindow", "\346\267\273\345\212\240", 0));
         label_2->setText(QApplication::translate("rulewindow", "\350\247\204\345\210\231\345\220\215\346\230\257\346\227\245\346\234\237+\346\227\266\351\227\264\347\273\204\345\220\210", 0));
         l_name_2->setText(QApplication::translate("rulewindow", "\345\260\217\346\227\266", 0));
+        l_name_14->setText(QApplication::translate("rulewindow", ":", 0));
         l_name_3->setText(QApplication::translate("rulewindow", "\345\210\206\351\222\237", 0));
         l_name_4->setText(QApplication::translate("rulewindow", ":", 0));
     } // retranslateUi

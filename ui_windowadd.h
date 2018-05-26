@@ -74,13 +74,13 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(400, 430, 75, 23));
+        pushButton->setGeometry(QRect(370, 390, 75, 23));
         pushButton_2 = new QPushButton(centralwidget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(230, 430, 75, 23));
+        pushButton_2->setGeometry(QRect(190, 390, 75, 23));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(170, 130, 381, 231));
+        layoutWidget->setGeometry(QRect(140, 70, 411, 241));
         verticalLayout_3 = new QVBoxLayout(layoutWidget);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -91,7 +91,7 @@ public:
         label_3 = new QLabel(layoutWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         QFont font;
-        font.setPointSize(25);
+        font.setPointSize(20);
         label_3->setFont(font);
 
         horizontalLayout->addWidget(label_3);
@@ -104,9 +104,7 @@ public:
         sizePolicy.setHeightForWidth(id->sizePolicy().hasHeightForWidth());
         id->setSizePolicy(sizePolicy);
         id->setMinimumSize(QSize(20, 15));
-        QFont font1;
-        font1.setPointSize(15);
-        id->setFont(font1);
+        id->setFont(font);
 
         horizontalLayout->addWidget(id);
 
@@ -130,7 +128,7 @@ public:
         sizePolicy.setHeightForWidth(name->sizePolicy().hasHeightForWidth());
         name->setSizePolicy(sizePolicy);
         name->setMinimumSize(QSize(20, 15));
-        name->setFont(font1);
+        name->setFont(font);
 
         horizontalLayout_2->addWidget(name);
 
@@ -154,7 +152,7 @@ public:
         sizePolicy.setHeightForWidth(depart->sizePolicy().hasHeightForWidth());
         depart->setSizePolicy(sizePolicy);
         depart->setMinimumSize(QSize(20, 15));
-        depart->setFont(font1);
+        depart->setFont(font);
 
         horizontalLayout_3->addWidget(depart);
 
@@ -173,15 +171,15 @@ public:
 
         layoutWidget1 = new QWidget(centralwidget);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(580, 130, 77, 110));
+        layoutWidget1->setGeometry(QRect(580, 80, 77, 110));
         verticalLayout_4 = new QVBoxLayout(layoutWidget1);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
         pushButton_3 = new QPushButton(layoutWidget1);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-        QFont font2;
-        font2.setPointSize(12);
-        pushButton_3->setFont(font2);
+        QFont font1;
+        font1.setPointSize(12);
+        pushButton_3->setFont(font1);
 
         verticalLayout_4->addWidget(pushButton_3);
 
@@ -191,7 +189,7 @@ public:
 
         bt_end = new QPushButton(layoutWidget1);
         bt_end->setObjectName(QStringLiteral("bt_end"));
-        bt_end->setFont(font2);
+        bt_end->setFont(font1);
 
         verticalLayout_4->addWidget(bt_end);
 
@@ -216,7 +214,7 @@ public:
 
         widget = new QWidget(centralwidget);
         widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(171, 360, 381, 61));
+        widget->setGeometry(QRect(141, 322, 411, 61));
         verticalLayout_2 = new QVBoxLayout(widget);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -261,7 +259,7 @@ public:
         label_2->setText(QApplication::translate("windowadd", "\346\211\200\345\261\236\351\203\250\351\227\250\357\274\232", 0));
         pushButton_3->setText(QApplication::translate("windowadd", "\345\274\200\345\247\213", 0));
         bt_end->setText(QApplication::translate("windowadd", "\347\273\223\346\235\237", 0));
-        label_4->setText(QApplication::translate("windowadd", "\346\217\220\347\244\272\344\277\241\346\201\257\357\274\232", 0));
+        label_4->setText(QApplication::translate("windowadd", "\346\217\220\347\244\272\357\274\232", 0));
         l_tip->setText(QApplication::translate("windowadd", "\350\257\267\345\210\267\345\215\241......", 0));
     } // retranslateUi
 

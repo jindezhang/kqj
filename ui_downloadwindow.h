@@ -38,14 +38,19 @@ public:
     QSpacerItem *horizontalSpacer_4;
     top *wg_top;
     QSpacerItem *horizontalSpacer_6;
-    QLabel *labl;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout_2;
+    QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
-    QComboBox *cbb_day;
-    QComboBox *cbb_month;
     QComboBox *cbb_year;
+    QComboBox *cbb_month;
+    QComboBox *cbb_day;
+    QHBoxLayout *horizontalLayout_4;
     QLabel *label_4;
     QComboBox *cbb_depart;
-    QWidget *widget;
+    QSpacerItem *horizontalSpacer_7;
+    QSpacerItem *horizontalSpacer_8;
+    QWidget *widget1;
     QVBoxLayout *verticalLayout;
     QFrame *line;
     QHBoxLayout *horizontalLayout;
@@ -89,46 +94,75 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_6);
 
-        labl = new QLabel(centralwidget);
-        labl->setObjectName(QStringLiteral("labl"));
-        labl->setGeometry(QRect(162, 216, 20, 23));
-        labl->setMinimumSize(QSize(20, 0));
-        QFont font1;
-        font1.setPointSize(15);
-        labl->setFont(font1);
-        label_2 = new QLabel(centralwidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(150, 180, 111, 31));
-        label_2->setFont(font);
-        cbb_day = new QComboBox(centralwidget);
-        cbb_day->setObjectName(QStringLiteral("cbb_day"));
-        cbb_day->setGeometry(QRect(471, 183, 91, 31));
-        cbb_day->setFont(font);
-        cbb_month = new QComboBox(centralwidget);
-        cbb_month->setObjectName(QStringLiteral("cbb_month"));
-        cbb_month->setGeometry(QRect(368, 183, 91, 31));
-        cbb_month->setFont(font);
-        cbb_year = new QComboBox(centralwidget);
-        cbb_year->setObjectName(QStringLiteral("cbb_year"));
-        cbb_year->setGeometry(QRect(265, 183, 91, 31));
-        cbb_year->setFont(font);
-        label_4 = new QLabel(centralwidget);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(150, 240, 111, 31));
-        label_4->setFont(font);
-        cbb_depart = new QComboBox(centralwidget);
-        cbb_depart->setObjectName(QStringLiteral("cbb_depart"));
-        cbb_depart->setGeometry(QRect(265, 246, 91, 31));
-        QFont font2;
-        font2.setPointSize(13);
-        cbb_depart->setFont(font2);
         widget = new QWidget(centralwidget);
         widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(152, 281, 421, 51));
-        verticalLayout = new QVBoxLayout(widget);
+        widget->setGeometry(QRect(130, 130, 491, 111));
+        verticalLayout_2 = new QVBoxLayout(widget);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        label_2 = new QLabel(widget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setFont(font);
+
+        horizontalLayout_2->addWidget(label_2);
+
+        cbb_year = new QComboBox(widget);
+        cbb_year->setObjectName(QStringLiteral("cbb_year"));
+        cbb_year->setFont(font);
+
+        horizontalLayout_2->addWidget(cbb_year);
+
+        cbb_month = new QComboBox(widget);
+        cbb_month->setObjectName(QStringLiteral("cbb_month"));
+        cbb_month->setFont(font);
+
+        horizontalLayout_2->addWidget(cbb_month);
+
+        cbb_day = new QComboBox(widget);
+        cbb_day->setObjectName(QStringLiteral("cbb_day"));
+        cbb_day->setFont(font);
+
+        horizontalLayout_2->addWidget(cbb_day);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_2);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        label_4 = new QLabel(widget);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setFont(font);
+
+        horizontalLayout_4->addWidget(label_4);
+
+        cbb_depart = new QComboBox(widget);
+        cbb_depart->setObjectName(QStringLiteral("cbb_depart"));
+        QFont font1;
+        font1.setPointSize(13);
+        cbb_depart->setFont(font1);
+
+        horizontalLayout_4->addWidget(cbb_depart);
+
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_7);
+
+        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_8);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_4);
+
+        widget1 = new QWidget(centralwidget);
+        widget1->setObjectName(QStringLiteral("widget1"));
+        widget1->setGeometry(QRect(100, 250, 591, 91));
+        verticalLayout = new QVBoxLayout(widget1);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        line = new QFrame(widget);
+        line = new QFrame(widget1);
         line->setObjectName(QStringLiteral("line"));
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
@@ -137,39 +171,39 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label = new QLabel(widget);
+        label = new QLabel(widget1);
         label->setObjectName(QStringLiteral("label"));
         label->setFont(font);
 
         horizontalLayout->addWidget(label);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(13, 35, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        cb_all = new QCheckBox(widget);
+        cb_all = new QCheckBox(widget1);
         cb_all->setObjectName(QStringLiteral("cb_all"));
         cb_all->setFont(font);
 
         horizontalLayout->addWidget(cb_all);
 
-        cb_date = new QCheckBox(widget);
+        cb_date = new QCheckBox(widget1);
         cb_date->setObjectName(QStringLiteral("cb_date"));
         cb_date->setFont(font);
 
         horizontalLayout->addWidget(cb_date);
 
-        cb_depart = new QCheckBox(widget);
+        cb_depart = new QCheckBox(widget1);
         cb_depart->setObjectName(QStringLiteral("cb_depart"));
         cb_depart->setFont(font);
 
         horizontalLayout->addWidget(cb_depart);
 
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(13, 35, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
-        bt_down = new QPushButton(widget);
+        bt_down = new QPushButton(widget1);
         bt_down->setObjectName(QStringLiteral("bt_down"));
         bt_down->setFont(font);
 
@@ -179,6 +213,8 @@ public:
         verticalLayout->addLayout(horizontalLayout);
 
         downloadWindow->setCentralWidget(centralwidget);
+        l_tip->raise();
+        layoutWidget_2->raise();
 
         retranslateUi(downloadWindow);
 
@@ -189,7 +225,6 @@ public:
     {
         downloadWindow->setWindowTitle(QApplication::translate("downloadWindow", "MainWindow", 0));
         l_tip->setText(QApplication::translate("downloadWindow", "\346\255\243\345\234\250\344\270\213\350\275\275\357\274\214\350\257\267\347\250\215\345\200\231.......", 0));
-        labl->setText(QString());
         label_2->setText(QApplication::translate("downloadWindow", "\350\257\267\351\200\211\346\213\251\346\227\245\346\234\237\357\274\232", 0));
         label_4->setText(QApplication::translate("downloadWindow", "\350\257\267\351\200\211\346\213\251\351\203\250\351\227\250\357\274\232", 0));
         label->setText(QApplication::translate("downloadWindow", "\351\200\211\346\213\251\344\270\213\350\275\275\346\235\241\344\273\266\357\274\232", 0));
