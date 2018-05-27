@@ -5,6 +5,7 @@
 #include <netmodel.h>
 #include <json.h>
 #include <mythread.h>
+#include <beep.h>
 
 namespace Ui {
 class windowadd;
@@ -20,9 +21,11 @@ public:
 public slots:
     void fanhui();
     void addstatus(QString status);
-    void get_rfid(QString rfid);
+    void get_rfid(int rfid);
     void set_add(bool b);
-
+    void bp_ok();//考勤成功的蜂鸣；
+    void bp_no();//考勤不成功的蜂鸣；
+    void beep_close();
 private slots:
     void on_pushButton_2_clicked();
 
@@ -38,7 +41,9 @@ private:
     Em_info list;
     QString rfid;
     json jsonc;
-    //myThread* mythread;
+    myThread* mythread;
+    Beep* bp;
+    QTimer* qtt;
 };
 
 #endif // WINDOWADD_H

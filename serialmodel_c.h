@@ -5,7 +5,7 @@
 #define DEV_PATH1   "/dev/ttySAC1"
 #define DEV_PATH2   "/dev/ttySAC2"
 
-/*
+
 extern "C"
 {
     #include <stdio.h>
@@ -23,13 +23,13 @@ extern "C"
     #include <time.h>
     #include <stdbool.h>
 }
-*/
-//static struct timeval timeout;
+
+static struct timeval timeout;
 //单例模式
 
 class serialmodel_C
 {
-    /*
+
 public:
     static serialmodel_C* get_model();
     ~serialmodel_C();
@@ -43,7 +43,7 @@ private:
     serialmodel_C(serialmodel_C& s){}
     int fd;
     static serialmodel_C* model;
-*/
+
 
 };
 

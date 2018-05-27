@@ -1,5 +1,5 @@
 #include "serialmodel_c.h"
-/*
+
 serialmodel_C* serialmodel_C::model = NULL;
 serialmodel_C::serialmodel_C()
 {
@@ -174,4 +174,4 @@ int serialmodel_C::init_R1()
 
     return fd;
 }
-*/
+

@@ -1,6 +1,6 @@
 #include "mythread.h"
 
-/*
+
 myThread* myThread::mythread = NULL;
 
 myThread *myThread::get_thread()
@@ -35,4 +35,4 @@ myThread::myThread(QObject *parent)
     //    C转c++的rfid读卡程序
     sc = serialmodel_C::get_model();
 }
-*/
+

@@ -123,19 +123,10 @@ void windowstart::is_kq()
         return;
     }
 
-    //特殊考勤
-
-
-
-
     //是否可以考勤    
     //那么infos里面的info显示的是最近的考勤的不准点情况
     //第一次获取time_num的值
     if( !kq_is ){
-
-
-
-
         kq_out();
         return;
     }else{
@@ -225,27 +216,29 @@ void windowstart::mycontrll()
         net->send_data(commond);
     }
 
-    //如果第一次出现非考勤时间，那么则是结束考勤标识，rfid_in全部缺勤。清空rfid_in,rfid_ed,
-    if(0 == mykq_flag){
+    kq_is = mysys->is_kq(time_curr, time_num);
+    if(!kq_is){
+        //如果第一次出现非考勤时间，那么则是结束考勤标识，rfid_in全部缺勤。清空rfid_in,rfid_ed,
+        if(0 == mykq_flag){
 
-        Em_info em;
-
-        ui->l_tip2->setText(" ");
-        mykq_flag = 1;
-        for(int i = 0; i < rfid_in.size(); i++){
-            sql->em_info_selectforid(rfid_in.at(i), em);//em的初始化
-            //未完成
-            if((time_num/2) == 0){//上班
-                sql->em_infos_update(em.id, "info", "缺勤");
-                //sql->em_infos_update_state(em.id, tm_point, "缺勤");
-            }
-            else{
-                sql->em_infos_update(em.id, "info", "早退");
-                //sql->em_infos_update_state(em.id, tm_point, "早退");
+            Em_info em;
+            ui->l_tip2->setText(" ");
+            mykq_flag = 1;
+            for(int i = 0; i < rfid_in.size(); i++){
+                sql->em_info_selectforid(rfid_in.at(i), em);//em的初始化
+                //未完成
+                if((time_num/2) == 0){//上班
+                    sql->em_infos_update(em.id, "info", "缺勤");
+                    //sql->em_infos_update_state(em.id, tm_point, "缺勤");
+                }
+                else{
+                    sql->em_infos_update(em.id, "info", "早退");
+                    //sql->em_infos_update_state(em.id, tm_point, "早退");
+                }
             }
         }
     }
-    kq_is = mysys->is_kq(time_curr, time_num);
+
 }
 
 void windowstart::bp_ok()

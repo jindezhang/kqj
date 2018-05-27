@@ -74,10 +74,14 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(370, 390, 75, 23));
+        pushButton->setGeometry(QRect(370, 390, 81, 41));
+        QFont font;
+        font.setPointSize(12);
+        pushButton->setFont(font);
         pushButton_2 = new QPushButton(centralwidget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(190, 390, 75, 23));
+        pushButton_2->setGeometry(QRect(190, 390, 81, 41));
+        pushButton_2->setFont(font);
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
         layoutWidget->setGeometry(QRect(140, 70, 411, 241));
@@ -90,9 +94,9 @@ public:
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         label_3 = new QLabel(layoutWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
-        QFont font;
-        font.setPointSize(20);
-        label_3->setFont(font);
+        QFont font1;
+        font1.setPointSize(20);
+        label_3->setFont(font1);
 
         horizontalLayout->addWidget(label_3);
 
@@ -104,7 +108,7 @@ public:
         sizePolicy.setHeightForWidth(id->sizePolicy().hasHeightForWidth());
         id->setSizePolicy(sizePolicy);
         id->setMinimumSize(QSize(20, 15));
-        id->setFont(font);
+        id->setFont(font1);
 
         horizontalLayout->addWidget(id);
 
@@ -119,7 +123,7 @@ public:
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         label = new QLabel(layoutWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setFont(font);
+        label->setFont(font1);
 
         horizontalLayout_2->addWidget(label);
 
@@ -128,7 +132,7 @@ public:
         sizePolicy.setHeightForWidth(name->sizePolicy().hasHeightForWidth());
         name->setSizePolicy(sizePolicy);
         name->setMinimumSize(QSize(20, 15));
-        name->setFont(font);
+        name->setFont(font1);
 
         horizontalLayout_2->addWidget(name);
 
@@ -143,7 +147,7 @@ public:
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setFont(font);
+        label_2->setFont(font1);
 
         horizontalLayout_3->addWidget(label_2);
 
@@ -152,7 +156,7 @@ public:
         sizePolicy.setHeightForWidth(depart->sizePolicy().hasHeightForWidth());
         depart->setSizePolicy(sizePolicy);
         depart->setMinimumSize(QSize(20, 15));
-        depart->setFont(font);
+        depart->setFont(font1);
 
         horizontalLayout_3->addWidget(depart);
 
@@ -177,9 +181,7 @@ public:
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
         pushButton_3 = new QPushButton(layoutWidget1);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-        QFont font1;
-        font1.setPointSize(12);
-        pushButton_3->setFont(font1);
+        pushButton_3->setFont(font);
 
         verticalLayout_4->addWidget(pushButton_3);
 
@@ -189,7 +191,7 @@ public:
 
         bt_end = new QPushButton(layoutWidget1);
         bt_end->setObjectName(QStringLiteral("bt_end"));
-        bt_end->setFont(font1);
+        bt_end->setFont(font);
 
         verticalLayout_4->addWidget(bt_end);
 
@@ -222,13 +224,13 @@ public:
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         label_4 = new QLabel(widget);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setFont(font);
+        label_4->setFont(font1);
 
         horizontalLayout_4->addWidget(label_4);
 
         l_tip = new QLabel(widget);
         l_tip->setObjectName(QStringLiteral("l_tip"));
-        l_tip->setFont(font);
+        l_tip->setFont(font1);
 
         horizontalLayout_4->addWidget(l_tip);
 

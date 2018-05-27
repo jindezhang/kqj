@@ -54,7 +54,7 @@ void sys_config::before_time(QString &b_time, QString &a_time, QString &time)
     m = list[1].toInt();
 
     be = con.before.toInt();
-    af = con.after.toInt();
+    af = con.after.toInt()+1;
 
     /*
      * 5 5
@@ -92,8 +92,8 @@ void sys_config::before_time(QString &b_time, QString &a_time, QString &time)
             a_h = h+1-24;
     }
 
-    a_time = QString("%1:%2").arg(a_h).arg(a_m);
-    b_time = QString("%1:%2").arg(b_h).arg(b_m);
+    a_time = QString("0%1:%2").arg(a_h).arg(a_m);
+    b_time = QString("0%1:%2").arg(b_h).arg(b_m);
 
 }
 
@@ -250,7 +250,7 @@ void sys_config::test_before_time(QString &o_time, QString &a_time, QString &tim
     m = list[1].toInt();
 
     be = con.before.toInt();
-    af = con.after.toInt();
+    af = con.after.toInt()+1;
 
     /*
      * 5 5
@@ -288,8 +288,8 @@ void sys_config::test_before_time(QString &o_time, QString &a_time, QString &tim
             a_h = h+1-24;
     }
 
-    a_time = QString("%1:%2").arg(a_h).arg(a_m);
-    o_time = QString("%1:%2").arg(b_h).arg(b_m);
+    a_time = QString("0%1:%2").arg(a_h).arg(a_m);
+    o_time = QString("0%1:%2").arg(b_h).arg(b_m);
 }
 
 void sys_config::change_time()
