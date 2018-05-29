@@ -39,6 +39,7 @@ windowadd::~windowadd()
 
 void windowadd::fanhui()
 {
+    ui->wg_top->is_net();
     this->parentWidget()->show();
     this->close();
 }
@@ -88,7 +89,7 @@ void windowadd::set_add(bool b)
 void windowadd::bp_ok()
 {
     bp->start_Beep();
-    qtt->start(100);
+    qtt->start(200);
 }
 
 void windowadd::bp_no()
