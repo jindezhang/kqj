@@ -725,10 +725,28 @@ void sqlmodel::rule_deleteAll()
     }
 }
 
-bool sqlmodel::log_insert(Log &info)
+bool sqlmodel::log_insert(QString type, QString info)
 {
     QSqlQuery query;
-    QString sql_s = QString("insert into log values('%1','%2','%3','%4');").arg(info.id).arg(info.name).arg(info.time).arg(info.info);
+    QString date = QDate::currentDate().toString("yyyy-MM-dd");
+    QString time = QTime::currentTime().toString("hh:mm");
+    QString sql_s = QString("insert into log values('%1','%2','%3','%4');").arg(type).arg(date).arg(time).arg(info);
+
+
+    if(!query.exec(sql_s)){
+        qDebug() << "insert Failed!"<<query.lastError();
+        return false;
+    }
+    return true;
+}
+
+bool sqlmodel::log_insert(int type_l, QString info)
+{
+    QString type[] = {"info", "warn", "error"};
+    QSqlQuery query;
+    QString date = QDate::currentDate().toString("yyyy-MM-dd");
+    QString time = QTime::currentTime().toString("hh:mm");
+    QString sql_s = QString("insert into log values('%1','%2','%3','%4');").arg(type[type_l]).arg(date).arg(time).arg(info);
 
 
     if(!query.exec(sql_s)){
@@ -741,7 +759,7 @@ bool sqlmodel::log_insert(Log &info)
 void sqlmodel::log_select_name(QStringList &name)
 {
     QSqlQuery query;
-    QString sql_s = QString("select name from log ;");
+    QString sql_s = QString("select distinct name from log ;");
     QString data;
     if(!query.exec(sql_s)){
         qDebug() << "select Failed!"<<query.lastError();

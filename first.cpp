@@ -25,7 +25,7 @@ first::first(QWidget *parent) :
     connect(nettimer,SIGNAL(timeout()),this, SLOT(net_timeout()));
 
     flag = 0;
-
+    sl->log_insert("info", "系统启动...");
 }
 
 first::~first()

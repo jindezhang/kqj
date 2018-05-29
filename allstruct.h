@@ -3,6 +3,8 @@
 
 #include <QString>
 
+
+
 //保存服务器数据
 struct Net
 {

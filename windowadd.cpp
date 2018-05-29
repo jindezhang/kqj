@@ -46,7 +46,7 @@ void windowadd::fanhui()
 
 void windowadd::addstatus(QString status)
 {
-    //ui->pushButton->setEnabled(true);
+    //
     //ui->pushButton_2->setEnabled(true);
 
     if(status.contains("ok", Qt::CaseInsensitive)){
@@ -62,6 +62,7 @@ void windowadd::addstatus(QString status)
         ui->name->setText(list.name);
         ui->depart->setText(list.department);
         ui->l_tip->setText("请刷卡...");
+        ui->pushButton->setEnabled(true);
     }
 
 }

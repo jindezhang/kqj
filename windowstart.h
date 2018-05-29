@@ -11,8 +11,7 @@
 #include <mythread.h>
 
 /*
- * 考勤状态分为：准时、迟到、缺勤、早退。
- * 一天多个状态时，怎么弄？
+
  * */
 namespace Ui {
 class windowstart;

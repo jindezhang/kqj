@@ -20,7 +20,7 @@ public:
 
     void before_time(QString &b_time, QString &a_time, QString &time);//获取前后两个值。
     void split_time(int &h, int &m, QString time);//单独获取时间的时和分（int类型）
-
+    void get_str_time(QString &t);//重新处理时间。
 
     //是否可以考勤的方法
     bool is_kq(QString t, int &num);

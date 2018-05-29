@@ -15,22 +15,22 @@ selectforid::selectforid(QWidget *parent) :
     //页面布局的设置
     ui->wg_top->setDir("考勤查询");
     connect(ui->wg_top,SIGNAL(bt_click()),this,SLOT(fanhui()));
-    qDebug()<<"::selectforid0";
+   // qDebug()<<"::selectforid0";
 
     //查询按钮的时间延时。
     t_select = new QTimer();
     connect(t_select,SIGNAL(timeout()),this,SLOT(bt_enable()));
-    qDebug()<<"::selectforid2";
+   // qDebug()<<"::selectforid2";
 
     ui->cb_depart->setChecked(true);
     ui->cb_am->setChecked(true);
     ui->cb_date->setChecked(true);
     ui->cb_pm->setChecked(true);
     ui->cb_nm->setChecked(true);
-    qDebug()<<"::selectforid3";
+   // qDebug()<<"::selectforid3";
 
     sql = sqlmodel::get_model();
-    qDebug()<<"::selectforid5";
+   // qDebug()<<"::selectforid5";
 
     model = new QSqlTableModel();
       model->setTable("em_infos");
@@ -48,9 +48,9 @@ selectforid::selectforid(QWidget *parent) :
       model->setHeaderData(8, Qt::Horizontal, tr("晚上-上班"));
       model->setHeaderData(9, Qt::Horizontal, tr("晚上-下班"));
       model->setHeaderData(10, Qt::Horizontal, tr("备注"));
-    qDebug()<<"::selectforid11";
+   // qDebug()<<"::selectforid11";
       ui->table_record->setModel(model);
-    qDebug()<<"::selectforid66";
+   // qDebug()<<"::selectforid66";
       ui->table_record->setColumnWidth(0,73);
       ui->table_record->setColumnWidth(1,100);
       ui->table_record->setColumnWidth(2,80);
@@ -58,7 +58,7 @@ selectforid::selectforid(QWidget *parent) :
       for(int i = 4;i<11;i++){
           ui->table_record->setColumnWidth(i,103);
       }
-    qDebug()<<"::selectforid88";
+   // qDebug()<<"::selectforid88";
       //view->setModel(model);
       //view->hideColumn(0); // don't show the ID
       //view->show();
@@ -86,9 +86,7 @@ selectforid::selectforid(QWidget *parent) :
 selectforid::~selectforid()
 {
     qDebug()<<"::~selectforid";
-    delete t;
-    delete t_select;
-    delete model;
+
     delete ui;
 }
 

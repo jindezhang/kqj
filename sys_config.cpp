@@ -99,17 +99,27 @@ void sys_config::before_time(QString &b_time, QString &a_time, QString &time)
 
 void sys_config::split_time(int &h, int &m, QString time)
 {
-    if(time.contains(":"))
+    if(!time.contains(":"))
         return;
     QStringList list = time.split(":");
     h = list[0].toInt();
     m = list[1].toInt();
 }
 
+void sys_config::get_str_time(QString &t)
+{
+    int t_h,t_m;
+    //考虑到有小于10的问题，重新组合时间。
+    split_time(t_h, t_m, t);
+    t = QString("%1:%2").arg(t_h).arg(t_m);
+
+}
+
 //如果可以考勤了，那么一段时间内，都是可以考勤阶段，直到遇到考勤结束点。
 
 bool sys_config::is_kq(QString t, int &num)
 {
+   // qDebug()<<"curr_time:"<<t;
     if(is_be(t, num)){
 
         //发送给UI当前的上班时间。
@@ -137,6 +147,7 @@ bool sys_config::is_be(QString t, int &num)
     //考虑到有小于10的问题，重新组合时间。
     split_time(t_h, t_m, t);
     t = QString("%1:%2").arg(t_h).arg(t_m);
+    //qDebug()<<"is_be time:"<<t;
     for(int i = 0; i<6; i++){
 
         if(t_before[i].contains(t)){
@@ -233,7 +244,8 @@ void sys_config::test_change_time(QString t)
     test_before_time(on, af, t_before[i]);
     t_ontime[i] = on;
     t_after[i] = af;
-
+    get_str_time(t_before[i]);
+    qDebug()<<"t_before:"<<t_before[0]<<"  t_ontime:"<<t_ontime[0]<<"  t_after:"<<t_after[0];
 }
 
 void sys_config::test_before_time(QString &o_time, QString &a_time, QString &time)

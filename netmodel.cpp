@@ -50,6 +50,8 @@ int netmodel::get_Port()
 
 void netmodel::connect_toserver(QString IP, int port)
 {
+    sql->log_insert("info", "连接服务器 ");
+
     this->Ip = IP;
     this->port = port;
     qDebug()<<"port:"<<port;
@@ -60,6 +62,7 @@ void netmodel::connect_toserver(QString IP, int port)
 
 void netmodel::disconnect_from_server()
 {
+    sql->log_insert("error", "断开服务器");
 
     qDebug()<<"disconnect_from_server";
     flag = 0;
@@ -119,6 +122,7 @@ void netmodel::false_no(QString com)
 void netmodel::connect_again()
 {
     mSocket->connectToHost(Ip, port);
+    sql->log_insert(2, "服务器重连...");
 }
 
 void netmodel::connect_to_server_suc()
@@ -130,7 +134,7 @@ void netmodel::connect_to_server_suc()
     data.port = QString("%1").arg(port);
     sql->net_insert(data);
     emit connect_ok();
-
+    sql->log_insert("info", "连接服务器成功");
     qDebug()<<"connect_to_server_suc";
 }
 

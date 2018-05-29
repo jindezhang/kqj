@@ -22,7 +22,7 @@ top::top(QWidget *parent) :
 top::~top()
 {
     delete ui;
-    delete t;
+
 }
 
 void top::setDir(QString dir)

@@ -84,8 +84,9 @@ public:
     void rule_delete(QString name);
     void rule_deleteAll();
 
-//    日志信息
-    bool log_insert(Log &info);
+//    日志信息,type: info, error, warn,
+    bool log_insert(QString type, QString info);
+    bool log_insert(int type_l, QString info);
     //void log_delete();
     void log_select_name(QStringList &name);
     void log_select_date(QStringList &list_y,QStringList &list_m,QStringList &list_d);

@@ -26,17 +26,11 @@ windowshezhi::windowshezhi(QWidget *parent) :
 windowshezhi::~windowshezhi()
 {
     delete ui;
-    delete timer;
+
 }
 
 void windowshezhi::fanhui()
 {
-    delete w;
-    w = NULL;
-
-    delete log;
-    log = NULL;
-
     this->parentWidget()->show();
     this->close();
 }

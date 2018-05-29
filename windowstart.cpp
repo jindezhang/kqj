@@ -2,10 +2,14 @@
 #include "ui_windowstart.h"
 #include <QFile>
 
+
+//权限信息：-1921964839   -68199303
+
 windowstart::windowstart(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::windowstart)
 {
+    qDebug()<<"hello";
     ui->setupUi(this);
     //页面布局的设置
     setStyleSheet("windowstart{background-color:rgb(124 ,184 ,254)}");//设置背景颜色
@@ -56,6 +60,9 @@ windowstart::windowstart(QWidget *parent) :
     bp_qt = new QTimer();
     connect(bp_qt, SIGNAL(timeout()), this, SLOT(close_bp()));
 
+    //按钮事件
+   // ui->wg_top->hideButton();
+    ui->bt_card->hide();
 
 }
 
@@ -167,10 +174,10 @@ void windowstart::is_kq()
             if(!mysys->is_ontime(time_curr, time_num)){
 
                 info = "准时";//准点
-                sql->em_infos_update_state(em.id, tm_point, info);
+                //sql->em_infos_update_state(em.id, tm_point, info);
             }else{
                 info = "迟到";//
-                sql->em_infos_update_state(em.id, tm_point, info);
+                //sql->em_infos_update_state(em.id, tm_point, info);
                 sql->em_infos_update(em.id, "info", "迟到");
             }
         }else//下班
@@ -196,10 +203,7 @@ void windowstart::get_rfid(int rfid)
     qDebug()<<"myrfid:"<<myrfid;
     sql->authority_select(myrfid);
 
-
-
     is_kq();
-
 
 }
 
@@ -209,6 +213,7 @@ void windowstart::mycontrll()
 
     QString time = QTime::currentTime().toString("hh:mm:ss");
     time_curr = QTime::currentTime().toString("hh:mm");
+
     if(time.contains("2:00:00")){
         net->send_data("em_infos_up");
     }
@@ -300,6 +305,9 @@ void windowstart::get_time_point(QString &t)
 
 void windowstart::fanhui()
 {
+    QString info = QString("管理员【%1】登录系统").arg(myrfid);
+    sql->log_insert("info", info);
+
     this->parentWidget()->show();
     this->close();
 }
@@ -345,7 +353,7 @@ void windowstart::post_ems(QString json)
     }
     //开始上传。
     QList<Em_infos> list_em;
-    QList<Em_infos_state> list_state;
+    //QList<Em_infos_state> list_state;
     QString json_data;
 
 
@@ -400,6 +408,7 @@ void windowstart::on_bt_card_down_clicked()
 
 void windowstart::auth_rfid(QString _rfid)
 {
+
     if(_rfid == myrfid){
         ui->wg_top->showButton();
     }
