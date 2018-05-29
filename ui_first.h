@@ -36,16 +36,16 @@ public:
     QPushButton *bt_jump;
     QLabel *tips;
     winButton *wg_keys;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
     top *wg_top;
     QSpacerItem *horizontalSpacer_2;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label;
     QLineEdit *IP;
-    QWidget *widget2;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_2;
     QLineEdit *PORT;
@@ -67,24 +67,24 @@ public:
         bt_jump->setGeometry(QRect(80, 280, 91, 41));
         tips = new QLabel(centralwidget);
         tips->setObjectName(QStringLiteral("tips"));
-        tips->setGeometry(QRect(20, 330, 411, 61));
+        tips->setGeometry(QRect(20, 350, 711, 71));
         QFont font;
         font.setPointSize(15);
         tips->setFont(font);
         wg_keys = new winButton(centralwidget);
         wg_keys->setObjectName(QStringLiteral("wg_keys"));
         wg_keys->setGeometry(QRect(390, 130, 395, 220));
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(0, 0, 801, 61));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(0, 0, 801, 61));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        wg_top = new top(widget);
+        wg_top = new top(layoutWidget);
         wg_top->setObjectName(QStringLiteral("wg_top"));
 
         horizontalLayout->addWidget(wg_top);
@@ -93,37 +93,37 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
-        widget1 = new QWidget(centralwidget);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        widget1->setGeometry(QRect(51, 151, 269, 29));
-        horizontalLayout_2 = new QHBoxLayout(widget1);
+        layoutWidget1 = new QWidget(centralwidget);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(51, 151, 269, 29));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget1);
+        label = new QLabel(layoutWidget1);
         label->setObjectName(QStringLiteral("label"));
         label->setFont(font);
 
         horizontalLayout_2->addWidget(label);
 
-        IP = new QLineEdit(widget1);
+        IP = new QLineEdit(layoutWidget1);
         IP->setObjectName(QStringLiteral("IP"));
         IP->setFont(font);
 
         horizontalLayout_2->addWidget(IP);
 
-        widget2 = new QWidget(centralwidget);
-        widget2->setObjectName(QStringLiteral("widget2"));
-        widget2->setGeometry(QRect(51, 194, 269, 29));
-        horizontalLayout_3 = new QHBoxLayout(widget2);
+        layoutWidget2 = new QWidget(centralwidget);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(51, 194, 269, 29));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget2);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        label_2 = new QLabel(widget2);
+        label_2 = new QLabel(layoutWidget2);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setFont(font);
 
         horizontalLayout_3->addWidget(label_2);
 
-        PORT = new QLineEdit(widget2);
+        PORT = new QLineEdit(layoutWidget2);
         PORT->setObjectName(QStringLiteral("PORT"));
         PORT->setFont(font);
 

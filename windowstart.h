@@ -8,7 +8,7 @@
 #include <QTimer>
 #include <sys_config.h>
 #include <beep.h>
-
+#include <mythread.h>
 
 /*
  * 考勤状态分为：准时、迟到、缺勤、早退。
@@ -25,25 +25,25 @@ class windowstart : public QMainWindow
 public:
     explicit windowstart(QWidget *parent = 0);
     ~windowstart();
-    void kq_ok(QString info);
-    void kq_no();
-    void kq_ed();
-    void kq_out();
-    void kq_err();
+    void kq_ok(QString info);//显示考勤成功
+    void kq_no();//显示考试失败
+    void kq_ed();//显示考勤已经
+    void kq_out();//显示考勤不能考勤
+    void kq_err();//显示考勤错误
     void is_kq();//判断是否已经考勤
 
-    void show_em(Em_info &em);
-    void get_time_point(QString &t);
+    void show_em(Em_info &em);//显示员工数据
+    void get_time_point(QString &t);//获取时间段的字符值
 
-    void kq_list_in();
+
 public slots:
     void fanhui();
-    void mycontrll();
+    void mycontrll();//时间控制器
     void bp_ok();//考勤成功的蜂鸣；
     void bp_no();//考勤不成功的蜂鸣；
 private slots:
-    void get_em(QString json);
-    void post_ems(QString json);
+    void get_em(QString json);//获取员工数据
+    void post_ems(QString json);//上发员工数据
     void get_over(QString json);
     void get_rfid(int rfid);
     void on_bt_card_clicked();
@@ -76,6 +76,7 @@ private:
     sys_config* mysys;
     int mykq_flag;//判断是否开启、结束考勤标记，0表示考勤结束，把rfid_in,的人都加入到缺勤状态；1表示考勤开始，更新rfid_ed,rfid_in.。
     bool kq_is;
+    myThread* mythread;
 };
 
 #endif // WINDOWSTART_H

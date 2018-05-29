@@ -362,13 +362,14 @@ void sqlmodel::em_infos_select_date(QStringList &list_y,QStringList &list_m,QStr
     QSqlQuery query;
     QString sql_s = QString("SELECT distinct date FROM em_infos  ;");
     QString data;
+    QStringList list;
     if(!query.exec(sql_s)){
         qDebug() << "select Failed!"<<query.lastError();
         return;
     }
     while(query.next()){
         data = query.value(0).toString();
-        QStringList list;
+
         list = data.split("-");
         if(check_exists(list_y,list[0]))
             list_y<<list[0];
@@ -542,11 +543,10 @@ bool sqlmodel::em_infos_insert(Em_info &info)
     QString sql_s = QString("insert into em_infos (id, name, department, date) values('%1','%2','%3','%4');").arg(info.id).arg(info.name).arg(info.department).arg(date);
 
     if(!query.exec(sql_s)){
-        qDebug() << "insert Failed!"<<query.lastError();
+        qDebug() << "insert em_infos_insert Failed!"<<query.lastError();
         return false;
     }
-    if( !em_infos_insert_state(info) )
-        return false;
+
     return true;
 }
 

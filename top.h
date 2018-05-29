@@ -25,6 +25,7 @@ public:
     void showButton();
     void button_enable_();
     void button_disable_();
+    void is_net();
 private slots:
     void myupdate();
     void on_bt_fanhui_clicked();

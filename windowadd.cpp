@@ -39,14 +39,15 @@ windowadd::~windowadd()
 
 void windowadd::fanhui()
 {
+    ui->wg_top->is_net();
     this->parentWidget()->show();
     this->close();
 }
 
 void windowadd::addstatus(QString status)
 {
-    ui->pushButton->setEnabled(true);
-    ui->pushButton_2->setEnabled(true);
+    //ui->pushButton->setEnabled(true);
+    //ui->pushButton_2->setEnabled(true);
 
     if(status.contains("ok", Qt::CaseInsensitive)){
          ui->l_tip->setText("添加成功！");
@@ -88,7 +89,7 @@ void windowadd::set_add(bool b)
 void windowadd::bp_ok()
 {
     bp->start_Beep();
-    qtt->start(100);
+    qtt->start(200);
 }
 
 void windowadd::bp_no()

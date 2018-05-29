@@ -133,7 +133,12 @@ bool sys_config::is_kq(QString t, int &num)
 
 bool sys_config::is_be(QString t, int &num)
 {
+    int t_h,t_m;
+    //考虑到有小于10的问题，重新组合时间。
+    split_time(t_h, t_m, t);
+    t = QString("%1:%2").arg(t_h).arg(t_m);
     for(int i = 0; i<6; i++){
+
         if(t_before[i].contains(t)){
             num = i;
             //qDebug()<<"is_be:"<<num;

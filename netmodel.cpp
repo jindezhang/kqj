@@ -26,7 +26,7 @@ netmodel::~netmodel()
 
 int netmodel::get_flag()
 {
-    qDebug() <<"get_flag()";
+    //qDebug() <<"get_flag()";
     return flag;
 }
 
@@ -95,8 +95,12 @@ void netmodel::read_data()
 
 void netmodel::send_data(QString data)
 {
+    if(!(data.contains("command"))){
+        data = QString("%1#").arg(data);
+    }
+
     QByteArray cstr = data.toLatin1();
-    qDebug()<<cstr;
+    qDebug()<<"cstr"<<cstr;
     mSocket->write(cstr);
 }
 

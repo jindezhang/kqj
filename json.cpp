@@ -310,21 +310,19 @@ void json::json_toauthority(QString &json)
     for(int i = 0; i<nSize; i++){
         data = arr.at(i).toObject();
         rfid = data.value("rfid").toString();
-        if(json.contains("del")){
-            if(sql->authority_delete(rfid))
-               net->send_data("authority#ok");
-            else
+        if(json.contains("_del")){
+            if(!sql->authority_delete(rfid)){
                 net->send_data("authority#false");
-
+                return;
+            }
         }else{
-            if(sql->authority_insert(rfid))
-                net->send_data("authority#ok");
-            else
+            if(!sql->authority_insert(rfid)){
                 net->send_data("authority#false");
+                return;
+            }
         }
-
-
     }
+        net->send_data("authority#ok");
 }
 
 void json::add_tojson(QStringList value, QString &json)

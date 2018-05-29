@@ -35,7 +35,7 @@ void top::myupdate()
 {
     ui->l_date->setText(QDate::currentDate().toString("yyyy-MM-dd"));
     ui->l_time->setText(QTime::currentTime().toString("hh:mm:ss"));
-
+    is_net();
 }
 
 void top::hideButton()
@@ -56,6 +56,14 @@ void top::button_enable_()
 void top::button_disable_()
 {
     ui->bt_fanhui->setEnabled(false);
+}
+
+void top::is_net()
+{
+    if(net->get_flag())
+        ui->l_net->setStyleSheet("border-image:url(./wifion.png)");//显示自定义图片
+    else
+        ui->l_net->setStyleSheet("border-image:url(./wifioff.png)");//显示自定义图片
 }
 
 void top::on_bt_fanhui_clicked()

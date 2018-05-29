@@ -38,9 +38,9 @@ windowstart::windowstart(QWidget *parent) :
     t_contrll->start(1000);
 
     //刷卡
-//    mythread = myThread::get_thread();
-//    connect(mythread, SIGNAL(send_rfid(int)),this,SLOT(get_rfid(int)));
-//    mythread->start();
+    mythread = myThread::get_thread();
+    connect(mythread, SIGNAL(send_rfid(int)),this,SLOT(get_rfid(int)));
+    mythread->start();
 
     //系统控制
     mysys = sys_config::get_model();
@@ -52,9 +52,9 @@ windowstart::windowstart(QWidget *parent) :
     //当系统重启的时候，可以重新获取rfid_list
     sql->em_info_selectAll(rfid_list);
 
-   // bp = Beep::get_beep();
+    bp = Beep::get_beep();
     bp_qt = new QTimer();
-    connect(bp_qt, SIGNAL(timeout()), this, SLOT(clost_bp()));
+    connect(bp_qt, SIGNAL(timeout()), this, SLOT(close_bp()));
 
 
 }
@@ -193,6 +193,7 @@ void windowstart::get_rfid(int rfid)
     //备注信息如何写？
 
     myrfid = QString("%1").arg(rfid);
+    qDebug()<<"myrfid:"<<myrfid;
     sql->authority_select(myrfid);
 
 
@@ -220,7 +221,6 @@ void windowstart::mycontrll()
     if(!kq_is){
         //如果第一次出现非考勤时间，那么则是结束考勤标识，rfid_in全部缺勤。清空rfid_in,rfid_ed,
         if(0 == mykq_flag){
-
             Em_info em;
             ui->l_tip2->setText(" ");
             mykq_flag = 1;
@@ -243,13 +243,13 @@ void windowstart::mycontrll()
 
 void windowstart::bp_ok()
 {
-    //bp->start_Beep();
-    bp_qt->start(100);
+    bp->start_Beep();
+    bp_qt->start(200);
 }
 
 void windowstart::bp_no()
 {
-    //bp->start_Beep();
+    bp->start_Beep();
     bp_qt->start(1000);
 }
 
@@ -323,10 +323,10 @@ void windowstart::get_em(QString json)
         }
         //保存该用户的rfid值以及直接插入到数据库中。
         rfid_list<<em.rfid;
-        sql->em_infos_insert(em);
+        //sql->em_infos_insert(em);
 
     }
-    net->send_data("em_info#ok");
+    net->send_data("em_info_ok");
 }
 
 void windowstart::post_ems(QString json)
@@ -425,5 +425,5 @@ void windowstart::on_bt_end_clicked()
 void windowstart::close_bp()
 {
     bp_qt->stop();
-    // bp->close_Beep();
+    bp->close_Beep();
 }

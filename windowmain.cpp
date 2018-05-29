@@ -36,6 +36,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_4_clicked()
 {
+
     if(NULL == s)
         s= new selectforid(this);//把主界面指针传给灯光控制界面，（返回处理， 使用主界面数据）
     s->show();
@@ -44,6 +45,7 @@ void MainWindow::on_pushButton_4_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
+
     if(NULL == d)
         d= new downloadWindow(this);//把主界面指针传给灯光控制界面，（返回处理， 使用主界面数据）
     d->show();
@@ -52,6 +54,7 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_6_clicked()
 {
+
     if(NULL == r)
         r= new rulewindow(this);//把主界面指针传给灯光控制界面，（返回处理， 使用主界面数据）
     r->show();
@@ -60,6 +63,7 @@ void MainWindow::on_pushButton_6_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
+
     if(NULL == she)
         she = new windowshezhi(this);
     she->show();
@@ -68,6 +72,7 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_5_clicked()
 {
+
     if(net->get_flag() == 0){
         QMessageBox::warning(this,"提示", "未连接服务，无法使用该功能。");
         return;
@@ -82,6 +87,7 @@ void MainWindow::on_pushButton_5_clicked()
 
 void MainWindow::on_pushButton_3_clicked()
 {
+
     if(NULL == start)
         start = new windowstart(this);
     start->show();

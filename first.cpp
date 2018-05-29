@@ -156,6 +156,7 @@ void first::init(QString json)
 
         QString d =QString("date -s %1").arg(dd);
         QString t = QString("date -s %1").arg(tt);
+        qDebug()<<d<<"+++"<<t;
         system(d.toLatin1().data());
         system(t.toLatin1().data());
     }

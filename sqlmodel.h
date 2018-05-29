@@ -40,7 +40,7 @@ public:
     void config_select_all(config &con);
 
 //    权限表，用于进入主菜单的操作。
-    void authority_select(QString rfid);//权限
+    void authority_select(QString rfid);//权限,发送信号的形式，给予UI权限数据。
     bool authority_delete(QString rfid);
     bool authority_insert(QString rfid);
 
@@ -69,10 +69,12 @@ public:
     void em_infos_deleteAll();
     bool em_infos_update(QString id, QString col_name, QString value);
 
+
     //员工考勤情况数据对应em_infos_state表
     bool em_infos_update_state(QString id, QString col_name, QString value);
     bool em_infos_insert_state(Em_info &info);
     void em_infos_selectfordate_state(QString date, QList<Em_infos_state> &em);//发送数据给服务器。
+
 
 //    考勤规则
     void rule_selectAll(QString name, Rule &data);//获取考勤规则的name；

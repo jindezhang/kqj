@@ -54,6 +54,7 @@ windowlog::~windowlog()
 
 void windowlog::fanhui()
 {
+    ui->wg_top->is_net();
     this->parentWidget()->show();
     this->close();
 }
