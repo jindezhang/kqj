@@ -73,7 +73,9 @@ void netmodel::disconnect_from_server()
 void netmodel::read_data()
 {
     QByteArray array = mSocket->readAll();
-    QString str = QString(array);
+
+    QString  str = QString::fromLocal8Bit(array);
+    //QString str = QString(array);
     qDebug()<<"str:"<<str;
     if(str.contains("add", Qt::CaseInsensitive)){
         qDebug()<<"add:"<<str;
@@ -90,8 +92,6 @@ void netmodel::read_data()
         emit em_sig(str);
     }else if(str.contains("##")){
         emit time_sig(str);
-    }else if(str.contains("over_time")){
-        emit over_sig(str);
     }
     emit sendStatus(str);
 }

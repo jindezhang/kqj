@@ -112,11 +112,11 @@ void first::init(QString json)
     //已经完成初始化。
     if(flag != 0 )
         return;
+
     qDebug()<<"init json:"<<json;
     //1 初始化权限表
     if(json.contains("authority")){
         jsonc.json_toauthority(json);//该方法完成存储和del。以及发送response给服务器
-
         return;
     }
 //   2 初始化配置信息

@@ -1,20 +1,22 @@
 #include "sys_config.h"
 
-sys_config* sys_config::sys = NULL;
+//sys_config* sys_config::sys = NULL;
 
+//sys_config *sys_config::get_model()
+//{
+//    qDebug()<<"get_model";
 
+//    if(NULL == sys){
+//        sys = new sys_config();
 
-sys_config *sys_config::get_model()
-{
-    if(NULL == sys){
-        sys = new sys_config();
-    }
-    return sys;
-}
+//    }
+//    qDebug()<<"get_model";
+//    return sys;
+//}
 
 sys_config::~sys_config()
 {
-
+    //delete sys;
 }
 
 
@@ -162,6 +164,8 @@ bool sys_config::is_be(QString t, int &num)
 
 bool sys_config::is_af(QString t)
 {
+    qDebug()<<"is_af"<<t;
+    get_str_time(t);
     for(int i = 0; i<6; i++){
         if(t_after[i].contains(t)){
             return true;
@@ -196,9 +200,18 @@ void sys_config::get_ontime(QString &t, int num)
 
 void sys_config::sys_update()
 {
+    qDebug()<<"";
+    qDebug()<<"sys_update";
+    rule_data.amg = QString("0");
     sql->config_select_all(con);
     sql->rule_selectAll(con.rule, rule_data);
-    change_time();
+    //
+    if(!(rule_data.amg == "0")){
+        qDebug()<<"sys_update";
+        change_time();
+    }
+
+    qDebug()<<"sys_update";
 }
 
 int sys_config::sp_is_kq(QString t)
@@ -266,9 +279,10 @@ void sys_config::test_before_time(QString &o_time, QString &a_time, QString &tim
     h = list[0].toInt();
     m = list[1].toInt();
 
-    be = con.before.toInt();
-    af = con.after.toInt()+1;
-
+    //be = con.before.toInt();
+    //af = con.after.toInt()+1;
+    be = 1;
+    af = 2;
     /*
      * 5 5
      * 00:00
@@ -305,12 +319,13 @@ void sys_config::test_before_time(QString &o_time, QString &a_time, QString &tim
             a_h = h+1-24;
     }
 
-    a_time = QString("0%1:%2").arg(a_h).arg(a_m);
-    o_time = QString("0%1:%2").arg(b_h).arg(b_m);
+    a_time = QString("%1:%2").arg(a_h).arg(a_m);
+    o_time = QString("%1:%2").arg(b_h).arg(b_m);
 }
 
 void sys_config::change_time()
 {
+    qDebug()<<"change_time";
     int i=0;
     t_ontime[i] = rule_data.amg;
     i++;

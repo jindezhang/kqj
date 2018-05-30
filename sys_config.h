@@ -12,6 +12,7 @@ class sys_config : public QObject
 
 public:
     static sys_config* get_model();
+    explicit sys_config(QObject *parent = 0);
     ~sys_config();
     //void set_rule_data(Rule da);
     void get_before(QString &before, QString &after);
@@ -34,9 +35,10 @@ public:
     //更新配置信息。
     void sys_update();
 
-    //特殊考勤
+    //特殊考勤，弃用
     int sp_is_kq(QString t);
 
+    //模拟测试。
     void test_start();
     void test_end();
     void test_change_time(QString t);
@@ -46,9 +48,9 @@ signals:
 
 private:
     void change_time();
-    explicit sys_config(QObject *parent = 0);
-    sys_config(sys_config& s){}
-    static sys_config* sys;
+//    explicit sys_config(QObject *parent = 0);
+    //sys_config(sys_config& s){}
+    //static sys_config* sys;
     config con;
     Rule rule_data;
     QString t_before[6];

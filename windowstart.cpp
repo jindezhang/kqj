@@ -9,60 +9,66 @@ windowstart::windowstart(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::windowstart)
 {
-    qDebug()<<"hello";
+    //qDebug()<<"hello";
     ui->setupUi(this);
     //页面布局的设置
     setStyleSheet("windowstart{background-color:rgb(124 ,184 ,254)}");//设置背景颜色
     ui->wg_top->setDir("添加员工");
-//    top事件
+    //   top事件
     connect(ui->wg_top,SIGNAL(bt_click()),this,SLOT(fanhui()));
 
-    //
-    ui->icon->setStyleSheet("QLabel{border:2px solid rgb(0, 255, 0);}");
-    ui->icon->setStyleSheet("border-image:url(./icon.png)");
+   // qDebug()<<"hello";
+    //头像的初始化
+    //ui->icon->setStyleSheet("QLabel{border:2px solid rgb(0, 255, 0);}");
+    //ui->icon->setStyleSheet("border-image:url(./icon.png)");
 
     net = netmodel::get_net();
     connect(net, SIGNAL(em_sig(QString)), this, SLOT(get_em(QString)));
     connect(net, SIGNAL(ems_sig(QString)), this, SLOT(post_ems(QString)));
-    connect(net, SIGNAL(over_sig(QString)), this, SLOT(get_over(QString)));
-    //connect(net, SIGNAL(rule_sig(QString)),
+   // qDebug()<<"hello";
 
     //管理员的权限。
     sql = sqlmodel::get_model();
     connect(sql, SIGNAL(sendAuthority(QString)), this, SLOT(auth_rfid(QString)));
 
+   // qDebug()<<"hello";
     //刷新界面；
     t_clean = new QTimer();
     connect(t_clean, SIGNAL(timeout()), this, SLOT(clean_ui()));
     t_clean->start(10000);
 
+   // qDebug()<<"hello";
     //用于控制进程
     t_contrll = new QTimer();
     connect(t_contrll, SIGNAL(timeout()), this, SLOT(mycontrll()));
     t_contrll->start(1000);
 
+   // qDebug()<<"hello";
     //刷卡
     mythread = myThread::get_thread();
     connect(mythread, SIGNAL(send_rfid(int)),this,SLOT(get_rfid(int)));
     mythread->start();
 
+   // qDebug()<<"hello1";
     //系统控制
-    mysys = sys_config::get_model();
+    mysys = new sys_config();
     connect(mysys, SIGNAL(ontime_show_(QString)), this, SLOT(ontime_show(QString)));
 
+   // qDebug()<<"hello11";
     mykq_flag = 1;//1，既不会开始
     kq_is = false;
 
+   // qDebug()<<"---";
     //当系统重启的时候，可以重新获取rfid_list
     sql->em_info_selectAll(rfid_list);
+   // qDebug()<<"+++";
 
     bp = Beep::get_beep();
     bp_qt = new QTimer();
     connect(bp_qt, SIGNAL(timeout()), this, SLOT(close_bp()));
-
-    //按钮事件
-   // ui->wg_top->hideButton();
-    ui->bt_card->hide();
+    qDebug()<<"+++22";
+    //界面初始化
+    clean_ui();
 
 }
 
@@ -171,7 +177,7 @@ void windowstart::is_kq()
     }else{
         //考勤状态信息。
         if((time_num/2) == 0){//上班
-            if(!mysys->is_ontime(time_curr, time_num)){
+            if(mysys->is_ontime(time_curr, time_num)){
 
                 info = "准时";//准点
                 //sql->em_infos_update_state(em.id, tm_point, info);
@@ -393,6 +399,8 @@ void windowstart::clean_ui()
     ui->l_tip->setText("请刷卡.....");
     t_clean->stop();
     //ui->wg_top->hideButton();
+
+    ui->bt_card->hide();
 }
 
 void windowstart::ontime_show(QString _time)
@@ -411,6 +419,7 @@ void windowstart::auth_rfid(QString _rfid)
 
     if(_rfid == myrfid){
         ui->wg_top->showButton();
+        qDebug()<<"管理员："<<_rfid;
     }
 }
 

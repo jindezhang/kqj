@@ -43,10 +43,10 @@ public slots:
 private slots:
     void get_em(QString json);//获取员工数据
     void post_ems(QString json);//上发员工数据
-    void get_over(QString json);
-    void get_rfid(int rfid);
-    void on_bt_card_clicked();
-    void clean_ui();
+    void get_over(QString json);//不用了的
+    void get_rfid(int rfid);//获取刷卡模块rfid卡号
+    void on_bt_card_clicked();//模拟刷卡
+    void clean_ui();//清屏
     void ontime_show(QString _time);
     void on_bt_card_down_clicked();
     void auth_rfid(QString _rfid);

@@ -71,7 +71,8 @@ SOURCES       = main.cpp \
 		windowstart.cpp \
 		windowlog.cpp \
 		change_asc.cpp \
-		sys_config.cpp moc_netmodel.cpp \
+		sys_config.cpp \
+		adata_show.cpp moc_netmodel.cpp \
 		moc_first.cpp \
 		moc_sqlmodel.cpp \
 		moc_serialmodel.cpp \
@@ -114,6 +115,7 @@ OBJECTS       = main.o \
 		windowlog.o \
 		change_asc.o \
 		sys_config.o \
+		adata_show.o \
 		moc_netmodel.o \
 		moc_first.o \
 		moc_sqlmodel.o \
@@ -243,7 +245,8 @@ DIST          = /opt/armqt5.5-gec/mkspecs/features/spec_pre.prf \
 		windowstart.h \
 		windowlog.h \
 		change_asc.h \
-		sys_config.h main.cpp \
+		sys_config.h \
+		adata_show.h main.cpp \
 		netmodel.cpp \
 		first.cpp \
 		sqlmodel.cpp \
@@ -266,7 +269,8 @@ DIST          = /opt/armqt5.5-gec/mkspecs/features/spec_pre.prf \
 		windowstart.cpp \
 		windowlog.cpp \
 		change_asc.cpp \
-		sys_config.cpp
+		sys_config.cpp \
+		adata_show.cpp
 QMAKE_TARGET  = test_tcp
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = test_tcp
@@ -500,8 +504,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents netmodel.h first.h sqlmodel.h allstruct.h serialmodel.h test.h serialmodel_c.h mythread.h top.h mybutton.h winbutton.h windowdownload.h windowmain.h windownet.h windowrule.h windowselectforid.h json.h windowadd.h beep.h windowshezhi.h windowstart.h windowlog.h change_asc.h sys_config.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp netmodel.cpp first.cpp sqlmodel.cpp serialmodel.cpp test.cpp serialmodel_c.cpp mythread.cpp top.cpp mybutton.cpp winbutton.cpp windowdownload.cpp windowmain.cpp windownet.cpp windowrule.cpp windowselectforid.cpp json.cpp windowadd.cpp beep.cpp windowshezhi.cpp windowstart.cpp windowlog.cpp change_asc.cpp sys_config.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents netmodel.h first.h sqlmodel.h allstruct.h serialmodel.h test.h serialmodel_c.h mythread.h top.h mybutton.h winbutton.h windowdownload.h windowmain.h windownet.h windowrule.h windowselectforid.h json.h windowadd.h beep.h windowshezhi.h windowstart.h windowlog.h change_asc.h sys_config.h adata_show.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp netmodel.cpp first.cpp sqlmodel.cpp serialmodel.cpp test.cpp serialmodel_c.cpp mythread.cpp top.cpp mybutton.cpp winbutton.cpp windowdownload.cpp windowmain.cpp windownet.cpp windowrule.cpp windowselectforid.cpp json.cpp windowadd.cpp beep.cpp windowshezhi.cpp windowstart.cpp windowlog.cpp change_asc.cpp sys_config.cpp adata_show.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui netwindow.ui first.ui selectforid.ui test.ui top.ui winbutton.ui downloadwindow.ui rulewindow.ui windowadd.ui windowshezhi.ui windowstart.ui windowlog.ui $(DISTDIR)/
 
 
@@ -2709,6 +2713,10 @@ moc_windowstart.cpp: /opt/armqt5.5-gec/include/QtWidgets/QMainWindow \
 		/opt/armqt5.5-gec/include/QtCore/QJsonValue \
 		sys_config.h \
 		beep.h \
+		mythread.h \
+		serialmodel_c.h \
+		/opt/armqt5.5-gec/include/QtCore/QThread \
+		/opt/armqt5.5-gec/include/QtCore/qthread.h \
 		windowstart.h
 	/opt/armqt5.5-gec/bin/moc $(DEFINES) -I/opt/armqt5.5-gec/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/QTproject-2/test_tcp -I/opt/armqt5.5-gec/include -I/opt/armqt5.5-gec/include/QtWidgets -I/opt/armqt5.5-gec/include/QtGui -I/opt/armqt5.5-gec/include/QtNetwork -I/opt/armqt5.5-gec/include/QtSerialPort -I/opt/armqt5.5-gec/include/QtSql -I/opt/armqt5.5-gec/include/QtCore -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/4.5.1/arm-none-linux-gnueabi/include -I/opt/4.5.1/arm-none-linux-gnueabi/libc/usr/include windowstart.h -o moc_windowstart.cpp
 
@@ -7863,6 +7871,10 @@ windowstart.o: windowstart.cpp windowstart.h \
 		/opt/armqt5.5-gec/include/QtCore/QJsonValue \
 		sys_config.h \
 		beep.h \
+		mythread.h \
+		serialmodel_c.h \
+		/opt/armqt5.5-gec/include/QtCore/QThread \
+		/opt/armqt5.5-gec/include/QtCore/qthread.h \
 		ui_windowstart.h \
 		/opt/armqt5.5-gec/include/QtCore/QVariant \
 		/opt/armqt5.5-gec/include/QtWidgets/QAction \
@@ -8232,6 +8244,9 @@ sys_config.o: sys_config.cpp sys_config.h \
 		/opt/armqt5.5-gec/include/QtCore/QDate \
 		/opt/armqt5.5-gec/include/QtCore/qdatetime.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sys_config.o sys_config.cpp
+
+adata_show.o: adata_show.cpp adata_show.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o adata_show.o adata_show.cpp
 
 moc_netmodel.o: moc_netmodel.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_netmodel.o moc_netmodel.cpp

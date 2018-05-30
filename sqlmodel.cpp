@@ -199,7 +199,7 @@ void sqlmodel::config_select_all(config &con)
         con.before = query.value(1).toString();
         con.after = query.value(2).toString();
         con.device = query.value(3).toString();
-        con.upload = query.value(4).toString();
+        //con.upload = query.value(4).toString();
     }
 }
 

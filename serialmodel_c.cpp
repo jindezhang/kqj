@@ -146,7 +146,7 @@ int serialmodel_C::get_RFID(int fd)
     read(fd, RBuf, 128);
 
     //应答帧状态部分为0 则成功
-    int cardid;
+    int cardid = 0;
     if(RBuf[2] == 0x00)
     {
         int i, j;

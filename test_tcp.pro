@@ -35,7 +35,8 @@ SOURCES += main.cpp\
     windowstart.cpp \
     windowlog.cpp \
     change_asc.cpp \
-    sys_config.cpp
+    sys_config.cpp \
+    adata_show.cpp
 
 HEADERS  += \
     netmodel.h \
@@ -61,7 +62,8 @@ HEADERS  += \
     windowstart.h \
     windowlog.h \
     change_asc.h \
-    sys_config.h
+    sys_config.h \
+    adata_show.h
 
 FORMS    += mainwindow.ui \
     netwindow.ui \
