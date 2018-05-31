@@ -4,14 +4,16 @@
 #include <QString>
 
 
+// 程序使用数据结构定义
 
-//保存服务器数据
+//保存服务器数据数据结构
 struct Net
 {
     QString ip;
     QString port;
 };
 
+//保存系统配置信息数据结构
 struct config
 {
     QString device;
@@ -23,7 +25,7 @@ struct config
     QString upload;
 };
 
-//保存已经考勤完成的员工记录
+//保存已经考勤完成的员工记录数据结构--时间点
 struct Em_infos
 {
     QString id;
@@ -39,7 +41,7 @@ struct Em_infos
     QString info;
 };
 
-//保存已经考勤完成的员工记录
+//保存已经考勤完成的员工记录数据结构--时间点对应的考勤状态（准点、迟到等）
 struct Em_infos_state
 {
     QString id;
@@ -53,6 +55,7 @@ struct Em_infos_state
 
 };
 
+//保存终端使用的考勤规则数据结构
 struct Rule
 {
 
@@ -65,6 +68,7 @@ struct Rule
     QString nmo;
 };
 
+//保存员工信息数据结构
 struct Em_info
 {
     QString id;
@@ -76,12 +80,14 @@ struct Em_info
 
 };
 
+//保存表状态数据结构
 struct Table
 {
     QString name;
     QString time;
 };
 
+//保存系统日志信息数据结构
 struct Log
 {
     QString id;

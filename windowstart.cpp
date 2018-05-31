@@ -119,7 +119,7 @@ void windowstart::is_kq()
     int i = 0;//用于判断是否可以考勤。
     Em_info em;//用于保存显示的员工数据。0
     QString info;//是否迟到的考勤的信息。
-    QString tm_point;//时间段值，amg,amo....
+    QString tm_point = "-1";//时间段值，amg,amo....
 
     //判断是否今天可以考勤
     sql->em_info_selectforid(myrfid, em);//em的初始化
@@ -140,6 +140,7 @@ void windowstart::is_kq()
     //那么infos里面的info显示的是最近的考勤的不准点情况
     //第一次获取time_num的值
     if( !kq_is ){
+        //qDebug()<<"非考勤";
         kq_out();
         return;
     }else{
@@ -189,7 +190,7 @@ void windowstart::is_kq()
         }else//下班
             info = "welcome";
 
-        sql->em_infos_update(em.id, "info", info);
+        //sql->em_infos_update(em.id, "info", info);
         rfid_ed<<myrfid;
         rfid_in.removeAll(myrfid);
         kq_ok(info);
@@ -229,6 +230,7 @@ void windowstart::mycontrll()
     }
 
     kq_is = mysys->is_kq(time_curr, time_num);
+
     if(!kq_is){
         //如果第一次出现非考勤时间，那么则是结束考勤标识，rfid_in全部缺勤。清空rfid_in,rfid_ed,
         if(0 == mykq_flag){
@@ -255,7 +257,7 @@ void windowstart::mycontrll()
 void windowstart::bp_ok()
 {
     bp->start_Beep();
-    bp_qt->start(200);
+    bp_qt->start(100);
 }
 
 void windowstart::bp_no()
@@ -349,12 +351,14 @@ void windowstart::post_ems(QString json)
     //如果失败，就重发一次命令。
     if(json.contains("em_infos_up#false")){
         net->send_data("em_infos_up");
+        sql->log_insert(1, "重新申请员工数据。");
         return;
     }
 
     //数据上传成功。
     if(json.contains("em_infos#ok")){
         qDebug()<<"em_infos ok";
+        sql->log_insert(1, "上传员工考勤记录数据成功。");
         return;
     }
     //开始上传。
@@ -412,6 +416,7 @@ void windowstart::on_bt_card_down_clicked()
 {
     QString commond = QString("em_info#%1").arg(QDate::currentDate().toString("yyyy-MM-dd"));
     net->send_data(commond);
+    sql->log_insert(1, "上传员工考勤记录数据成功。");
 }
 
 void windowstart::auth_rfid(QString _rfid)
@@ -426,6 +431,7 @@ void windowstart::auth_rfid(QString _rfid)
 void windowstart::on_bt_card_up_clicked()
 {
     net->send_data("em_infos_up");
+    sql->log_insert(1, "申请员工数据。");
 }
 
 void windowstart::on_bt_start_clicked()

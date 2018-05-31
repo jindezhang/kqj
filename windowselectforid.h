@@ -19,7 +19,7 @@ class selectforid : public QMainWindow
 public:
     explicit selectforid(QWidget *parent = 0);
     ~selectforid();
-
+    void set_Items();//获取可查询的条件
 private slots:
     void fanhui();
     void bt_enable();
@@ -38,7 +38,7 @@ private:
     QTimer *t_select;
     sqlmodel *sql;
     QSqlTableModel *model;
-    QStringList list_departmet;
+    //QStringList list_departmet;
 };
 
 #endif // SELECTFORID_H

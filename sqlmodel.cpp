@@ -156,7 +156,14 @@ void sqlmodel::config_select_time(QString &before, QString &after)
 bool sqlmodel::config_reset()
 {
     QSqlQuery query;
-    QString sql_s = QString("insert into config SELECT * FROM reset;");
+    QString sql_s = QString("delete from config");
+
+    if(!query.exec(sql_s)){
+        qDebug() << "reset Failed!"<<query.lastError();
+        return false;
+    }
+
+    sql_s = QString("insert into config SELECT * FROM reset;");
 
     if(!query.exec(sql_s)){
         qDebug() << "reset Failed!"<<query.lastError();
@@ -180,6 +187,11 @@ bool sqlmodel::config_reset()
         return false;
     }
 
+    sql_s = QString("delete from log ;");
+    if(!query.exec(sql_s)){
+        qDebug() << "reset Failed!"<<query.lastError();
+        return false;
+    }
 
     return true;
 }

@@ -54,9 +54,9 @@ public:
         pushButton_2->setGeometry(QRect(330, 190, 141, 61));
         l_tips = new QLabel(centralwidget);
         l_tips->setObjectName(QStringLiteral("l_tips"));
-        l_tips->setGeometry(QRect(470, 390, 54, 12));
+        l_tips->setGeometry(QRect(480, 370, 301, 51));
         QFont font;
-        font.setPointSize(15);
+        font.setPointSize(9);
         l_tips->setFont(font);
         bt_reset = new QPushButton(centralwidget);
         bt_reset->setObjectName(QStringLiteral("bt_reset"));
@@ -84,12 +84,6 @@ public:
         horizontalLayout->addItem(horizontalSpacer_2);
 
         windowshezhi->setCentralWidget(centralwidget);
-        pushButton->raise();
-        pushButton_2->raise();
-        l_tips->raise();
-        bt_reset->raise();
-        pushButton_3->raise();
-        layoutWidget->raise();
 
         retranslateUi(windowshezhi);
 

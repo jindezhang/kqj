@@ -27,6 +27,7 @@ class windowlog : public QMainWindow
 public:
     explicit windowlog(QWidget *parent = 0);
     ~windowlog();
+    void set_Items();
 public slots:
     void fanhui();
 private slots:

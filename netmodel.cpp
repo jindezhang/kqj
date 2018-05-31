@@ -102,9 +102,12 @@ void netmodel::send_data(QString data)
         data = QString("%1#").arg(data);
     }
 
-    QByteArray cstr = data.toLatin1();
+    //QByteArray cstr = data.toLatin1();
+    QByteArray cstr = data.toUtf8();
+    //QByteArray cstr = data.toLocal8Bit();
     qDebug()<<"cstr"<<cstr;
     mSocket->write(cstr);
+    mSocket->write("你好");
 }
 
 void netmodel::ok(QString com)

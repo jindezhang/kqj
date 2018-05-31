@@ -30,6 +30,24 @@ windowlog::windowlog(QWidget *parent) :
     ui->table_record->setColumnWidth(1, 145);
     ui->table_record->setColumnWidth(3, 500);
 
+    set_Items();
+
+}
+
+windowlog::~windowlog()
+{
+    delete ui;
+}
+
+void windowlog::set_Items()
+{
+    ui->cbb_day->clear();
+    ui->cbb_h->clear();
+    ui->cbb_m->clear();
+    ui->cbb_month->clear();
+    ui->cbb_type->clear();
+    ui->cbb_year->clear();
+
     QStringList list_name,list_y,list_m,list_d;
     sql->log_select_name(list_name);
     ui->cbb_type->addItems(list_name);
@@ -44,12 +62,6 @@ windowlog::windowlog(QWidget *parent) :
     sql->log_select_time(list_h, list_mm);
     ui->cbb_m->addItems(list_mm);
     ui->cbb_h->addItems(list_h);
-
-}
-
-windowlog::~windowlog()
-{
-    delete ui;
 }
 
 void windowlog::fanhui()
@@ -69,6 +81,8 @@ void windowlog::on_bt_select_clicked()
         model->setFilter(value);
 
     model->select();
+
+    set_Items();
 }
 
 void windowlog::get_value(QString &value)

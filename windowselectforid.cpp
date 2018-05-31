@@ -68,18 +68,11 @@ selectforid::selectforid(QWidget *parent) :
 
       //list_departmet = new QStringList();
 
-      //日期和部门的设置
-      sql->em_infos_select_department(list_departmet);
-      ui->cbb_depart->addItems(list_departmet);
 
-      QStringList year,month,day;
-      sql->em_infos_select_date(year,month,day);
-      ui->cbb_year->addItems(year);
-      ui->cbb_day->addItems(day);
-      ui->cbb_month->addItems(month);
 
 //    list<<"人事部"<<"技术部";
 //    ui->cbb_depart->addItems(list);
+      set_Items();
     qDebug()<<"::selectforid100";
 }
 
@@ -88,6 +81,25 @@ selectforid::~selectforid()
     qDebug()<<"::~selectforid";
 
     delete ui;
+}
+
+void selectforid::set_Items()
+{
+    ui->cbb_day->clear();
+    ui->cbb_depart->clear();
+    ui->cbb_month->clear();
+    ui->cbb_year->clear();
+
+    //日期和部门的设置
+    QStringList list_departmet;
+    sql->em_infos_select_department(list_departmet);
+    ui->cbb_depart->addItems(list_departmet);
+
+    QStringList year,month,day;
+    sql->em_infos_select_date(year,month,day);
+    ui->cbb_year->addItems(year);
+    ui->cbb_day->addItems(day);
+    ui->cbb_month->addItems(month);
 }
 
 
@@ -129,6 +141,7 @@ void selectforid::on_bt_selectdate_clicked()
     model->select();
     qDebug()<<date<<"::"<<department;
     ui->l_tip->setText("正在查询，请稍后.....");
+    set_Items();
 }
 
 //选中checked为true；

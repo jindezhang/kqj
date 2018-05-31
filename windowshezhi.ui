@@ -43,15 +43,15 @@
    <widget class="QLabel" name="l_tips">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>390</y>
-      <width>54</width>
-      <height>12</height>
+      <x>480</x>
+      <y>370</y>
+      <width>301</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>15</pointsize>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="text">
@@ -125,13 +125,6 @@
      </item>
     </layout>
    </widget>
-   <zorder>pushButton</zorder>
-   <zorder>pushButton_2</zorder>
-   <zorder>l_tips</zorder>
-   <zorder>bt_reset</zorder>
-   <zorder>pushButton_3</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>horizontalSpacer</zorder>
   </widget>
  </widget>
  <customwidgets>

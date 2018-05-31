@@ -164,7 +164,7 @@ bool sys_config::is_be(QString t, int &num)
 
 bool sys_config::is_af(QString t)
 {
-    qDebug()<<"is_af"<<t;
+    //qDebug()<<"is_af"<<t;
     get_str_time(t);
     for(int i = 0; i<6; i++){
         if(t_after[i].contains(t)){
@@ -356,6 +356,7 @@ sys_config::sys_config(QObject *parent)
 {
     sql = sqlmodel::get_model();
 
+    kq_flag = false;
     sys_update();
     sig_flag = -1;
 }

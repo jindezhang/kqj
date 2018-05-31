@@ -73,13 +73,15 @@ void windowshezhi::on_bt_reset_clicked()
 
         set_Enabled(false);
 
-        /*
+
         if(sql->config_reset()){
             ui->l_tips->setText("重置系统成功！");
+            sql->log_insert(0, "重置系统成功。");
         }else{
             ui->l_tips->setText("重置失败！");
+            sql->log_insert(2, "重置系统失败！");
         }
-        */
+
     }
     set_Enabled(true);
 }
@@ -88,6 +90,7 @@ void windowshezhi::update_out()
 {
     timer->stop();
     QMessageBox::warning(this, "Tip", "更新失败,请稍后重试。");
+    sql->log_insert(2, "时间更新失败！");
     set_Enabled(true);
 }
 
