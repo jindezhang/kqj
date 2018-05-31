@@ -63,12 +63,13 @@ public:
     QSpacerItem *horizontalSpacer_6;
     top *wg_top;
     QSpacerItem *horizontalSpacer_7;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_4;
     QLabel *label_4;
     QLabel *l_tip;
     QFrame *line;
+    QPushButton *bt_card_2;
 
     void setupUi(QMainWindow *windowstart)
     {
@@ -257,21 +258,21 @@ public:
 
         horizontalLayout_6->addItem(horizontalSpacer_7);
 
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(51, 312, 411, 61));
-        verticalLayout_2 = new QVBoxLayout(widget);
+        layoutWidget1 = new QWidget(centralwidget);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(51, 312, 411, 61));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget1);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        label_4 = new QLabel(widget);
+        label_4 = new QLabel(layoutWidget1);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setFont(font);
 
         horizontalLayout_4->addWidget(label_4);
 
-        l_tip = new QLabel(widget);
+        l_tip = new QLabel(layoutWidget1);
         l_tip->setObjectName(QStringLiteral("l_tip"));
         l_tip->setFont(font);
 
@@ -280,13 +281,17 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_4);
 
-        line = new QFrame(widget);
+        line = new QFrame(layoutWidget1);
         line->setObjectName(QStringLiteral("line"));
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
 
         verticalLayout_2->addWidget(line);
 
+        bt_card_2 = new QPushButton(centralwidget);
+        bt_card_2->setObjectName(QStringLiteral("bt_card_2"));
+        bt_card_2->setGeometry(QRect(490, 430, 111, 41));
+        bt_card_2->setFont(font3);
         windowstart->setCentralWidget(centralwidget);
 
         retranslateUi(windowstart);
@@ -309,6 +314,7 @@ public:
         icon->setText(QString());
         label_4->setText(QApplication::translate("windowstart", "\346\217\220\347\244\272\357\274\232", 0));
         l_tip->setText(QApplication::translate("windowstart", "\350\257\267\345\210\267\345\215\241.........", 0));
+        bt_card_2->setText(QApplication::translate("windowstart", "\347\256\241\347\220\206\345\221\230", 0));
     } // retranslateUi
 
 };

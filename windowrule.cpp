@@ -165,7 +165,7 @@ void rulewindow::on_bt_change_clicked()
         ch.rule_change(r);
         jsonc.rule_tojson(r, json_rule);
         net->send_data(json_rule);
-        t->start(5000);
+        t->start(15000);
         set_bt(false);
         com_change = 1;
     } else {

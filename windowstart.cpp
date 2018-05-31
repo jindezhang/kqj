@@ -402,7 +402,7 @@ void windowstart::clean_ui()
     ui->depart->setText("");
     ui->l_tip->setText("请刷卡.....");
     t_clean->stop();
-    //ui->wg_top->hideButton();
+    ui->wg_top->hideButton();
 
     ui->bt_card->hide();
 }
@@ -450,4 +450,9 @@ void windowstart::close_bp()
 {
     bp_qt->stop();
     bp->close_Beep();
+}
+
+void windowstart::on_bt_card_2_clicked()
+{
+    ui->wg_top->showButton();
 }

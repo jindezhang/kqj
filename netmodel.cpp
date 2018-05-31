@@ -107,7 +107,7 @@ void netmodel::send_data(QString data)
     //QByteArray cstr = data.toLocal8Bit();
     qDebug()<<"cstr"<<cstr;
     mSocket->write(cstr);
-    mSocket->write("你好");
+    //mSocket->write("你好");
 }
 
 void netmodel::ok(QString com)

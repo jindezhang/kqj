@@ -56,6 +56,8 @@ private slots:
 
     void on_bt_end_clicked();
     void close_bp();
+    void on_bt_card_2_clicked();
+
 private:
     Ui::windowstart *ui;
     netmodel* net;
